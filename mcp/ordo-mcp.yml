@@ -1,0 +1,227 @@
+generated: '2026-07-24'
+method: derived
+status: candidate
+note: No official hosted MCP server is published for Ordo (company ceased trading, developer portal offline).
+  CANDIDATE tool list derived one-per-operation from the six archived OpenAPI 3.0.1 definitions; each
+  tool inherits its backing operation parameters + requestBody as its input schema.
+server:
+  name: ordo
+  transport: http
+  url: null
+tools:
+- name: get-account-information-institutions
+  category: account-data-client-hosted
+  description: Gets a list of AIS enabled institutions
+  source_operation: openapi/ordo-account-data-client-hosted.yml#get-account-information-institutions
+- name: post-account-information-create
+  category: account-data-client-hosted
+  description: Creates a new AIS request
+  source_operation: openapi/ordo-account-data-client-hosted.yml#post-account-information-create
+- name: post-account-information-data
+  category: account-data-client-hosted
+  description: Execute a data request using an AIS consent
+  source_operation: openapi/ordo-account-data-client-hosted.yml#post-account-information-data
+- name: get-account-information-data-aisdatarequestid-aisdatarequestid
+  category: account-data-client-hosted
+  description: Gets transaction data held in storage
+  source_operation: openapi/ordo-account-data-client-hosted.yml#get-account-information-data-aisdatarequestid-aisdatarequestid
+- name: get-account-information-consent-aisconsentid
+  category: account-data-client-hosted
+  description: Retrieves an existing AIS consent
+  source_operation: openapi/ordo-account-data-client-hosted.yml#get-account-information-consent-aisconsentid
+- name: get-account-information-consents
+  category: account-data-client-hosted
+  description: Gets all AIS consents associated with a participant
+  source_operation: openapi/ordo-account-data-client-hosted.yml#get-account-information-consents
+- name: post-account-information-cancel
+  category: account-data-client-hosted
+  description: Cancels an AIS Request
+  source_operation: openapi/ordo-account-data-client-hosted.yml#post-account-information-cancel
+- name: get-account-information-data-request-aisdatarequestid
+  category: account-data-client-hosted
+  description: Gets a data request
+  source_operation: openapi/ordo-account-data-client-hosted.yml#get-account-information-data-request-aisdatarequestid
+- name: get-account-information-data-requests-aisconsentid
+  category: account-data-client-hosted
+  description: Gets data requests for AIS consent and Participant
+  source_operation: openapi/ordo-account-data-client-hosted.yml#get-account-information-data-requests-aisconsentid
+- name: post-account-information-clienthostedinitiate
+  category: account-data-client-hosted
+  description: Creates an AIS consent at the bank, and returns the authorisation URL
+  source_operation: openapi/ordo-account-data-client-hosted.yml#post-account-information-clienthostedinitiate
+- name: post-account-verification-create
+  category: account-data-client-hosted
+  description: Creates a new AV request
+  source_operation: openapi/ordo-account-data-client-hosted.yml#post-account-verification-create
+- name: post-account-verification-clienthostedinitiate
+  category: account-data-client-hosted
+  description: Initiate an AV request
+  source_operation: openapi/ordo-account-data-client-hosted.yml#post-account-verification-clienthostedinitiate
+- name: get-account-verification-institutions
+  category: account-data-client-hosted
+  description: Gets a list of AV enabled institutions
+  source_operation: openapi/ordo-account-data-client-hosted.yml#get-account-verification-institutions
+- name: get-account-verification-avid
+  category: account-data-client-hosted
+  description: Get an AV request
+  source_operation: openapi/ordo-account-data-client-hosted.yml#get-account-verification-avid
+- name: get-account-verification-account
+  category: account-data-client-hosted
+  description: Gets all AV accounts for a participant
+  source_operation: openapi/ordo-account-data-client-hosted.yml#get-account-verification-account
+- name: get-account-verification-account-avid
+  category: account-data-client-hosted
+  description: Get AV account data
+  source_operation: openapi/ordo-account-data-client-hosted.yml#get-account-verification-account-avid
+- name: post-account-information-create
+  category: account-data-ordo-hosted
+  description: Creates a new AIS request
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#post-account-information-create
+- name: post-account-information-data
+  category: account-data-ordo-hosted
+  description: Execute a data request using an AIS consent
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#post-account-information-data
+- name: get-account-information-data-aisdatarequestid-aisdatarequestid
+  category: account-data-ordo-hosted
+  description: Gets transaction data held in storage
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#get-account-information-data-aisdatarequestid-aisdatarequestid
+- name: get-account-information-consent-aisconsentid
+  category: account-data-ordo-hosted
+  description: Retrieves an existing AIS consent
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#get-account-information-consent-aisconsentid
+- name: get-account-information-consents
+  category: account-data-ordo-hosted
+  description: Gets all AIS consents associated with a participant
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#get-account-information-consents
+- name: post-account-information-cancel
+  category: account-data-ordo-hosted
+  description: Cancels an AIS Request
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#post-account-information-cancel
+- name: get-account-information-data-request-aisdatarequestid
+  category: account-data-ordo-hosted
+  description: Gets transaction data held in storage
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#get-account-information-data-request-aisdatarequestid
+- name: get-account-information-data-requests-aisconsentid
+  category: account-data-ordo-hosted
+  description: Gets data requests for AIS consent and Participant
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#get-account-information-data-requests-aisconsentid
+- name: post-account-verification-create
+  category: account-data-ordo-hosted
+  description: Creates a new AV request
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#post-account-verification-create
+- name: post-account-verification-initiate
+  category: account-data-ordo-hosted
+  description: Initiate an AV request
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#post-account-verification-initiate
+- name: get-account-verification-institutions
+  category: account-data-ordo-hosted
+  description: Gets a list of AV enabled institutions
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#get-account-verification-institutions
+- name: get-account-verification-avid
+  category: account-data-ordo-hosted
+  description: Get an AV Request
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#get-account-verification-avid
+- name: get-account-verification-account
+  category: account-data-ordo-hosted
+  description: Gets all AV Accounts for a participant
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#get-account-verification-account
+- name: get-account-verification-account-avid
+  category: account-data-ordo-hosted
+  description: Get AV account data
+  source_operation: openapi/ordo-account-data-ordo-hosted.yml#get-account-verification-account-avid
+- name: post-vrpmandate
+  category: recurring-payment-mandates
+  description: Creates a new sweeping VRP Mandate
+  source_operation: openapi/ordo-recurring-payment-mandates.yml#post-vrpmandate
+- name: get-vrpmandate-mandateid
+  category: recurring-payment-mandates
+  description: Retrieves an existing VRP mandate
+  source_operation: openapi/ordo-recurring-payment-mandates.yml#get-vrpmandate-mandateid
+- name: get-vrpmandates
+  category: recurring-payment-mandates
+  description: Gets all VRP mandates associated with a participant
+  source_operation: openapi/ordo-recurring-payment-mandates.yml#get-vrpmandates
+- name: get-vrptransaction-vrptransactionid
+  category: recurring-payment-mandates
+  description: Gets a VRP Transaction
+  source_operation: openapi/ordo-recurring-payment-mandates.yml#get-vrptransaction-vrptransactionid
+- name: get-vrptransactions-vrpmandateid
+  category: recurring-payment-mandates
+  description: Gets VRP Transactions for VRP Mandate and Participant combo
+  source_operation: openapi/ordo-recurring-payment-mandates.yml#get-vrptransactions-vrpmandateid
+- name: 63e10df05af59030f7e5fa4b
+  category: recurring-payment-mandates
+  description: Creates a new non sweeping VRP Mandate
+  source_operation: openapi/ordo-recurring-payment-mandates.yml#63e10df05af59030f7e5fa4b
+- name: GetBillerAccountDetailsAsync
+  category: registry-manager
+  description: Retrieve bank account information
+  source_operation: openapi/ordo-registry-manager.yml#GetBillerAccountDetailsAsync
+- name: DeleteBillerAccountAsync
+  category: registry-manager
+  description: Delete a bank account
+  source_operation: openapi/ordo-registry-manager.yml#DeleteBillerAccountAsync
+- name: PutBillerAccountAsync
+  category: registry-manager
+  description: Update a bank account
+  source_operation: openapi/ordo-registry-manager.yml#PutBillerAccountAsync
+- name: PostBillerAccountAsync
+  category: registry-manager
+  description: Add a bank account
+  source_operation: openapi/ordo-registry-manager.yml#PostBillerAccountAsync
+- name: GetBillerAccountsAsync
+  category: registry-manager
+  description: Retrieve bank account details
+  source_operation: openapi/ordo-registry-manager.yml#GetBillerAccountsAsync
+- name: GetBillerAccountIdAsync
+  category: registry-manager
+  description: Get biller account id by bank account
+  source_operation: openapi/ordo-registry-manager.yml#GetBillerAccountIdAsync
+- name: get-institutions
+  category: single-payments
+  description: Get institutions list
+  source_operation: openapi/ordo-single-payments.yml#get-institutions
+- name: postsmartrequestbdrasync
+  category: single-payments
+  description: Create a payment request with link
+  source_operation: openapi/ordo-single-payments.yml#postsmartrequestbdrasync
+- name: post-initiatepayment
+  category: single-payments
+  description: Initiate payment request
+  source_operation: openapi/ordo-single-payments.yml#post-initiatepayment
+- name: postwithdrawsmartrequestbdrasync
+  category: single-payments
+  description: Withdraw a payment request
+  source_operation: openapi/ordo-single-payments.yml#postwithdrawsmartrequestbdrasync
+- name: PostSmartRequestBDRAsync
+  category: smart-request-manager
+  description: Create a payment request with link
+  source_operation: openapi/ordo-smart-request-manager.yml#PostSmartRequestBDRAsync
+- name: GetSmartRequestAsync
+  category: smart-request-manager
+  description: Get single payment request
+  source_operation: openapi/ordo-smart-request-manager.yml#GetSmartRequestAsync
+- name: GetSmartRequestsAsync
+  category: smart-request-manager
+  description: Get all payment requests
+  source_operation: openapi/ordo-smart-request-manager.yml#GetSmartRequestsAsync
+- name: PostWithdrawSmartRequestBDRAsync
+  category: smart-request-manager
+  description: Withdraw a biller delivered payment request
+  source_operation: openapi/ordo-smart-request-manager.yml#PostWithdrawSmartRequestBDRAsync
+- name: PostSmartRequestAsync
+  category: smart-request-manager
+  description: Create a new payment request that Ordo sends
+  source_operation: openapi/ordo-smart-request-manager.yml#PostSmartRequestAsync
+- name: PostWithdrawSmartRequestAsync
+  category: smart-request-manager
+  description: Withdraw a payment request sent via Ordo
+  source_operation: openapi/ordo-smart-request-manager.yml#PostWithdrawSmartRequestAsync
+- name: PostSmartRequestMessagesGrantDueDateAsync
+  category: smart-request-manager
+  description: Agree an extension request
+  source_operation: openapi/ordo-smart-request-manager.yml#PostSmartRequestMessagesGrantDueDateAsync
+- name: PostSmartRequestMessagesDeclineDueDateAsync
+  category: smart-request-manager
+  description: Decline an extension request
+  source_operation: openapi/ordo-smart-request-manager.yml#PostSmartRequestMessagesDeclineDueDateAsync

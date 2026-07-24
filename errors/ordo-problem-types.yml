@@ -1,0 +1,45 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/*.yml (4xx/5xx responses + ProblemDetails / OrdoValidationProblemDetails schemas)
+format: rfc7807
+content_type: application/json
+note: >-
+  Ordo APIs return ASP.NET Core-style problem detail objects. Validation failures
+  use OrdoValidationProblemDetails (adds a machine-readable `code` and a per-field
+  `errors` map on top of RFC 7807 type/title/status/detail/instance). Responses are
+  served as application/json (not application/problem+json). Derived from the six
+  archived OpenAPI 3.0.1 definitions; the live developer portal (docs.myordo.com) is
+  offline following the Neonomics acquisition, so titles/remediation could not be
+  enriched from a docs error reference.
+envelope:
+  schema_rfc7807: ProblemDetails
+  schema_validation: OrdoValidationProblemDetails
+  fields:
+    - {name: type, description: URI reference identifying the problem type (nullable)}
+    - {name: title, description: Short human-readable summary of the problem}
+    - {name: status, description: HTTP status code (int32)}
+    - {name: detail, description: Human-readable explanation specific to this occurrence}
+    - {name: instance, description: URI reference identifying the specific occurrence}
+    - {name: code, description: Ordo machine-readable error code (validation problems only)}
+    - {name: errors, description: Map of field name to array of validation messages (validation problems only)}
+problems:
+  - status: 400
+    title: Bad Request
+    schema: OrdoValidationProblemDetails
+    remediation: Request failed validation; inspect the `errors` map and `code` field for the offending fields.
+  - status: 401
+    title: Unauthorized
+    schema: ProblemDetails
+    remediation: Supply a valid Azure APIM subscription key via the Ocp-Apim-Subscription-Key header (or subscription-key query param).
+  - status: 403
+    title: Forbidden
+    schema: ProblemDetails
+    remediation: The subscription key is valid but not entitled to this product/operation.
+  - status: 404
+    title: Not Found
+    schema: ProblemDetails
+    remediation: The referenced resource (payment, consent, mandate, biller account) does not exist or is not visible to the caller.
+  - status: 422
+    title: Client Error
+    schema: OrdoValidationProblemDetails
+    remediation: The request was well-formed but semantically rejected (e.g. unsupported institution, invalid state transition).

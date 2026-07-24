@@ -1,0 +1,70 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/*.yml (components.schemas + id-reference path/params)
+note: >-
+  Entity-relationship graph derived from the six archived OpenAPI 3.0.1 definitions.
+  Relationships are inferred from id path parameters and reference fields; the object
+  reference on docs.myordo.com is offline so id-prefix conventions could not be
+  confirmed.
+entities:
+  - name: Institution
+    api: single-payments / account-data
+    description: A supported bank / open-banking participant a payment or consent can be initiated against.
+    key: participantId
+  - name: Payment
+    api: single-payments
+    description: A one-off open-banking payment initiation (create then initiate authorisation, or withdraw).
+    schemas: [initiatePaymentRequest, initiatePaymentResponse, NewBDRSmartRequestResponse]
+  - name: SmartRequest
+    api: smart-request-manager
+    description: A Request to Pay ("Smart Request") — a Biller Delivery Request the payer acts on.
+    key: smartRequestId
+    schemas: [GetSmartRequestResponse, NewSmartRequestResponse, SmartRequestDetails]
+  - name: SmartRequestMessage
+    api: smart-request-manager
+    description: A message on a smart request (new, withdraw, extension grant/decline).
+    schemas: [NewSmartRequestMessage, ExtensionRequestMessage, GrantExtensionMessage, DeclineExtensionMessage]
+  - name: VRPMandate
+    api: recurring-payment-mandates
+    description: A Variable Recurring Payment mandate (sweeping or non-sweeping) with control parameters.
+    key: mandateId
+    schemas: [VRPMandateResponse, VRPMandateGetResponse, VRPControlParameters, ControlParameter]
+  - name: VRPTransaction
+    api: recurring-payment-mandates
+    description: A payment executed under a VRP mandate.
+    key: vrpTransactionId
+    schemas: [VRPTransactionResponse, VRPTransactionPostResponse]
+  - name: AISConsent
+    api: account-data (ordo-hosted / client-hosted)
+    description: An Account Information Service consent authorising access to a customer's bank account data.
+    key: aisConsentId
+    schemas: [CreateAISConsentResponse, AISRequestResponse]
+  - name: AISDataRequest
+    api: account-data
+    description: A data-retrieval request executed under an AIS consent, returning accounts/balances/transactions.
+    key: aisDataRequestId
+    schemas: [AISDataRequestResponse, AISExecuteDataResponse]
+  - name: Account
+    api: account-data
+    description: An open-banking account with balances and transactions returned under a data request.
+    schemas: [OBAccount, Balance, BalanceAmount, AccountTransactionResponses]
+  - name: AccountVerification
+    api: account-data
+    description: An account-verification (confirmation of payee / account ownership) record.
+    key: avId
+    schemas: [AVRequest, AVResponse, GetAVRecord, AVAccountGetResponse]
+  - name: BillerAccount
+    api: registry-manager
+    description: A biller bank account into which collected payments settle.
+    key: billerAccountId
+    schemas: [RegisteredBillerAccount, NewBillerAccount, UpdateBillerAccount]
+relationships:
+  - {from: VRPTransaction, type: belongs_to, to: VRPMandate, via: vrpMandateId}
+  - {from: VRPMandate, type: has_many, to: VRPTransaction, via: vrpMandateId}
+  - {from: SmartRequest, type: has_many, to: SmartRequestMessage, via: smartRequestId}
+  - {from: AISDataRequest, type: belongs_to, to: AISConsent, via: aisConsentId}
+  - {from: AISConsent, type: has_many, to: AISDataRequest, via: aisConsentId}
+  - {from: AISDataRequest, type: has_many, to: Account, via: aisDataRequestId}
+  - {from: Payment, type: belongs_to, to: Institution, via: participantId}
+  - {from: AccountVerification, type: belongs_to, to: Institution, via: participantId}
+  - {from: Payment, type: settles_to, to: BillerAccount, via: billerAccountId}

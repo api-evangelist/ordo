@@ -1,0 +1,34 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/ordo-account-data-client-hosted.yml, openapi/ordo-account-data-ordo-hosted.yml,
+  openapi/ordo-recurring-payment-mandates.yml, openapi/ordo-registry-manager.yml, openapi/ordo-single-payments.yml,
+  openapi/ordo-smart-request-manager.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: apiKeyHeader
+  type: apiKey
+  in: header
+  parameter: Ocp-Apim-Subscription-Key
+  sources:
+  - openapi/ordo-account-data-client-hosted.yml
+  - openapi/ordo-account-data-ordo-hosted.yml
+  - openapi/ordo-recurring-payment-mandates.yml
+  - openapi/ordo-registry-manager.yml
+  - openapi/ordo-single-payments.yml
+  - openapi/ordo-smart-request-manager.yml
+- name: apiKeyQuery
+  type: apiKey
+  in: query
+  parameter: subscription-key
+  sources:
+  - openapi/ordo-account-data-client-hosted.yml
+  - openapi/ordo-account-data-ordo-hosted.yml
+  - openapi/ordo-recurring-payment-mandates.yml
+  - openapi/ordo-registry-manager.yml
+  - openapi/ordo-single-payments.yml
+  - openapi/ordo-smart-request-manager.yml

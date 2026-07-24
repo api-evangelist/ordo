@@ -50,6 +50,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/ordo-single-payments.yml
+  - type: Overlay
+    url: overlays/ordo-single-payments-overlay.yaml
   - type: Documentation
     url: https://ordopay.com/products/payments
   - type: APIReference
@@ -69,6 +71,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/ordo-smart-request-manager.yml
+  - type: Overlay
+    url: overlays/ordo-smart-request-manager-overlay.yaml
   - type: Documentation
     url: https://ordopay.com/products/payments
   - type: APIReference
@@ -89,6 +93,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/ordo-recurring-payment-mandates.yml
+  - type: Overlay
+    url: overlays/ordo-recurring-payment-mandates-overlay.yaml
   - type: Documentation
     url: https://ordopay.com/products/vrp
   - type: APIReference
@@ -109,6 +115,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/ordo-account-data-ordo-hosted.yml
+  - type: Overlay
+    url: overlays/ordo-account-data-ordo-hosted-overlay.yaml
   - type: Documentation
     url: https://ordopay.com/products/account/data
   - type: APIReference
@@ -129,6 +137,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/ordo-account-data-client-hosted.yml
+  - type: Overlay
+    url: overlays/ordo-account-data-client-hosted-overlay.yaml
   - type: Documentation
     url: https://ordopay.com/products/account/verify
   - type: APIReference
@@ -148,11 +158,19 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/ordo-registry-manager.yml
+  - type: Overlay
+    url: overlays/ordo-registry-manager-overlay.yaml
   - type: Documentation
     url: https://ordopay.com/products/payments
   - type: APIReference
     url: https://docs.myordo.com/docs/financial-institution
 common:
+- type: DomainSecurity
+  url: security/ordo-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/ordo-agentic-access.yml
+- type: Authentication
+  url: authentication/ordo-authentication.yml
 - type: Website
   url: https://ordopay.com/
 - type: DeveloperPortal
@@ -171,6 +189,22 @@ common:
   url: https://ordopay.com/legal/privacy-policy
 - type: Support
   url: https://ordopay.com/contact
+- type: Conventions
+  url: conventions/ordo-conventions.yml
+- type: ErrorCatalog
+  url: errors/ordo-problem-types.yml
+- type: Conformance
+  url: conformance/ordo-conformance.yml
+- type: Lifecycle
+  url: lifecycle/ordo-lifecycle.yml
+- type: DataModel
+  url: data-model/ordo-data-model.yml
+- type: MCPServer
+  url: mcp/ordo-mcp.yml
+- type: LLMsTxt
+  url: llms/ordo-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

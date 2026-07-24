@@ -1,0 +1,28 @@
+generated: '2026-07-24'
+method: searched
+source: apis.yml identity + live host probes (2026-07-24)
+status: discontinued
+note: >-
+  Ordo (The Smart Request Company Ltd) has ceased trading and was acquired by
+  Neonomics. The marketing site ordopay.com remains live; the developer portal
+  (docs.myordo.com) and the API gateway (test.api.ordopay.com) are offline — the
+  test gateway host resolves but presents an expired TLS certificate. This artifact
+  records the lifecycle posture honestly rather than asserting an active SLA.
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: smartrequestmanager/v1, vrp/v1, registrymanager/v1 pin a major in the path; single-payments and account-data mount unversioned.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No RFC 8594 Sunset/Deprecation header support and no published deprecation policy. The entire developer surface is effectively sunset following the acquisition.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+liveness_probe:
+  date: '2026-07-24'
+  marketing_site: {url: 'https://ordopay.com/', status: 200}
+  developer_portal: {url: 'https://docs.myordo.com/docs', status: 000, note: offline}
+  api_gateway: {url: 'https://test.api.ordopay.com/', status: 000, note: TLS certificate expired}
+deprecated_operations: []

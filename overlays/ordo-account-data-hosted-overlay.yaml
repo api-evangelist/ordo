@@ -1,0 +1,14 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for ACCOUNT DATA - Ordo Hosted
+  version: 1.0.0
+extends: openapi/ordo-account-data-ordo-hosted.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: ordo
+    x-apievangelist-status: discontinued
+    x-apievangelist-regime:
+    - psd2
+    - uk-open-banking
+    x-apievangelist-auth: azure-apim-apikey

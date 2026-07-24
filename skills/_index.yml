@@ -1,0 +1,20 @@
+generated: '2026-07-24'
+method: generated
+source: openapi/*.yml (operationIds verified against the archived specs)
+skills:
+  - file: ordo-single-payment.md
+    name: Collect a one-off open-banking payment with Ordo
+    api: openapi/ordo-single-payments.yml
+    operations: [get-institutions, post-initiatepayment, postwithdrawsmartrequestbdrasync]
+  - file: ordo-request-to-pay.md
+    name: Send a Request to Pay with Ordo Smart Requests
+    api: openapi/ordo-smart-request-manager.yml
+    operations: [PostSmartRequestBDRAsync, GetSmartRequestAsync, GetSmartRequestsAsync, PostSmartRequestMessagesGrantDueDateAsync, PostSmartRequestMessagesDeclineDueDateAsync, PostWithdrawSmartRequestBDRAsync]
+  - file: ordo-vrp-mandate.md
+    name: Set up a Variable Recurring Payment mandate with Ordo
+    api: openapi/ordo-recurring-payment-mandates.yml
+    operations: [post-vrpmandate, get-vrpmandate-mandateid, get-vrpmandates, get-vrptransactions-vrpmandateid, get-vrptransaction-vrptransactionid]
+  - file: ordo-account-information.md
+    name: Retrieve bank account data with Ordo AIS
+    api: openapi/ordo-account-data-ordo-hosted.yml
+    operations: [post-account-information-create, post-account-information-data, get-account-information-data-request-aisdatarequestid, get-account-information-consent-aisconsentid, post-account-information-cancel]

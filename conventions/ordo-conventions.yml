@@ -1,0 +1,53 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/*.yml
+note: >-
+  Cross-cutting request/response semantics derived from the six archived OpenAPI
+  3.0.1 definitions. The live docs (docs.myordo.com) are offline post-acquisition,
+  so semantics could not be enriched from a conventions/reference page; everything
+  below is grounded in the specs.
+authentication:
+  style: api-key
+  gateway: Azure API Management
+  header: Ocp-Apim-Subscription-Key
+  query_alternative: subscription-key
+  detail: authentication/ordo-authentication.yml
+idempotency:
+  supported: false
+  note: No Idempotency-Key header or parameter is declared in any operation. Payment
+    initiation, VRP mandate creation and consent creation are POSTs with no documented
+    idempotency contract.
+pagination:
+  style: page-number
+  params:
+    - PageNumber
+    - PageSize
+  applies_to:
+    - Ordo Smart Request Manager (list smart request messages)
+    - Recurring Payment Mandates (list VRP mandates / transactions)
+  note: Page-number/page-size query pagination on list endpoints; no cursor pagination.
+error_envelope:
+  format: rfc7807
+  content_type: application/json
+  schemas: [ProblemDetails, OrdoValidationProblemDetails]
+  detail: errors/ordo-problem-types.yml
+versioning:
+  scheme: uri-path
+  detail: >-
+    Several products pin a major version in the base path (smartrequestmanager/v1,
+    vrp/v1, registrymanager/v1); single-payments and account-data mount at an
+    unversioned product path. No version header or media-type versioning.
+  lifecycle: lifecycle/ordo-lifecycle.yml
+request_tracing:
+  request_id_header: null
+  note: No request-id / correlation-id header is documented in the specs.
+rate_limit_signaling:
+  documented: false
+  note: No RateLimit-* headers or Retry-After semantics are declared; the Azure APIM
+    gateway may enforce subscription limits not surfaced in the specs.
+callbacks_redirects:
+  note: >-
+    Payment, VRP and account-verification responses carry URL objects
+    (SmartRequestUrls, VRPURLs, AVURLs) that redirect the end user into the
+    bank/Ordo-hosted authorisation UX. These are auth redirect URLs, not webhooks;
+    no asynchronous event/webhook catalog is published in the specs.

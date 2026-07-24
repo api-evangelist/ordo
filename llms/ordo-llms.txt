@@ -1,0 +1,28 @@
+# Ordo
+
+> Ordo (The Smart Request Company Ltd, ordopay.com) was a United Kingdom open-banking payments provider that let businesses collect money directly from a customer's bank account over UK Faster Payments — avoiding card fees and chargebacks. Built on PSD2 / UK Open Banking payment initiation (PIS), it offered Request to Pay, single payments, e-commerce, Point of Sale / QR, contact-centre payments, Variable Recurring Payments (VRP), and Account Information (AIS) / account-verification services. Ordo was FCA-authorised. It has since ceased trading and been acquired by Neonomics; the marketing site remains live while the developer portal (docs.myordo.com) is offline. This profile is derived from six OpenAPI 3.0.1 definitions harvested from the archived developer portal.
+
+## APIs
+
+- [Ordo Single Payments API](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/openapi/ordo-single-payments.yml): One-off open-banking payment initiation — list institutions, create, initiate authorisation, withdraw.
+- [Ordo Smart Request Manager API](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/openapi/ordo-smart-request-manager.yml): Request to Pay ("Smart Requests") — create/manage requests, messages, extensions, withdrawals.
+- [Ordo Recurring Payment Mandates (VRP) API](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/openapi/ordo-recurring-payment-mandates.yml): Sweeping and non-sweeping Variable Recurring Payment mandates and transactions.
+- [Ordo Account Data (Ordo Hosted) API](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/openapi/ordo-account-data-ordo-hosted.yml): AIS and account verification with Ordo-hosted authorisation UX.
+- [Ordo Account Data (Client Hosted) API](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/openapi/ordo-account-data-client-hosted.yml): AIS and account verification with client-hosted authorisation UX.
+- [Ordo Registry Manager API](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/openapi/ordo-registry-manager.yml): Biller bank-account configuration for payment settlement.
+
+## Artifacts
+
+- [Authentication](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/authentication/ordo-authentication.yml): Azure APIM apiKey (Ocp-Apim-Subscription-Key header / subscription-key query).
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/conventions/ordo-conventions.yml): Auth, pagination, error envelope, versioning.
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/errors/ordo-problem-types.yml): RFC 7807 ProblemDetails / OrdoValidationProblemDetails.
+- [Conformance](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/conformance/ordo-conformance.yml): PSD2, UK Open Banking, VRP, Request to Pay, Faster Payments.
+- [Data model](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/data-model/ordo-data-model.yml): Payment/SmartRequest/VRPMandate/AISConsent/BillerAccount entity graph.
+- [Lifecycle](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/lifecycle/ordo-lifecycle.yml): Discontinued — acquired by Neonomics; portal offline.
+- [Agent Skills](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/skills/_index.yml): Packaged operating instructions for the marquee flows.
+
+## Docs
+
+- [Marketing site](https://ordopay.com/)
+- [Developer portal (archived, offline)](https://docs.myordo.com/docs)
+- [GitHub organization](https://github.com/ordohq)

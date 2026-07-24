@@ -1,0 +1,42 @@
+generated: '2026-07-24'
+method: derived
+source: openapi/*.yml + apis.yml identity (FCA-authorised UK Open Banking provider)
+note: >-
+  Standards posture derived from the archived OpenAPI definitions and Ordo's stated
+  regulatory identity. Ordo (The Smart Request Company Ltd) was FCA-authorised and an
+  Open Banking regulated provider; these regulatory claims come from apis.yml identity,
+  not a verified live compliance page (portal offline), so no Compliance pointer is
+  asserted.
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 securityScheme; APIs use Azure APIM apiKey (Ocp-Apim-Subscription-Key).
+  - id: oidc
+    conforms: false
+  - id: psd2
+    conforms: true
+    evidence: PSD2 payment-initiation (PIS) and account-information (AIS) services — the core Ordo product surface.
+  - id: uk-open-banking
+    conforms: true
+    evidence: UK Open Banking regulated provider; AIS/PIS/VRP flows model OB account, consent and mandate resources (OBAccount, ControlParameter, VRPControlParameters).
+  - id: uk-faster-payments
+    conforms: true
+    evidence: Account-to-account payment initiation settles over UK Faster Payments rails.
+  - id: variable-recurring-payments
+    conforms: true
+    evidence: Sweeping and non-sweeping VRP mandates with control parameters (VRPMandate/sweeping, VRPMandate/nonsweeping, VRPControlParameters).
+  - id: request-to-pay
+    conforms: true
+    evidence: Pay.UK Request to Pay implemented as "Smart Requests" (Biller Delivery Request links, extensions, withdrawals).
+  - id: rfc7807-problem-details
+    conforms: true
+    evidence: Error responses use ProblemDetails / OrdoValidationProblemDetails (type/title/status/detail/instance).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Problem objects served as application/json, not application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: Page-number/page-size query pagination on list endpoints.
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency-key contract declared on any write operation.
