@@ -1,0 +1,176 @@
+aid: ordo
+url: https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/apis.yml
+name: Ordo
+kind: company
+description: >-
+  Ordo (operated by The Smart Request Company Ltd, ordohq.com / ordopay.com) is
+  a United Kingdom open-banking payments provider that lets businesses collect
+  money directly from a customer's bank account over the UK Faster Payments
+  rails, avoiding card fees and chargebacks. Built on PSD2 / Open Banking payment
+  initiation, its fully hosted, white-labelled platform delivers Request to Pay,
+  one-off payment requests, e-commerce, Point of Sale / QR code and contact
+  centre payments, plus Variable Recurring Payments (VRP) for fixed, variable and
+  sweeping collections, and account information (AIS) and account verification
+  services. Ordo is FCA-authorised and an Open Banking regulated provider, with a
+  developer surface historically published as a ReadMe.io portal at
+  docs.myordo.com backed by an Azure API Management gateway (test.api.ordopay.com).
+  Ordo has since ceased trading and been acquired by Neonomics; the marketing site
+  at ordopay.com remains live while the developer portal is now offline. Its API
+  posture is documented here honestly from six OpenAPI 3.0.1 definitions harvested
+  verbatim from the archived developer portal.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Payments
+- United Kingdom
+- Open Banking
+- Account-to-Account
+- Payment Initiation
+- Variable Recurring Payments
+- Request to Pay
+- Real-Time Payments
+- Faster Payments
+- PSD2
+- Account Information
+created: '2026-07-24'
+modified: '2026-07-24'
+specificationVersion: '0.19'
+apis:
+- aid: ordo:ordo-single-payments-api
+  name: Ordo Single Payments API
+  description: >-
+    Single, one-off open-banking payment initiation — list supported institutions,
+    create a payment, initiate authorisation, and withdraw a payment. Server base
+    is the Ordo Azure API Management gateway. 4 documented operations.
+  humanURL: https://ordopay.com/products/payments
+  baseURL: https://test.api.ordopay.com/payments
+  tags:
+  - Payments
+  - Payment Initiation
+  - Single Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-single-payments.yml
+  - type: Documentation
+    url: https://ordopay.com/products/payments
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-single-payments
+- aid: ordo:ordo-smart-request-manager-api
+  name: Ordo Smart Request Manager API
+  description: >-
+    Request to Pay / "Smart Request" management for one-off payment requests —
+    create and manage smart requests and their messages, Biller Delivery Request
+    (BDR) links, extensions and withdrawals. 8 documented operations.
+  humanURL: https://ordopay.com/products/payments
+  baseURL: https://test.api.ordopay.com/smartrequestmanager/v1
+  tags:
+  - Payments
+  - Request to Pay
+  - Smart Request
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-smart-request-manager.yml
+  - type: Documentation
+    url: https://ordopay.com/products/payments
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-single-payments
+- aid: ordo:ordo-recurring-payment-mandates-api
+  name: Ordo Recurring Payment Mandates (VRP) API
+  description: >-
+    Variable Recurring Payments — create sweeping and non-sweeping VRP mandates,
+    read mandates, execute mandate payments and read VRP transactions. Enables
+    fixed, variable and ad-hoc recurring collections as an alternative to Direct
+    Debit and card CPA. 6 documented operations.
+  humanURL: https://ordopay.com/products/vrp
+  baseURL: https://test.api.ordopay.com/vrp/v1
+  tags:
+  - Payments
+  - Variable Recurring Payments
+  - Recurring Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-recurring-payment-mandates.yml
+  - type: Documentation
+    url: https://ordopay.com/products/vrp
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
+- aid: ordo:ordo-account-data-ordo-hosted-api
+  name: Ordo Account Data (Ordo Hosted) API
+  description: >-
+    Ordo-hosted Account Information (AIS) and Account Verification — create and
+    manage account information consents, request and read account data, cancel
+    consents, and run account verification against supported institutions, with
+    Ordo hosting the end-user authorisation UX. 13 documented operations.
+  humanURL: https://ordopay.com/products/account/data
+  baseURL: https://test.api.ordopay.com/hosted
+  tags:
+  - Account Information
+  - Open Banking
+  - Account Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-account-data-ordo-hosted.yml
+  - type: Documentation
+    url: https://ordopay.com/products/account/data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-account-data
+- aid: ordo:ordo-account-data-client-hosted-api
+  name: Ordo Account Data (Client Hosted) API
+  description: >-
+    Client-hosted Account Information (AIS) and Account Verification — the same
+    consent, data-request and verification lifecycle as the Ordo-hosted variant,
+    but with the integrating client hosting the end-user authorisation UX and
+    initiating the consent flow. 15 documented operations.
+  humanURL: https://ordopay.com/products/account/verify
+  baseURL: https://test.api.ordopay.com/client
+  tags:
+  - Account Information
+  - Open Banking
+  - Account Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-account-data-client-hosted.yml
+  - type: Documentation
+    url: https://ordopay.com/products/account/verify
+  - type: APIReference
+    url: https://docs.myordo.com/docs/client-hosted-account-data
+- aid: ordo:ordo-registry-manager-api
+  name: Ordo Registry Manager API
+  description: >-
+    Bank account configuration / registry management — create, read and manage the
+    biller bank accounts into which collected payments settle. 3 documented
+    operations.
+  humanURL: https://ordopay.com/products/payments
+  baseURL: https://test.api.ordopay.com/registrymanager/v1
+  tags:
+  - Payments
+  - Configuration
+  - Biller Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-registry-manager.yml
+  - type: Documentation
+    url: https://ordopay.com/products/payments
+  - type: APIReference
+    url: https://docs.myordo.com/docs/financial-institution
+common:
+- type: Website
+  url: https://ordopay.com/
+- type: DeveloperPortal
+  url: https://docs.myordo.com/docs
+- type: APIReference
+  url: https://docs.myordo.com/reference
+- type: GettingStarted
+  url: https://docs.myordo.com/docs/get-started
+- type: GitHubOrganization
+  url: https://github.com/ordohq
+- type: LinkedIn
+  url: https://www.linkedin.com/company/ordohq
+- type: TermsOfService
+  url: https://ordopay.com/legal/merchant-terms
+- type: PrivacyPolicy
+  url: https://ordopay.com/legal/privacy-policy
+- type: Support
+  url: https://ordopay.com/contact
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

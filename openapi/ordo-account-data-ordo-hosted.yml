@@ -1,0 +1,4001 @@
+openapi: 3.0.1
+info:
+  title: ACCOUNT DATA - Ordo Hosted
+  version: '1.0'
+servers:
+- url: https://test.api.ordopay.com/hosted
+paths:
+  /account/information/create:
+    post:
+      tags:
+      - Account Data - Ordo Hosted
+      summary: Creates a new AIS request
+      description: Creates a new AIS request
+      operationId: post-account-information-create
+      parameters:
+      - name: participantId
+        in: header
+        description: Format - int32. Participant ID in the header
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Parameters for a new AIS request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAISConsentRequest'
+            example:
+              consentName: string
+              merchantReference: string
+              payerAliasType: EMAIL
+              payerAliasValue: string
+              ordoInstitutionId: string
+              permissions:
+              - string
+              redirectURL: string
+              cancelURL: string
+              errorURL: string
+              expiryDate: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateAISConsentRequest'
+            example:
+              consentName: string
+              merchantReference: string
+              payerAliasType: EMAIL
+              payerAliasValue: string
+              ordoInstitutionId: string
+              permissions:
+              - string
+              redirectURL: string
+              cancelURL: string
+              errorURL: string
+              expiryDate: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateAISConsentRequest'
+            example:
+              consentName: string
+              merchantReference: string
+              payerAliasType: EMAIL
+              payerAliasValue: string
+              ordoInstitutionId: string
+              permissions:
+              - string
+              redirectURL: string
+              cancelURL: string
+              errorURL: string
+              expiryDate: string
+      responses:
+        '201':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CreateAISConsentResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAISConsentResponse'
+              example:
+                aisAuthUrl: string
+                aisConsent:
+                  aisConsentId: string
+                  status: INITIATED
+                  consentName: string
+                  merchantReference: string
+                  participantId: 0
+                  payerAliasType: string
+                  payerAliasValue: string
+                  ordoInstitutionId: string
+                  permissions:
+                  - string
+                  redirectURL: string
+                  cancelURL: string
+                  errorURL: string
+                  expiryDate: string
+                  createdDate: string
+                  cancelledBy: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CreateAISConsentResponse'
+              example:
+                aisAuthUrl: string
+                aisConsent:
+                  aisConsentId: string
+                  status: INITIATED
+                  consentName: string
+                  merchantReference: string
+                  participantId: 0
+                  payerAliasType: string
+                  payerAliasValue: string
+                  ordoInstitutionId: string
+                  permissions:
+                  - string
+                  redirectURL: string
+                  cancelURL: string
+                  errorURL: string
+                  expiryDate: string
+                  createdDate: string
+                  cancelledBy: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/information/data:
+    post:
+      tags:
+      - Account Data - Ordo Hosted
+      summary: Execute a data request using an AIS consent
+      description: Execute a data request using an AIS consent
+      operationId: post-account-information-data
+      parameters:
+      - name: participantId
+        in: header
+        description: Format - int32. Participant ID in the header
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: AIS consent ID
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AISExecuteDataRequest'
+            example:
+              aisConsentId: string
+              merchantReference: string
+              fromDate: string
+              toDate: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AISExecuteDataRequest'
+            example:
+              aisConsentId: string
+              merchantReference: string
+              fromDate: string
+              toDate: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AISExecuteDataRequest'
+            example:
+              aisConsentId: string
+              merchantReference: string
+              fromDate: string
+              toDate: string
+      responses:
+        '201':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AISExecuteDataResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AISExecuteDataResponse'
+              example:
+                aisDataRequestId: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AISExecuteDataResponse'
+              example:
+                aisDataRequestId: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+    get:
+      tags:
+      - Account Data - Ordo Hosted
+      summary: Gets transaction data held in storage
+      description: Gets transaction data held in storage
+      operationId: get-account-information-data-aisdatarequestid-aisdatarequestid
+      parameters:
+      - name: AISDataRequestId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: PageNumber
+        in: query
+        description: Format - int32.
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Format - int32.
+        schema:
+          type: integer
+          format: int32
+      - name: participantId
+        in: header
+        description: Format - int32. Participant ID in the header
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountTransactionResponses'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountTransactionResponses'
+              example:
+                accountTransactions:
+                - AccountId: {}
+                  TransactionId: {}
+                  TransactionReference: {}
+                  StatementReference:
+                  - {}
+                  CreditDebitIndicator: string
+                  Status: string
+                  TransactionMutability: string
+                  BookingDateTime: {}
+                  ValueDateTime: {}
+                  TransactionInformation: {}
+                  AddressLine: {}
+                  Amount:
+                    Amount: {}
+                    Currency: {}
+                  ChargeAmount:
+                    Amount: {}
+                    Currency: {}
+                  CurrencyExchange:
+                    SourceCurrency: string
+                    TargetCurrency: string
+                    UnitCurrency: string
+                    ExchangeRate: 0
+                    ContractIdentification: string
+                    QuotationDate: string
+                    InstructedAmount:
+                      Amount: {}
+                      Currency: {}
+                  BankTransactionCode:
+                    Code: string
+                    SubCode: string
+                  ProprietaryBankTransactionCode:
+                    Code: string
+                    Issuer: string
+                  Balance:
+                    CreditDebitIndicator: string
+                    Type: string
+                    Amount:
+                      Amount: {}
+                      Currency: {}
+                  MerchantDetails:
+                    MerchantName: string
+                    MerchantCategoryCode: string
+                  CreditorAgent:
+                    SchemeName: {}
+                    Identification: {}
+                    Name: {}
+                    PostalAddress:
+                      AddressType: string
+                      Department: string
+                      SubDepartment: string
+                      StreetName: {}
+                      BuildingNumber: {}
+                      PostCode: {}
+                      TownName: {}
+                      CountrySubDivision: string
+                      Country: string
+                      AddressLine:
+                      - string
+                  CreditorAccount:
+                    SchemeName: {}
+                    Identification: {}
+                    Name: {}
+                    SecondaryIdentification: {}
+                  DebtorAgent:
+                    SchemeName: {}
+                    Identification: {}
+                    Name: {}
+                    PostalAddress:
+                      AddressType: string
+                      Department: string
+                      SubDepartment: string
+                      StreetName: {}
+                      BuildingNumber: {}
+                      PostCode: {}
+                      TownName: {}
+                      CountrySubDivision: string
+                      Country: string
+                      AddressLine:
+                      - string
+                  DebtorAccount:
+                    SchemeName: {}
+                    Identification: {}
+                    Name: {}
+                    SecondaryIdentification: {}
+                  CardInstrument:
+                    CardSchemeName: string
+                    AuthorisationType: string
+                    Name: string
+                    Identification: string
+                  SupplementaryData: {}
+                paging:
+                  totalRecords: 0
+                  currentPage: 0
+                  totalPages: 0
+                  nextPage: 0
+                  previousPage: 0
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountTransactionResponses'
+              example:
+                accountTransactions:
+                - AccountId: {}
+                  TransactionId: {}
+                  TransactionReference: {}
+                  StatementReference:
+                  - {}
+                  CreditDebitIndicator: string
+                  Status: string
+                  TransactionMutability: string
+                  BookingDateTime: {}
+                  ValueDateTime: {}
+                  TransactionInformation: {}
+                  AddressLine: {}
+                  Amount:
+                    Amount: {}
+                    Currency: {}
+                  ChargeAmount:
+                    Amount: {}
+                    Currency: {}
+                  CurrencyExchange:
+                    SourceCurrency: string
+                    TargetCurrency: string
+                    UnitCurrency: string
+                    ExchangeRate: 0
+                    ContractIdentification: string
+                    QuotationDate: string
+                    InstructedAmount:
+                      Amount: {}
+                      Currency: {}
+                  BankTransactionCode:
+                    Code: string
+                    SubCode: string
+                  ProprietaryBankTransactionCode:
+                    Code: string
+                    Issuer: string
+                  Balance:
+                    CreditDebitIndicator: string
+                    Type: string
+                    Amount:
+                      Amount: {}
+                      Currency: {}
+                  MerchantDetails:
+                    MerchantName: string
+                    MerchantCategoryCode: string
+                  CreditorAgent:
+                    SchemeName: {}
+                    Identification: {}
+                    Name: {}
+                    PostalAddress:
+                      AddressType: string
+                      Department: string
+                      SubDepartment: string
+                      StreetName: {}
+                      BuildingNumber: {}
+                      PostCode: {}
+                      TownName: {}
+                      CountrySubDivision: string
+                      Country: string
+                      AddressLine:
+                      - string
+                  CreditorAccount:
+                    SchemeName: {}
+                    Identification: {}
+                    Name: {}
+                    SecondaryIdentification: {}
+                  DebtorAgent:
+                    SchemeName: {}
+                    Identification: {}
+                    Name: {}
+                    PostalAddress:
+                      AddressType: string
+                      Department: string
+                      SubDepartment: string
+                      StreetName: {}
+                      BuildingNumber: {}
+                      PostCode: {}
+                      TownName: {}
+                      CountrySubDivision: string
+                      Country: string
+                      AddressLine:
+                      - string
+                  DebtorAccount:
+                    SchemeName: {}
+                    Identification: {}
+                    Name: {}
+                    SecondaryIdentification: {}
+                  CardInstrument:
+                    CardSchemeName: string
+                    AuthorisationType: string
+                    Name: string
+                    Identification: string
+                  SupplementaryData: {}
+                paging:
+                  totalRecords: 0
+                  currentPage: 0
+                  totalPages: 0
+                  nextPage: 0
+                  previousPage: 0
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/information/consent/{aisConsentId}:
+    get:
+      tags:
+      - Account Data - Ordo Hosted
+      summary: Retrieves an existing AIS consent
+      description: Retrieves an existing AIS consent
+      operationId: get-account-information-consent-aisconsentid
+      parameters:
+      - name: aisConsentId
+        in: path
+        description: Consent ID specified in the route
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32. Participant ID in the header
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetAISRequestResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAISRequestResponse'
+              example:
+                aisConsentId: string
+                billerApprovedName: string
+                status: string
+                consentName: string
+                merchantReference: string
+                participantId: 0
+                payerAliasType: string
+                payerAliasValue: string
+                ordoInstitutionId: string
+                permissions:
+                - string
+                redirectURL: string
+                cancelURL: string
+                errorURL: string
+                expiryDate: string
+                createdDate: string
+                cancelledBy: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetAISRequestResponse'
+              example:
+                aisConsentId: string
+                billerApprovedName: string
+                status: string
+                consentName: string
+                merchantReference: string
+                participantId: 0
+                payerAliasType: string
+                payerAliasValue: string
+                ordoInstitutionId: string
+                permissions:
+                - string
+                redirectURL: string
+                cancelURL: string
+                errorURL: string
+                expiryDate: string
+                createdDate: string
+                cancelledBy: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/information/consents:
+    get:
+      tags:
+      - Account Data - Ordo Hosted
+      summary: Gets all AIS consents associated with a participant
+      description: Returns all AIS consents associated with a participant
+      operationId: get-account-information-consents
+      parameters:
+      - name: PageNumber
+        in: query
+        description: Format - int32.
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Format - int32.
+        schema:
+          type: integer
+          format: int32
+      - name: participantId
+        in: header
+        description: Format - int32. Participant ID in the header
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AISRequestResponses'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AISRequestResponses'
+              example:
+                aisRequestResponse:
+                - aisConsentId: string
+                  status: INITIATED
+                  consentName: string
+                  merchantReference: string
+                  participantId: 0
+                  payerAliasType: string
+                  payerAliasValue: string
+                  ordoInstitutionId: string
+                  permissions:
+                  - string
+                  redirectURL: string
+                  cancelURL: string
+                  errorURL: string
+                  expiryDate: string
+                  createdDate: string
+                  cancelledBy: string
+                paging:
+                  totalRecords: 0
+                  currentPage: 0
+                  totalPages: 0
+                  nextPage: 0
+                  previousPage: 0
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AISRequestResponses'
+              example:
+                aisRequestResponse:
+                - aisConsentId: string
+                  status: INITIATED
+                  consentName: string
+                  merchantReference: string
+                  participantId: 0
+                  payerAliasType: string
+                  payerAliasValue: string
+                  ordoInstitutionId: string
+                  permissions:
+                  - string
+                  redirectURL: string
+                  cancelURL: string
+                  errorURL: string
+                  expiryDate: string
+                  createdDate: string
+                  cancelledBy: string
+                paging:
+                  totalRecords: 0
+                  currentPage: 0
+                  totalPages: 0
+                  nextPage: 0
+                  previousPage: 0
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/information/cancel:
+    post:
+      tags:
+      - Account Data - Ordo Hosted
+      summary: Cancels an AIS Request
+      description: Cancels an AIS Request
+      operationId: post-account-information-cancel
+      parameters:
+      - name: participantId
+        in: header
+        description: Format - int32. Participant ID in the header
+        required: true
+        schema:
+          type: integer
+      - name: aisConsentId
+        in: header
+        description: AIS consent ID in the header
+        required: true
+        schema:
+          type: string
+      - name: cancelledBy
+        in: header
+        description: The entity that cancelled the request
+        required: true
+        schema:
+          enum:
+          - MERCHANT
+          - PAYER
+          - ORDO
+          - ASPSP
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AISCancelRequestResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AISCancelRequestResponse'
+              example:
+                status: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AISCancelRequestResponse'
+              example:
+                status: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/information/data/request/{aisDataRequestId}:
+    get:
+      tags:
+      - Account Data - Ordo Hosted
+      summary: Gets transaction data held in storage
+      description: Gets transaction data held in storage
+      operationId: get-account-information-data-request-aisdatarequestid
+      parameters:
+      - name: aisDataRequestId
+        in: path
+        description: request ID in the route
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32. Participant ID in the header
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AISDataRequestResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AISDataRequestResponse'
+              example:
+                aisDataRequestId: string
+                aisConsentId: string
+                status: string
+                merchantReference: string
+                participantId: 0
+                institutionCode: string
+                idempotencyId: string
+                fromDate: string
+                toDate: string
+                createdDate: string
+                createdBy: string
+                updatedDate: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AISDataRequestResponse'
+              example:
+                aisDataRequestId: string
+                aisConsentId: string
+                status: string
+                merchantReference: string
+                participantId: 0
+                institutionCode: string
+                idempotencyId: string
+                fromDate: string
+                toDate: string
+                createdDate: string
+                createdBy: string
+                updatedDate: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/information/data/requests/{aisConsentId}:
+    get:
+      tags:
+      - Account Data - Ordo Hosted
+      summary: Gets data requests for AIS consent and Participant
+      description: Gets data requests for AIS consent and Participant
+      operationId: get-account-information-data-requests-aisconsentid
+      parameters:
+      - name: aisConsentId
+        in: path
+        description: AIS Consent ID in the route
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32. Participant ID in the header
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetAllAISDataRequestResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAllAISDataRequestResponse'
+              example:
+                aisDataRequestResponses:
+                - aisDataRequestId: string
+                  aisConsentId: string
+                  status: string
+                  merchantReference: string
+                  participantId: 0
+                  institutionCode: string
+                  idempotencyId: string
+                  fromDate: string
+                  toDate: string
+                  createdDate: string
+                  createdBy: string
+                  updatedDate: string
+                permissionGroupings:
+                - string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetAllAISDataRequestResponse'
+              example:
+                aisDataRequestResponses:
+                - aisDataRequestId: string
+                  aisConsentId: string
+                  status: string
+                  merchantReference: string
+                  participantId: 0
+                  institutionCode: string
+                  idempotencyId: string
+                  fromDate: string
+                  toDate: string
+                  createdDate: string
+                  createdBy: string
+                  updatedDate: string
+                permissionGroupings:
+                - string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/verification/create:
+    post:
+      tags:
+      - Account Verification - Ordo Hosted
+      summary: Creates a new AV request
+      description: Creates a new AV request
+      operationId: post-account-verification-create
+      parameters:
+      - name: participantId
+        in: header
+        description: Format - int32.
+        schema:
+          type: integer
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AVRequest'
+            example:
+              clientReference: string
+              expiryDate: string
+              avurLs:
+                redirectURL: string
+                cancelURL: string
+                errorURL: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AVRequest'
+            example:
+              clientReference: string
+              expiryDate: string
+              avurLs:
+                redirectURL: string
+                cancelURL: string
+                errorURL: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AVRequest'
+            example:
+              clientReference: string
+              expiryDate: string
+              avurLs:
+                redirectURL: string
+                cancelURL: string
+                errorURL: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AVPostResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AVPostResponse'
+              example:
+                av:
+                  avId: string
+                  createdDate: string
+                  createdBy: string
+                  expiryDate: string
+                  updatedDate: string
+                  updatedBy: string
+                  clientReference: string
+                  participantId: 0
+                  status: string
+                avAuthUrl: string
+                avURLs:
+                  redirectURL: string
+                  cancelURL: string
+                  errorURL: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AVPostResponse'
+              example:
+                av:
+                  avId: string
+                  createdDate: string
+                  createdBy: string
+                  expiryDate: string
+                  updatedDate: string
+                  updatedBy: string
+                  clientReference: string
+                  participantId: 0
+                  status: string
+                avAuthUrl: string
+                avURLs:
+                  redirectURL: string
+                  cancelURL: string
+                  errorURL: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/verification/initiate:
+    post:
+      tags:
+      - Account Verification - Ordo Hosted
+      summary: Initiate an AV request
+      description: Initiate an AV request
+      operationId: post-account-verification-initiate
+      parameters:
+      - name: participantId
+        in: header
+        description: Format - int32.
+        schema:
+          type: integer
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitiateAVRequest'
+            example:
+              ordoInstitutionId: string
+              avId: string
+              inviteCode: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InitiateAVRequest'
+            example:
+              ordoInstitutionId: string
+              avId: string
+              inviteCode: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InitiateAVRequest'
+            example:
+              ordoInstitutionId: string
+              avId: string
+              inviteCode: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AccountAuthResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountAuthResponse'
+              example:
+                authorisationUrl: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AccountAuthResponse'
+              example:
+                authorisationUrl: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/verification/institutions:
+    get:
+      tags:
+      - Account Verification - Ordo Hosted
+      summary: Gets a list of AV enabled institutions
+      description: Returns a list of AV enabled institutions
+      operationId: get-account-verification-institutions
+      parameters:
+      - name: OrdoInstitutionId
+        in: query
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32. Participant ID in the header
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstitutionResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstitutionResponse'
+              example:
+                ordoInstitutionId: string
+                name: string
+                media:
+                  iconUrl: string
+                  logoUrl: string
+                refundDataAvailable: true
+                aisEnabled: true
+                features:
+                - string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstitutionResponse'
+              example:
+                ordoInstitutionId: string
+                name: string
+                media:
+                  iconUrl: string
+                  logoUrl: string
+                refundDataAvailable: true
+                aisEnabled: true
+                features:
+                - string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                errorCode: string
+                errorMessage: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/verification/{avId}:
+    get:
+      tags:
+      - Account Verification - Ordo Hosted
+      summary: Get an AV Request
+      description: Returns AV Record
+      operationId: get-account-verification-avid
+      parameters:
+      - name: avId
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetAVRecord'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAVRecord'
+              example:
+                avId: string
+                participantId: 0
+                billerApprovedName: string
+                clientReference: string
+                status: string
+                createdDate: string
+                createdBy: string
+                expiryDate: string
+                avURLs:
+                  redirectURL: string
+                  cancelURL: string
+                  errorURL: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetAVRecord'
+              example:
+                avId: string
+                participantId: 0
+                billerApprovedName: string
+                clientReference: string
+                status: string
+                createdDate: string
+                createdBy: string
+                expiryDate: string
+                avURLs:
+                  redirectURL: string
+                  cancelURL: string
+                  errorURL: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/verification/account:
+    get:
+      tags:
+      - Account Verification - Ordo Hosted
+      summary: Gets all AV Accounts for a participant
+      description: Returns all AV accounts for a participant
+      operationId: get-account-verification-account
+      parameters:
+      - name: participantId
+        in: header
+        description: Format - int32.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AVAccountGetResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AVAccountGetResponse'
+              example:
+                avId: string
+                participantId: 0
+                accounts:
+                - accountId: string
+                  type: string
+                  subType: string
+                  schemeName: string
+                  currency: string
+                  accountName: string
+                  sortCode: string
+                  accountNumber: string
+                  iban: string
+                  pan: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AVAccountGetResponse'
+              example:
+                avId: string
+                participantId: 0
+                accounts:
+                - accountId: string
+                  type: string
+                  subType: string
+                  schemeName: string
+                  currency: string
+                  accountName: string
+                  sortCode: string
+                  accountNumber: string
+                  iban: string
+                  pan: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /account/verification/account/{avId}:
+    get:
+      tags:
+      - Account Verification - Ordo Hosted
+      summary: Get AV account data
+      description: Returns AV Account Details for specified AV ID
+      operationId: get-account-verification-account-avid
+      parameters:
+      - name: avId
+        in: path
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/AVAccountGetResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AVAccountGetResponse'
+              example:
+                avId: string
+                participantId: 0
+                accounts:
+                - accountId: string
+                  type: string
+                  subType: string
+                  schemeName: string
+                  currency: string
+                  accountName: string
+                  sortCode: string
+                  accountNumber: string
+                  iban: string
+                  pan: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/AVAccountGetResponse'
+              example:
+                avId: string
+                participantId: 0
+                accounts:
+                - accountId: string
+                  type: string
+                  subType: string
+                  schemeName: string
+                  currency: string
+                  accountName: string
+                  sortCode: string
+                  accountNumber: string
+                  iban: string
+                  pan: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+components:
+  schemas:
+    AVAccountGetResponse:
+      type: object
+      properties:
+        avId:
+          type: string
+          nullable: true
+        participantId:
+          type: integer
+          format: int32
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/OBAccount'
+          nullable: true
+      additionalProperties: false
+    AVPostResponse:
+      type: object
+      properties:
+        av:
+          $ref: '#/components/schemas/AVResponse'
+        avAuthUrl:
+          type: string
+          nullable: true
+        avURLs:
+          $ref: '#/components/schemas/AVURLs'
+      additionalProperties: false
+    OBAccount:
+      type: object
+      properties:
+        accountId:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        subType:
+          type: string
+          nullable: true
+        schemeName:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        accountName:
+          type: string
+          nullable: true
+        sortCode:
+          type: string
+          nullable: true
+        accountNumber:
+          type: string
+          nullable: true
+        iban:
+          type: string
+          nullable: true
+        pan:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AccountAuthResponse:
+      type: object
+      properties:
+        authorisationUrl:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AVRequest:
+      required:
+      - avurLs
+      type: object
+      properties:
+        clientReference:
+          type: string
+          nullable: true
+        expiryDate:
+          type: string
+          format: date-time
+          nullable: true
+        avurLs:
+          $ref: '#/components/schemas/AVURLs'
+      additionalProperties: false
+    AVResponse:
+      type: object
+      properties:
+        avId:
+          type: string
+          nullable: true
+        createdDate:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+          nullable: true
+        expiryDate:
+          type: string
+          format: date-time
+          nullable: true
+        updatedDate:
+          type: string
+          format: date-time
+          nullable: true
+        updatedBy:
+          type: string
+          nullable: true
+        clientReference:
+          type: string
+          nullable: true
+        participantId:
+          type: integer
+          format: int32
+        status:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AVURLs:
+      type: object
+      properties:
+        redirectURL:
+          type: string
+          nullable: true
+        cancelURL:
+          type: string
+          nullable: true
+        errorURL:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ExecuteAVRequest:
+      required:
+      - state
+      type: object
+      properties:
+        accessCode:
+          type: string
+          nullable: true
+        state:
+          type: string
+        errorCode:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ExecuteAVResponse:
+      type: object
+      properties:
+        participantId:
+          type: integer
+          format: int32
+        avId:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        inviteCode:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AccountTransactionResponses:
+      type: object
+      properties:
+        accountTransactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+          nullable: true
+        paging:
+          $ref: '#/components/schemas/Paging'
+      additionalProperties: false
+    GetAVRecord:
+      type: object
+      properties:
+        avId:
+          type: string
+          nullable: true
+        participantId:
+          type: integer
+          format: int32
+        billerApprovedName:
+          type: string
+          nullable: true
+        clientReference:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        createdDate:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+          nullable: true
+        expiryDate:
+          type: string
+          format: date-time
+          nullable: true
+        avURLs:
+          $ref: '#/components/schemas/AVURLs'
+      additionalProperties: false
+    InitiateAVRequest:
+      required:
+      - avId
+      - inviteCode
+      - ordoInstitutionId
+      type: object
+      properties:
+        ordoInstitutionId:
+          type: string
+        avId:
+          type: string
+        inviteCode:
+          maxLength: 300
+          minLength: 0
+          type: string
+      additionalProperties: false
+    AISCancelRequestResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AISConsentCancelledBy:
+      enum:
+      - MERCHANT
+      - PAYER
+      - ORDO
+      - ASPSP
+      type: string
+    AISDataRequestResponse:
+      type: object
+      properties:
+        aisDataRequestId:
+          type: string
+          nullable: true
+        aisConsentId:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        merchantReference:
+          type: string
+          nullable: true
+        participantId:
+          type: integer
+          format: int32
+        institutionCode:
+          type: string
+          nullable: true
+        idempotencyId:
+          type: string
+          nullable: true
+        fromDate:
+          type: string
+          format: date-time
+          nullable: true
+        toDate:
+          type: string
+          format: date-time
+          nullable: true
+        createdDate:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+          nullable: true
+        updatedDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    AISExecuteDataRequest:
+      required:
+      - aisConsentId
+      type: object
+      properties:
+        aisConsentId:
+          type: string
+        merchantReference:
+          type: string
+          nullable: true
+        fromDate:
+          type: string
+          format: date-time
+          nullable: true
+        toDate:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    AISExecuteDataResponse:
+      type: object
+      properties:
+        aisDataRequestId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AISRequestResponse:
+      type: object
+      properties:
+        aisConsentId:
+          type: string
+          nullable: true
+        status:
+          $ref: '#/components/schemas/AISStatusTypeEnum'
+        consentName:
+          type: string
+          nullable: true
+        merchantReference:
+          type: string
+          nullable: true
+        participantId:
+          type: integer
+          format: int32
+        payerAliasType:
+          type: string
+          nullable: true
+        payerAliasValue:
+          type: string
+          nullable: true
+        ordoInstitutionId:
+          type: string
+          nullable: true
+        permissions:
+          type: array
+          items:
+            type: string
+          nullable: true
+        redirectURL:
+          type: string
+          nullable: true
+        cancelURL:
+          type: string
+          nullable: true
+        errorURL:
+          type: string
+          nullable: true
+        expiryDate:
+          type: string
+          format: date-time
+          nullable: true
+        createdDate:
+          type: string
+          format: date-time
+        cancelledBy:
+          type: string
+          nullable: true
+      additionalProperties: false
+    AISRequestResponses:
+      type: object
+      properties:
+        aisRequestResponse:
+          type: array
+          items:
+            $ref: '#/components/schemas/AISRequestResponse'
+          nullable: true
+        paging:
+          $ref: '#/components/schemas/Paging'
+      additionalProperties: false
+    AISStatusTypeEnum:
+      enum:
+      - INITIATED
+      - CANCELLED
+      - EXPIRED
+      - AWAITINGAUTHORISATION
+      - AUTHORISED
+      type: string
+    Amount:
+      type: object
+      properties:
+        Amount:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Balance:
+      type: object
+      properties:
+        creditDebitIndicator:
+          type: string
+          nullable: true
+        type:
+          type: string
+          nullable: true
+        amount:
+          $ref: '#/components/schemas/BalanceAmount'
+      additionalProperties: false
+    BankTransactionCode:
+      type: object
+      properties:
+        Code:
+          type: string
+          nullable: true
+        SubCode:
+          type: string
+          nullable: true
+      additionalProperties: false
+    BalanceAmount:
+      type: object
+      properties:
+        amount:
+          type: string
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CardInstrument:
+      type: object
+      properties:
+        CardSchemeName:
+          type: string
+          nullable: true
+        AuthorisationType:
+          type: string
+          nullable: true
+        Name:
+          type: string
+          nullable: true
+        Identification:
+          type: string
+          nullable: true
+      additionalProperties: false
+    CreateAISConsentRequest:
+      required:
+      - cancelURL
+      - consentName
+      - errorURL
+      - merchantReference
+      - permissions
+      - redirectURL
+      type: object
+      properties:
+        consentName:
+          maxLength: 256
+          minLength: 0
+          type: string
+        merchantReference:
+          maxLength: 128
+          minLength: 0
+          type: string
+        payerAliasType:
+          $ref: '#/components/schemas/PayerAliasTypeEnum'
+        payerAliasValue:
+          maxLength: 350
+          minLength: 0
+          type: string
+          nullable: true
+        ordoInstitutionId:
+          maxLength: 50
+          minLength: 0
+          type: string
+          nullable: true
+        permissions:
+          minItems: 1
+          type: array
+          items:
+            type: string
+        redirectURL:
+          type: string
+        cancelURL:
+          type: string
+        errorURL:
+          type: string
+        expiryDate:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    CreateAISConsentResponse:
+      type: object
+      properties:
+        aisAuthUrl:
+          type: string
+          nullable: true
+        aisConsent:
+          $ref: '#/components/schemas/AISRequestResponse'
+      additionalProperties: false
+    CreditorAccount:
+      type: object
+      properties:
+        SchemeName:
+          nullable: true
+        Identification:
+          nullable: true
+        Name:
+          nullable: true
+        SecondaryIdentification:
+          nullable: true
+      additionalProperties: false
+    CreditorAgent:
+      type: object
+      properties:
+        SchemeName:
+          nullable: true
+        Identification:
+          nullable: true
+        Name:
+          nullable: true
+        PostalAddress:
+          $ref: '#/components/schemas/PostalAddress'
+      additionalProperties: false
+    CurrencyExchange:
+      type: object
+      properties:
+        SourceCurrency:
+          type: string
+          nullable: true
+        TargetCurrency:
+          type: string
+          nullable: true
+        UnitCurrency:
+          type: string
+          nullable: true
+        ExchangeRate:
+          type: number
+          format: double
+          nullable: true
+        ContractIdentification:
+          type: string
+          nullable: true
+        QuotationDate:
+          type: string
+          format: date-time
+          nullable: true
+        InstructedAmount:
+          $ref: '#/components/schemas/Amount'
+      additionalProperties: false
+    DebtorAccount:
+      type: object
+      properties:
+        SchemeName:
+          nullable: true
+        Identification:
+          nullable: true
+        Name:
+          nullable: true
+        SecondaryIdentification:
+          nullable: true
+      additionalProperties: false
+    DebtorAgent:
+      type: object
+      properties:
+        SchemeName:
+          nullable: true
+        Identification:
+          nullable: true
+        Name:
+          nullable: true
+        PostalAddress:
+          $ref: '#/components/schemas/PostalAddress'
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+          nullable: true
+        errorMessage:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GetAISRequestResponse:
+      type: object
+      properties:
+        aisConsentId:
+          type: string
+          nullable: true
+        billerApprovedName:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        consentName:
+          type: string
+          nullable: true
+        merchantReference:
+          type: string
+          nullable: true
+        participantId:
+          type: integer
+          format: int32
+        payerAliasType:
+          type: string
+          nullable: true
+        payerAliasValue:
+          type: string
+          nullable: true
+        ordoInstitutionId:
+          type: string
+          nullable: true
+        permissions:
+          type: array
+          items:
+            type: string
+          nullable: true
+        redirectURL:
+          type: string
+          nullable: true
+        cancelURL:
+          type: string
+          nullable: true
+        errorURL:
+          type: string
+          nullable: true
+        expiryDate:
+          type: string
+          format: date-time
+          nullable: true
+        createdDate:
+          type: string
+          format: date-time
+        cancelledBy:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GetAllAISDataRequestResponse:
+      type: object
+      properties:
+        aisDataRequestResponses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AISDataRequestResponse'
+          nullable: true
+        permissionGroupings:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    InitiateAISConsentRequest:
+      required:
+      - aisConsentId
+      - inviteCode
+      - ordoInstitutionId
+      type: object
+      properties:
+        aisConsentId:
+          type: string
+        ordoInstitutionId:
+          maxLength: 50
+          minLength: 0
+          type: string
+        inviteCode:
+          maxLength: 300
+          minLength: 0
+          type: string
+      additionalProperties: false
+    InitiateAISConsentResponse:
+      type: object
+      properties:
+        obapiConsentId:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        accountInitiationUrl:
+          type: string
+          format: uri
+          nullable: true
+      additionalProperties: false
+    InstitutionResponse:
+      type: object
+      properties:
+        ordoInstitutionId:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        media:
+          $ref: '#/components/schemas/MediaElement'
+        refundDataAvailable:
+          type: boolean
+        aisEnabled:
+          type: boolean
+        features:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    MediaElement:
+      type: object
+      properties:
+        iconUrl:
+          type: string
+          format: uri
+          nullable: true
+        logoUrl:
+          type: string
+          format: uri
+          nullable: true
+      additionalProperties: false
+    MerchantDetails:
+      type: object
+      properties:
+        MerchantName:
+          type: string
+          nullable: true
+        MerchantCategoryCode:
+          type: string
+          nullable: true
+      additionalProperties: false
+    OrdoValidationProblemDetails:
+      type: object
+      properties:
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        code:
+          type: string
+          nullable: true
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          nullable: true
+          readOnly: true
+        type:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+      additionalProperties: {}
+    Paging:
+      type: object
+      properties:
+        totalRecords:
+          type: integer
+          format: int32
+        currentPage:
+          type: integer
+          format: int32
+        totalPages:
+          type: integer
+          format: int32
+        nextPage:
+          type: integer
+          format: int32
+          nullable: true
+        previousPage:
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    PayerAliasTypeEnum:
+      enum:
+      - EMAIL
+      - PHONE
+      type: string
+    PostalAddress:
+      type: object
+      properties:
+        AddressType:
+          type: string
+          nullable: true
+        Department:
+          type: string
+          nullable: true
+        SubDepartment:
+          type: string
+          nullable: true
+        StreetName:
+          nullable: true
+        BuildingNumber:
+          nullable: true
+        PostCode:
+          nullable: true
+        TownName:
+          nullable: true
+        CountrySubDivision:
+          type: string
+          nullable: true
+        Country:
+          type: string
+          nullable: true
+        AddressLine:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+      additionalProperties: {}
+    ProprietaryBankTransactionCode:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Transaction:
+      type: object
+      properties:
+        AccountId:
+          nullable: true
+        TransactionId:
+          nullable: true
+        TransactionReference:
+          nullable: true
+        StatementReference:
+          type: array
+          items: {}
+          nullable: true
+        CreditDebitIndicator:
+          type: string
+          nullable: true
+        Status:
+          type: string
+          nullable: true
+        TransactionMutability:
+          type: string
+          nullable: true
+        BookingDateTime:
+          nullable: true
+        ValueDateTime:
+          nullable: true
+        TransactionInformation:
+          nullable: true
+        AddressLine:
+          nullable: true
+        Amount:
+          $ref: '#/components/schemas/Amount'
+        ChargeAmount:
+          $ref: '#/components/schemas/Amount'
+        CurrencyExchange:
+          $ref: '#/components/schemas/CurrencyExchange'
+        BankTransactionCode:
+          $ref: '#/components/schemas/BankTransactionCode'
+        ProprietaryBankTransactionCode:
+          $ref: '#/components/schemas/ProprietaryBankTransactionCode'
+        Balance:
+          $ref: '#/components/schemas/Balance'
+        MerchantDetails:
+          $ref: '#/components/schemas/MerchantDetails'
+        CreditorAgent:
+          $ref: '#/components/schemas/CreditorAgent'
+        CreditorAccount:
+          $ref: '#/components/schemas/CreditorAccount'
+        DebtorAgent:
+          $ref: '#/components/schemas/DebtorAgent'
+        DebtorAccount:
+          $ref: '#/components/schemas/DebtorAccount'
+        CardInstrument:
+          $ref: '#/components/schemas/CardInstrument'
+        SupplementaryData:
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+- apiKeyHeader: []
+- apiKeyQuery: []
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

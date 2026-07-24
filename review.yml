@@ -1,0 +1,111 @@
+aid: ordo
+name: Ordo
+review:
+  question: What is Ordo's public API posture — developer portal, downloadable specs, auth model, webhooks?
+  answer: true
+  date: '2026-07-24'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Ordo (The Smart Request Company Ltd) is a UK open-banking payments provider
+    offering account-to-account payments over Faster Payments: one-off payment
+    requests / Request to Pay, Variable Recurring Payments (VRP), and Account
+    Information (AIS) / account verification. It ran a genuine developer portal
+    on ReadMe.io at https://docs.myordo.com/docs with a full API reference at
+    https://docs.myordo.com/reference, backed by an Azure API Management gateway
+    at test.api.ordopay.com. The company has since ceased trading and been
+    acquired by Neonomics: the marketing site https://ordopay.com is live (HTTP
+    200) but the developer portal host docs.myordo.com no longer resolves (no DNS
+    / TLS, connection fails). No standalone OpenAPI/Swagger download URL was ever
+    published; the specs were embedded per-operation in the ReadMe reference
+    pages. Six distinct OpenAPI 3.0.1 definitions were recovered verbatim from
+    the Internet Archive snapshots of those reference pages and saved to openapi/
+    (49 documented operations total). Home market: United Kingdom.
+  homeMarket: United Kingdom
+  legalEntity: The Smart Request Company Ltd (FCA-authorised; Open Banking regulated provider)
+  developerPortal:
+    url: https://docs.myordo.com/docs
+    framework: ReadMe.io
+    httpStatus: 0
+    note: >-
+      Documented and archived, but offline as of 2026-07-24 (host does not
+      resolve). Company ceased trading / acquired by Neonomics. Marketing site
+      ordopay.com remains live (200).
+  downloadableSpecs:
+    published: false
+    recovered: true
+    count: 6
+    format: OpenAPI 3.0.1
+    provenance:
+      source: Internet Archive (web.archive.org) snapshots of docs.myordo.com ReadMe reference pages
+      fetchDate: '2026-07-24'
+      method: Extracted verbatim from the embedded oasDefinition in each ReadMe reference page; no standalone spec file was ever hosted.
+      readmeRegistryRef: '@ordo/v1.4#3d2d6umlclk9ktfsg (registry entry now deleted / 404)'
+    files:
+    - openapi/ordo-single-payments.yml            # Single Payments — https://test.api.ordopay.com/payments (4 ops)
+    - openapi/ordo-smart-request-manager.yml       # Smart Request Manager (Request to Pay) — https://test.api.ordopay.com/smartrequestmanager/v1 (8 ops)
+    - openapi/ordo-recurring-payment-mandates.yml  # Variable Recurring Payments (VRP) — https://test.api.ordopay.com/vrp/v1 (6 ops)
+    - openapi/ordo-account-data-ordo-hosted.yml    # Account Data / AIS + Verify, Ordo-hosted UX — https://test.api.ordopay.com/hosted (13 ops)
+    - openapi/ordo-account-data-client-hosted.yml  # Account Data / AIS + Verify, client-hosted UX — https://test.api.ordopay.com/client (15 ops)
+    - openapi/ordo-registry-manager.yml            # Registry Manager (biller bank accounts) — https://test.api.ordopay.com/registrymanager/v1 (3 ops)
+  authModel:
+    gateway: Azure API Management
+    scheme: API key (gateway subscription key)
+    detail: >-
+      Every recovered spec declares two securitySchemes — apiKeyHeader
+      (Ocp-Apim-Subscription-Key in header) and apiKeyQuery (subscription-key in
+      query) — the standard Azure API Management subscription-key pattern. The
+      ReadMe docs additionally describe an access-token and authorisation-keys
+      flow (docs.myordo.com/docs/access-token, /docs/authorisation-keys) layered
+      on top for payment authorisation, but that flow is not modelled in the
+      per-product OpenAPI security blocks. No public OpenID/OAuth
+      .well-known discovery document is served (host offline).
+  webhooks:
+    present: true
+    note: >-
+      Ordo documented webhooks/events for single payments, recurring payment
+      agreements, refunds and account data (docs.myordo.com/docs/webhooks,
+      /docs/webhook-configuration and per-product *-webhook-examples pages). No
+      AsyncAPI document was published; webhook payloads were shown only as
+      documentation examples.
+  postman:
+    present: false
+    note: No public Postman collection or workspace was found.
+  graphql:
+    present: false
+  grpc:
+    present: false
+  transports:
+  - protocol: REST
+    scheme: https
+    baseURL: https://test.api.ordopay.com
+    documented: true
+    note: >-
+      All six product APIs are documented against the Azure APIM test host
+      https://test.api.ordopay.com/{payments|smartrequestmanager/v1|vrp/v1|hosted|client|registrymanager/v1}.
+      A production host (api.ordopay.com) is implied by the test naming but was
+      not documented in the recovered specs, so it is not asserted here.
+  - protocol: Webhook
+    scheme: https
+    documented: true
+    note: Outbound HTTPS webhooks documented as examples; consumer-supplied callback URLs.
+sources:
+- url: https://ordopay.com/
+  type: Website
+  httpStatus: 200
+  note: Live marketing site; states "Ordo has ceased trading" and links to Neonomics.
+- url: https://docs.myordo.com/docs
+  type: DeveloperPortal
+  httpStatus: 0
+  note: ReadMe.io developer portal — documented and archived, now offline (host does not resolve).
+- url: https://docs.myordo.com/reference
+  type: APIReference
+  httpStatus: 0
+  note: Full ReadMe API reference; source of the six recovered OpenAPI definitions (via Internet Archive).
+- url: https://web.archive.org/web/20240222132026id_/https://docs.myordo.com/reference/get-vrpmandates-1
+  type: Archive
+  httpStatus: 200
+  note: Example archived reference page carrying the embedded VRP oasDefinition.
+- url: https://www.openbanking.org.uk/regulated-providers/the-smart-request-company-ltd/
+  type: Registry
+  note: Open Banking UK regulated-provider listing for The Smart Request Company Ltd (Ordo).
