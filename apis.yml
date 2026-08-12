@@ -115,8 +115,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/ordo-account-data-ordo-hosted.yml
-  - type: Overlay
-    url: overlays/ordo-account-data-ordo-hosted-overlay.yaml
   - type: Documentation
     url: https://ordopay.com/products/account/data
   - type: APIReference
