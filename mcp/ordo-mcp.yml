@@ -225,3 +225,9 @@ tools:
   category: smart-request-manager
   description: Decline an extension request
   source_operation: openapi/ordo-smart-request-manager.yml#PostSmartRequestMessagesDeclineDueDateAsync
+deployment:
+  mode: none
+  verified: derived
+  tools: 54
+  checked: '2026-08-12'
+  source: catalog MCP census

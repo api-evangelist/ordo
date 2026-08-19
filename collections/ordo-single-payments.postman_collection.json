@@ -1,0 +1,1006 @@
+{
+  "item": [
+    {
+      "id": "dc72e343-bd0a-4fea-9643-baa8a60f8dfa",
+      "name": "Client hosted",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "caee781a-0301-47fc-8f6f-3f56a3b46cda",
+          "name": "Get institutions list",
+          "request": {
+            "name": "Get institutions list",
+            "description": {
+              "content": "Retrieves a list of all banks addressable via Ordo for customer selection",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "institutions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                "key": "participantId",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e20783d5-9319-47a0-9889-fc66dcb67c95",
+              "name": "Success response - the list of supported institutions is returned. Could return an empty list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "institutions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"media\": {\n      \"logoUrl\": \"https://images.yapily.com/image/ca502f24-d6df-4785-b4b8-1034b100af77?size=0\",\n      \"iconUrl\": \"https://images.yapily.com/image/ce2bfdbf-1ae2-4919-ab7b-e8b3d5e93b36?size=0\"\n    },\n    \"features\": [\n      \"ACCOUNT_STATEMENT_FILE\",\n      \"INITIATE_SINGLE_PAYMENT_SORTCODE\",\n      \"CREATE_SINGLE_PAYMENT_SORTCODE\",\n      \"ACCOUNT_TRANSACTIONS_WITH_MERCHANT\",\n      \"ACCOUNT_STATEMENTS\",\n      \"INITIATE_DOMESTIC_SCHEDULED_PAYMENT\",\n      \"ACCOUNT_TRANSACTIONS\",\n      \"CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT_NONSWEEPING\",\n      \"ACCOUNT_STATEMENT\",\n      \"ACCOUNT_SCHEDULED_PAYMENTS\",\n      \"INITIATE_DOMESTIC_PERIODIC_PAYMENT\",\n      \"ACCOUNT\",\n      \"CREATE_DOMESTIC_PERIODIC_PAYMENT\",\n      \"ACCOUNT_BALANCES\",\n      \"IDENTITY\",\n      \"INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT_SWEEPING\",\n      \"ACCOUNT_DIRECT_DEBITS\",\n      \"INITIATE_INTERNATIONAL_SINGLE_PAYMENT\",\n      \"ACCOUNTS\",\n      \"ACCOUNT_REQUEST_DETAILS\",\n      \"ACCOUNT_BENEFICIARIES\",\n      \"EXISTING_PAYMENTS_DETAILS\",\n      \"INITIATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT_NONSWEEPING\",\n      \"CREATE_DOMESTIC_VARIABLE_RECURRING_PAYMENT_SWEEPING\",\n      \"PERIODIC_PAYMENT_FREQUENCY_EXTENDED\",\n      \"ACCOUNT_PERIODIC_PAYMENTS\",\n      \"CREATE_INTERNATIONAL_SINGLE_PAYMENT\",\n      \"VARIABLE_RECURRING_PAYMENT_FUNDS_CONFIRMATION\",\n      \"INITIATE_DOMESTIC_SINGLE_PAYMENT\",\n      \"CREATE_DOMESTIC_SINGLE_PAYMENT\",\n      \"EXISTING_PAYMENT_INITIATION_DETAILS\",\n      \"CREATE_DOMESTIC_SCHEDULED_PAYMENT\",\n      \"CREATE_BULK_PAYMENT\",\n      \"INITIATE_BULK_PAYMENT\",\n      \"INITIATE_ACCOUNT_REQUEST\"\n    ],\n    \"ordoInstitutionId\": \"int_modelo_sandbox\",\n    \"name\": \"Modelo Sandbox\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3841ccf1-c399-4b0c-8d95-0403de456387",
+          "name": "Create a payment request with link",
+          "request": {
+            "name": "Create a payment request with link",
+            "description": {
+              "content": "Create a new payment request and returns the smart request ID for use in the Initiate payment request",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) int32",
+                "key": "participantid",
+                "value": "<integer>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"senderParticipantId\": \"<integer>\",\n  \"billerParticipantId\": \"<integer>\",\n  \"billerReference\": \"<string>\",\n  \"billerAccountId\": \"<string>\",\n  \"payerReference\": \"<string>\",\n  \"amountDue\": \"<double>\",\n  \"amountCurrency\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"expiryDate\": \"<dateTime>\",\n  \"partialPaymentAllowed\": \"<boolean>\",\n  \"dueDateExtensionsAllowed\": \"<boolean>\",\n  \"partialPaymentsRemaining\": \"<integer>\",\n  \"bdrRedirectURL\": \"<string>\",\n  \"bdrCancelURL\": \"<string>\",\n  \"bdrErrorURL\": \"<string>\",\n  \"recipientParticipantId\": \"<integer>\",\n  \"billerContactEmail\": \"<string>\",\n  \"billerContactPhone\": \"<string>\",\n  \"payerParticipantId\": \"<integer>\",\n  \"payerAliasType\": \"<string>\",\n  \"payerAliasValue\": \"<string>\",\n  \"attachmentBatchId\": \"<string>\",\n  \"refundAccountRequired\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1d6d4ab7-b00c-490c-b654-cd243654aaf5",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) int32",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z.\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z.\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bdRlink\": \"https://dev.myordo.com/2kLxnCW7WJ1\",\n  \"smartRequestId\": \"ad068def-a880-454f-9a9a-fbb3ba969fff\",\n  \"creationDateTime\": \"2023-06-05T11:22:41.0000000+00:00\",\n  \"status\": \"OPEN\",\n  \"paymentStatus\": \"UNPAID\",\n  \"billerParticipantId\": 1,\n  \"billerContactEmail\": null,\n  \"billerContactPhone\": null,\n  \"billerReference\": \"simon testing\",\n  \"billerAccountId\": \"BD6FAAB6-C755-47EB-818A-53F649EFDB56\",\n  \"payerParticipantId\": 1,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"simonTest@Ordo.com\",\n  \"payerReference\": \"simon bdr link\",\n  \"amountDue\": 20,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2025-10-23T00:00:00.0000000+00:00\",\n  \"expiryDate\": \"2025-09-15T23:59:59.0000000+00:00\",\n  \"dueDateExtensionsAllowed\": false,\n  \"partialPaymentAllowed\": false,\n  \"partialPaymentsRemaining\": 5,\n  \"attachmentBatchId\": \"\",\n  \"refundAccountRequired\": false,\n  \"smartRequestUrls\": {\n    \"bdrRedirectURL\": \"https://www.myLink.com?customerID=24\",\n    \"bdrCancelURL\": \"https://www.myLink.com?customerID=24\",\n    \"bdrErrorURL\": \"https://www.myLink.com?customerID=24\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ead6899-714b-4089-b6f1-b48dcd9252d7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) int32",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z.\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z.\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "351eb341-a617-4cfa-88c1-564c238ad61f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) int32",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z.\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z.\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f794191e-473f-4901-bc0c-a62cfc381d52",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) int32",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z.\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z.\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "12a1f8a0-3917-40b9-815a-220e67a6c5ec",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) int32",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z.\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z.\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "398ec4db-5369-41de-b599-cc347b7ddd7a",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) int32",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z.\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z.\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4e40367-8fe5-47a8-9665-542d92e41e83",
+          "name": "Initiate payment request",
+          "request": {
+            "name": "Initiate payment request",
+            "description": {
+              "content": "Returns the unique redirect URL to the selected bank",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "initiate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) participant id",
+                "key": "participantid",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ordoInstitutionId\": \"<string>\",\n  \"smartRequestId\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"currency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "adb117ac-2e94-4891-8056-9e335dbdb926",
+              "name": "Successful Request - The payment request has been authorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "initiate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) participant id",
+                    "key": "participantid",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"required\": [\n    \"ordoInstitutionId\",\n    \"smartRequestId\",\n    \"amount\",\n    \"currency\"\n  ],\n  \"properties\": {\n    \"ordoInstitutionId\": {\n      \"type\": \"string\",\n      \"description\": \"The identifier of the institution, obtained by calling the /institutions endpoint.\",\n      \"example\": \"int_modelo_sandbox\"\n    },\n    \"smartRequestId\": {\n      \"type\": \"string\",\n      \"description\": \"The unique identifier of the Smart Request to pay.\",\n      \"example\": \"DHEY282H\"\n    },\n    \"amount\": {\n      \"minimum\": 0.01,\n      \"type\": \"number\",\n      \"description\": \"The amount to pay\",\n      \"format\": \"double\",\n      \"example\": 39.89\n    },\n    \"currency\": {\n      \"maxLength\": 3,\n      \"minLength\": 3,\n      \"type\": \"string\",\n      \"description\": \"The currency used for the transaction, specified using the ISO 4217 currency code standard. Only GBP is supported.\",\n      \"example\": \"GBP\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authorisationUrl\": \"https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=383a7a2cf3d94f99806c87beb71a\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7582198f-5e8f-4cd5-9766-3b5b1b8b1662",
+          "name": "Withdraw a payment request",
+          "request": {
+            "name": "Withdraw a payment request",
+            "description": {
+              "content": "Withdraw a payment request if it is no longer needed",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "withdraw"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                "key": "participantid",
+                "value": "<integer>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"senderParticipantId\": \"<integer>\",\n  \"smartRequestId\": \"<string>\",\n  \"withdrawReasonCode\": \"<string>\",\n  \"withdrawReasonText\": \"<string>\",\n  \"recipientParticipantId\": \"<integer>\",\n  \"payerAliasType\": \"<string>\",\n  \"payerAliasValue\": \"<string>\",\n  \"messageType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c354313-9587-441c-8bac-e3ce0c052e20",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdraw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d5ada27-0220-4c4a-909e-5e8c8ae33cc3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdraw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97e5754f-ac99-4208-8af9-5b4ab53383c2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdraw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d88ec77e-ad8a-4140-a2ae-cee2c4c3a6a1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdraw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dab6f5c6-9c24-47d2-a776-85a3df85b334",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdraw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "783fa8ef-9810-4859-9461-c4f07f9c1319",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "withdraw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantid",
+                    "value": "<integer>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://test.api.ordopay.com/payments",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e4942a16-5235-4055-a5f6-7ad3ffdb6dbd",
+    "name": "Single Payments",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Smart Request BDR, withdraw BDR and Open Banking institutions and initiate endpoints",
+      "type": "text/plain"
+    }
+  }
+}

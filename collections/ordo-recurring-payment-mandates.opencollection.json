@@ -1,0 +1,194 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Recurring Payment Mandates",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Create a mandate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a new sweeping VRP Mandate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/vrp/v1/VRPMandate/sweeping",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new VRP Mandate"
+        },
+        {
+          "info": {
+            "name": "Creates a new non sweeping VRP Mandate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/vrp/v1/VRPMandate/nonsweeping",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new non sweeping VRP Mandate"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Retrieve mandate details",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves an existing VRP mandate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/vrp/v1/VRPMandate/:mandateId",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "mandateId",
+                "value": "",
+                "type": "path",
+                "description": "VRP Mandate ID"
+              }
+            ]
+          },
+          "docs": "Retrieves an existing VRP mandate"
+        },
+        {
+          "info": {
+            "name": "Gets all VRP mandates associated with a participant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/vrp/v1/VRPMandates",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Format - int32. Format - int32. Format - int32."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Format - int32. Format - int32. Format - int32."
+              }
+            ]
+          },
+          "docs": "Gets all VRP mandates associated with a participant"
+        },
+        {
+          "info": {
+            "name": "Gets a VRP Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/vrp/v1/VRPTransaction/:vrpTransactionId",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "vrpTransactionId",
+                "value": "",
+                "type": "path",
+                "description": "VRP Transaction ID"
+              }
+            ]
+          },
+          "docs": "Gets a VRP Transaction"
+        },
+        {
+          "info": {
+            "name": "Gets VRP Transactions for VRP Mandate\r\nand Participant combo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/vrp/v1/VRPTransactions/:vrpMandateId",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "vrpMandateId",
+                "value": "",
+                "type": "path",
+                "description": "VRP Mandate ID"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Format - int32. Format - int32. Format - int32. Page size"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Format - int32. Format - int32. Format - int32. Page number"
+              }
+            ]
+          },
+          "docs": "Gets VRP Transactions for VRP Mandate\r\nand Participant combo"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bank account configuration",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bank accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve bank account information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/registrymanager/v1/Registry/:billerAccountId",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "billerAccountId",
+                "value": "",
+                "type": "path",
+                "description": "System generated unique identifier of the Biller Account."
+              }
+            ]
+          },
+          "docs": "Retrieve the details of a specific bank account(s) associated with a biller participant id."
+        },
+        {
+          "info": {
+            "name": "Delete a bank account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://test.api.ordopay.com/registrymanager/v1/Registry/:billerAccountId",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "billerAccountId",
+                "value": "",
+                "type": "path",
+                "description": "System generated unique identifier of the BillerAccount."
+              }
+            ]
+          },
+          "docs": "Delete a bank account from associated with a biller participant id."
+        },
+        {
+          "info": {
+            "name": "Retrieve bank account details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/registrymanager/v1/Registry",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve the account names and numbers of bank accounts associated with a specified biller participant id."
+        },
+        {
+          "info": {
+            "name": "Add a bank account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/registrymanager/v1/Registry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add bank account details to a specified biller participant id as an account into which the biller participant can receive payment."
+        },
+        {
+          "info": {
+            "name": "Update a bank account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://test.api.ordopay.com/registrymanager/v1/Registry",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a bank account associated with a biller participant id.\r\nCurrently the only update function available is to make the selected bank account the default bank account for that biller participant id."
+        },
+        {
+          "info": {
+            "name": "Get biller account id by bank account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/registrymanager/v1/Registry/BillerAccountId",
+            "headers": [
+              {
+                "name": "sortCode",
+                "value": ""
+              },
+              {
+                "name": "accountNumber",
+                "value": ""
+              },
+              {
+                "name": "accountName",
+                "value": ""
+              },
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve the Biller Account id for a specified bank account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

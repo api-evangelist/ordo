@@ -1,0 +1,424 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ACCOUNT DATA - Client Hosted",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account Data - Client Hosted",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets a list of AIS enabled institutions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/client/account/information/institutions",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "OrdoInstitutionId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Permissions",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets a list of AIS enabled institutions"
+        },
+        {
+          "info": {
+            "name": "Creates a new AIS request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/client/account/information/create",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new AIS request"
+        },
+        {
+          "info": {
+            "name": "Gets transaction data held in storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/client/account/information/data",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "AISDataRequestId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Format - int32."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Format - int32."
+              }
+            ]
+          },
+          "docs": "Gets transaction data held in storage"
+        },
+        {
+          "info": {
+            "name": "Execute a data request using an AIS consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/client/account/information/data",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a data request using an AIS consent"
+        },
+        {
+          "info": {
+            "name": "Retrieves an existing AIS consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/client/account/information/consent/:aisConsentId",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "aisConsentId",
+                "value": "",
+                "type": "path",
+                "description": "Consent ID specified in the route"
+              }
+            ]
+          },
+          "docs": "Retrieves an existing AIS consent"
+        },
+        {
+          "info": {
+            "name": "Gets all AIS consents associated with a participant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/client/account/information/consents",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PageNumber",
+                "value": "",
+                "type": "query",
+                "description": "Format - int32."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Format - int32."
+              }
+            ]
+          },
+          "docs": "Gets all AIS consents associated with a participant"
+        },
+        {
+          "info": {
+            "name": "Cancels an AIS Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/client/account/information/cancel",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              },
+              {
+                "name": "aisConsentId",
+                "value": ""
+              },
+              {
+                "name": "cancelledBy",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Cancels an AIS Request"
+        },
+        {
+          "info": {
+            "name": "Gets a data request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/client/account/information/data/request/:aisDataRequestId",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "aisDataRequestId",
+                "value": "",
+                "type": "path",
+                "description": "request ID in the route"
+              }
+            ]
+          },
+          "docs": "Gets a data request"
+        },
+        {
+          "info": {
+            "name": "Gets data requests for AIS consent and Participant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/client/account/information/data/requests/:aisConsentId",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "aisConsentId",
+                "value": "",
+                "type": "path",
+                "description": "AIS Consent ID in the route"
+              }
+            ]
+          },
+          "docs": "Gets data requests for AIS consent and Participant"
+        },
+        {
+          "info": {
+            "name": "Creates an AIS consent at the bank, and returns the authorisation URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/client/account/information/initiate",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an AIS consent at the bank, and returns the authorisation URL"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account Verification - Client Hosted",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates a new AV request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/client/account/verification/create",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new AV request"
+        },
+        {
+          "info": {
+            "name": "Initiate an AV request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/client/account/verification/initiate",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiate an AV request"
+        },
+        {
+          "info": {
+            "name": "Gets a list of AV enabled institutions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/client/account/verification/institutions",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "OrdoInstitutionId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets a list of AV enabled institutions"
+        },
+        {
+          "info": {
+            "name": "Get an AV request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/client/account/verification/:avId",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "avId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns AV Record"
+        },
+        {
+          "info": {
+            "name": "Gets all AV accounts for a participant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/client/account/verification/account",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns all AV accounts for a participant"
+        },
+        {
+          "info": {
+            "name": "Get AV account data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/client/account/verification/account/:avId",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "avId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns AV Account Details for specified AV ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

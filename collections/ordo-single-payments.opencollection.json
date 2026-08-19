@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Single Payments",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Client hosted",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get institutions list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/payments/institutions",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieves a list of all banks addressable via Ordo for customer selection"
+        },
+        {
+          "info": {
+            "name": "Create a payment request with link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/payments/create",
+            "headers": [
+              {
+                "name": "participantid",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new payment request and returns the smart request ID for use in the Initiate payment request"
+        },
+        {
+          "info": {
+            "name": "Initiate payment request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/payments/initiate",
+            "headers": [
+              {
+                "name": "participantid",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the unique redirect URL to the selected bank"
+        },
+        {
+          "info": {
+            "name": "Withdraw a payment request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/payments/withdraw",
+            "headers": [
+              {
+                "name": "participantid",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Withdraw a payment request if it is no longer needed"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

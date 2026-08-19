@@ -1,0 +1,3039 @@
+{
+  "item": [
+    {
+      "id": "4fc22bb7-6aa4-443b-9126-efeaa8055fc9",
+      "name": "Ordo hosted",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "36757fd8-b20d-46ca-bcad-64bc594e5db4",
+          "name": "Create a payment request with link",
+          "request": {
+            "name": "Create a payment request with link",
+            "description": {
+              "content": "Create a new payment request with a link.\r\nThis includes the creation of the payment request as well as returning a unique URL (bdRlink) for you to present to your customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "smartRequests",
+                "newSmartRequestBDRLink"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"senderParticipantId\": \"<integer>\",\n  \"billerParticipantId\": \"<integer>\",\n  \"billerReference\": \"<string>\",\n  \"billerAccountId\": \"<string>\",\n  \"payerReference\": \"<string>\",\n  \"amountDue\": \"<double>\",\n  \"amountCurrency\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"expiryDate\": \"<dateTime>\",\n  \"partialPaymentAllowed\": \"<boolean>\",\n  \"dueDateExtensionsAllowed\": \"<boolean>\",\n  \"partialPaymentsRemaining\": \"<integer>\",\n  \"bdrRedirectURL\": \"<string>\",\n  \"bdrCancelURL\": \"<string>\",\n  \"bdrErrorURL\": \"<string>\",\n  \"recipientParticipantId\": \"<integer>\",\n  \"billerContactEmail\": \"<string>\",\n  \"billerContactPhone\": \"<string>\",\n  \"payerParticipantId\": \"<integer>\",\n  \"payerAliasType\": \"<string>\",\n  \"payerAliasValue\": \"<string>\",\n  \"attachmentBatchId\": \"<string>\",\n  \"refundAccountRequired\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4368267d-bd07-4b90-9a79-263d7ad8f30b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestBDRLink"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bdRlink\": \"string\",\n  \"smartRequestId\": \"string\",\n  \"creationDateTime\": \"2017-07-21T17:32:28Z\",\n  \"status\": \"BLOCKED\",\n  \"paymentStatus\": \"FULLPAID\",\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "127a74ee-4db9-4da9-be0f-1e0a74562648",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestBDRLink"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58d212b2-384f-41e1-90a7-459656330194",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestBDRLink"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05448ff3-da89-4b18-a75c-0b0669de26e2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestBDRLink"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4372876-d902-4d90-95b2-33e0b64b221d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestBDRLink"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b48e4b73-18ff-4bc9-b3f4-1f975d5f525c",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestBDRLink"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bdrRedirectURL\": \"string\",\n  \"bdrCancelURL\": \"string\",\n  \"bdrErrorURL\": \"string\",\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fbe3b620-d742-4817-8cd9-f8de0474c635",
+          "name": "Get single payment request",
+          "request": {
+            "name": "Get single payment request",
+            "description": {
+              "content": "Retrieve the details of a single specified payment request. Note - this information is also available via a webhook notification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "smartRequests",
+                ":smartRequestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "smartRequestId",
+                  "description": "(Required) System generated unique identifier of the smart request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Format - int32. System generated unique identifier of the participant.",
+                "key": "participantId",
+                "value": "<integer>"
+              },
+              {
+                "disabled": false,
+                "description": "PayerAliasType.",
+                "key": "payerAliasType",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "PayerAliasValue.",
+                "key": "payerAliasValue",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba641602-46f3-4830-a6e8-d45f8ab88021",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    ":smartRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "smartRequestId",
+                      "description": "(Required) System generated unique identifier of the smart request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasType.",
+                    "key": "payerAliasType",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasValue.",
+                    "key": "payerAliasValue",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"smartRequestId\": \"string\",\n  \"threadId\": \"string\",\n  \"creationDateTime\": \"2017-07-21T17:32:28Z\",\n  \"status\": \"BLOCKED\",\n  \"billerParticipantId\": 0,\n  \"billerApprovedName\": \"string\",\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"billerAccountName\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com. or\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerParticipantId\": 0,\n  \"payerReference\": \"string\",\n  \"payerLastAccessed\": \"2017-07-21T17:32:28Z\",\n  \"billerLastAccessed\": \"2017-07-21T17:32:28Z\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"amountPaid\": 0,\n  \"paymentStatus\": \"FULLPAID\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"dueDateExtensionsAllowed\": true,\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"extensionDateRequested\": true,\n  \"requestedExtensionDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"declineReasonCode\": \"string\",\n  \"declineReasonText\": \"string\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\",\n  \"paymentInProgress\": true,\n  \"smartRequestMessages\": [\n    {\n      \"smartRequestMessageId\": \"string\",\n      \"senderParticipantId\": 0,\n      \"recipientParticipantId\": 0,\n      \"messageType\": \"REQUESTTOPAY\",\n      \"messageDateTime\": \"2017-07-21T17:32:28Z\",\n      \"messageBody\": \"string\",\n      \"documentBatchId\": [\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db373c6f-017d-4c0c-a5a3-ebce4013bd34",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    ":smartRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "smartRequestId",
+                      "description": "(Required) System generated unique identifier of the smart request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasType.",
+                    "key": "payerAliasType",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasValue.",
+                    "key": "payerAliasValue",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "257870fc-48b4-485d-818b-85e5ad400a20",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    ":smartRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "smartRequestId",
+                      "description": "(Required) System generated unique identifier of the smart request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasType.",
+                    "key": "payerAliasType",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasValue.",
+                    "key": "payerAliasValue",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "233cbc2b-089b-4362-a8da-1143f7e09151",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    ":smartRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "smartRequestId",
+                      "description": "(Required) System generated unique identifier of the smart request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasType.",
+                    "key": "payerAliasType",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasValue.",
+                    "key": "payerAliasValue",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff0f6bfc-215b-4f43-b3c4-4a42946ec6ff",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    ":smartRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "smartRequestId",
+                      "description": "(Required) System generated unique identifier of the smart request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasType.",
+                    "key": "payerAliasType",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasValue.",
+                    "key": "payerAliasValue",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "964af5e7-02f1-4b5a-ab93-d063cf57320d",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    ":smartRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "smartRequestId",
+                      "description": "(Required) System generated unique identifier of the smart request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasType.",
+                    "key": "payerAliasType",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "PayerAliasValue.",
+                    "key": "payerAliasValue",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f7d87c1-20f7-445d-b741-3a19b7af996f",
+          "name": "Get all payment requests",
+          "request": {
+            "name": "Get all payment requests",
+            "description": {
+              "content": "Retrieve the details of all payment requests for a specified biller participant id.  Note - this information is also available via a webhook notification per payment request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "smartRequests",
+                "smartRequestMessages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                "key": "participantId",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0fb017bc-d35b-4906-9ce2-b017dd1304cc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "smartRequestMessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"participantId\": 0,\n  \"smartRequestDetails\": [\n    {\n      \"id\": \"string\",\n      \"threadId\": \"string\",\n      \"creationDateTime\": \"string\",\n      \"updatedDateTime\": \"2017-07-21T17:32:28Z\",\n      \"status\": \"BLOCKED\",\n      \"billerParticipantId\": 0,\n      \"billerApprovedName\": \"string\",\n      \"billerReference\": \"string\",\n      \"billerAccountName\": \"string\",\n      \"payerAliasType\": \"EMAIL\",\n      \"payerAliasValue\": \"Email : example@mail.com. or\\r\\nPhone : +countrycode 7712345678.\",\n      \"payerParticipantId\": 0,\n      \"payerReference\": \"string\",\n      \"amountDue\": 0,\n      \"amountCurrency\": \"GBP\",\n      \"amountPaid\": 0,\n      \"paymentStatus\": \"FULLPAID\",\n      \"dueDate\": \"2017-07-21T17:32:28Z\",\n      \"extensionDateRequested\": true,\n      \"paymentInProgress\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d11f9121-70d5-4b54-94cd-057be82bb844",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "smartRequestMessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8901d301-5de1-4447-a0ce-79e8f04de153",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "smartRequestMessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dec38243-0b0d-4e17-99a8-0ca5b85da9e0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "smartRequestMessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a510a85-7766-44fe-962b-193197dc7012",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "smartRequestMessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "903c130f-d4d2-4186-ba7a-f2c855bde85b",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "smartRequestMessages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Format - int32. System generated unique identifier of the participant.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9252f230-c809-46d2-8b5e-c11eb79159c0",
+          "name": "Withdraw a biller delivered payment request",
+          "request": {
+            "name": "Withdraw a biller delivered payment request",
+            "description": {
+              "content": "Withdraw a biller delivered payment request if it is no longer needed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "smartRequests",
+                "withdrawSmartRequestMessageBDR"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"senderParticipantId\": \"<integer>\",\n  \"smartRequestId\": \"<string>\",\n  \"withdrawReasonCode\": \"<string>\",\n  \"withdrawReasonText\": \"<string>\",\n  \"recipientParticipantId\": \"<integer>\",\n  \"payerAliasType\": \"<string>\",\n  \"payerAliasValue\": \"<string>\",\n  \"messageType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8becc32-ed8e-4bf5-9e66-d7611acc1f0a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessageBDR"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1261fe1b-712f-4b2b-bfac-daee6c696832",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessageBDR"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bf719d6-6fcc-4cba-8ae4-1c57578e55be",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessageBDR"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e634671-d04c-4aa8-bd30-7317a90d333b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessageBDR"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ac4f942-3c1a-4fa3-9df9-e6558855e2e4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessageBDR"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "703dc7dd-6823-4a13-9ef8-a47d0c940ced",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessageBDR"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "543e4b58-6c97-4f7a-a1dd-32a4ec123528",
+          "name": "Create a new payment request that Ordo sends",
+          "request": {
+            "name": "Create a new payment request that Ordo sends",
+            "description": {
+              "content": "Create a new payment request.\r\nThis includes the Ordo platform delivering the request for payment via email or SMS.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "smartRequests",
+                "newSmartRequestMessage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"senderParticipantId\": \"<integer>\",\n  \"billerParticipantId\": \"<integer>\",\n  \"billerReference\": \"<string>\",\n  \"billerAccountId\": \"<string>\",\n  \"payerReference\": \"<string>\",\n  \"amountDue\": \"<double>\",\n  \"amountCurrency\": \"<string>\",\n  \"dueDate\": \"<dateTime>\",\n  \"expiryDate\": \"<dateTime>\",\n  \"partialPaymentAllowed\": \"<boolean>\",\n  \"dueDateExtensionsAllowed\": \"<boolean>\",\n  \"partialPaymentsRemaining\": \"<integer>\",\n  \"recipientParticipantId\": \"<integer>\",\n  \"billerContactEmail\": \"<string>\",\n  \"billerContactPhone\": \"<string>\",\n  \"payerParticipantId\": \"<integer>\",\n  \"payerAliasType\": \"<string>\",\n  \"payerAliasValue\": \"<string>\",\n  \"attachmentBatchId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "746c2b8d-ef57-4fdb-81cd-488f73c5abbd",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"smartRequestId\": \"string\",\n  \"creationDateTime\": \"2017-07-21T17:32:28Z\",\n  \"status\": \"BLOCKED\",\n  \"paymentStatus\": \"FULLPAID\",\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e185f7f-cefe-4af0-b034-2e05bdebc972",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "796a213c-bbe2-4652-a5cb-f66799911bb5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "671b8a4a-3c62-4ce3-b51e-ddf01cfc2fa4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d140a724-c317-4dab-9fbe-baeb5ab439b3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f5dce23-84d7-4bb2-bf78-4fc9f6e78fd4",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "newSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"billerParticipantId\": 0,\n  \"billerContactEmail\": \"string\",\n  \"billerContactPhone\": \"string\",\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"payerReference\": \"string\",\n  \"amountDue\": 0,\n  \"amountCurrency\": \"GBP\",\n  \"dueDate\": \"2017-07-21T17:32:28Z\",\n  \"expiryDate\": \"2017-07-21T17:32:28Z\",\n  \"partialPaymentAllowed\": true,\n  \"dueDateExtensionsAllowed\": true,\n  \"partialPaymentsRemaining\": 0,\n  \"attachmentBatchId\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2963bd8e-4bd6-4574-9dc0-4f3503457d0b",
+          "name": "Withdraw a payment request sent via Ordo",
+          "request": {
+            "name": "Withdraw a payment request sent via Ordo",
+            "description": {
+              "content": "Withdraw a payment request that was sent via Ordo if it is no longer needed.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "smartRequests",
+                "withdrawSmartRequestMessage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"senderParticipantId\": \"<integer>\",\n  \"smartRequestId\": \"<string>\",\n  \"withdrawReasonCode\": \"<string>\",\n  \"withdrawReasonText\": \"<string>\",\n  \"recipientParticipantId\": \"<integer>\",\n  \"payerAliasType\": \"<string>\",\n  \"payerAliasValue\": \"<string>\",\n  \"messageType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "901febc3-c915-4059-890d-732aba223045",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0de75360-ec17-4344-9dd4-862689753a5e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89c838a0-0d80-4f3c-a96f-61935f57e986",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96e8118e-f94a-4cae-a6ad-a91aa3abc57c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ead4a799-e461-4e54-b5d2-db530b4e7102",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8be3f0eb-0dac-470d-b660-cf9e34364d6b",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "withdrawSmartRequestMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"Email : example@mail.com\\r\\nPhone : +countrycode 7712345678.\",\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"withdrawReasonCode\": \"string\",\n  \"withdrawReasonText\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23d63c96-fb13-4894-bccd-756aa378e7d8",
+          "name": "Agree an extension request",
+          "request": {
+            "name": "Agree an extension request",
+            "description": {
+              "content": "Allows an extension to the due date for a payment request when asked for by the payer.  Note, this is only relevant if you chose to allow extension requests when creating payment requests sent via Ordo.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "smartRequests",
+                "grantExtensionMessage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"senderParticipantId\": \"<integer>\",\n  \"recipientParticipantId\": \"<integer>\",\n  \"smartRequestId\": \"<string>\",\n  \"messageType\": \"<string>\",\n  \"allowFurtherExtensionRequests\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b5c35e5a-9068-4ee4-9ce1-dce48f6c6aaa",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "grantExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab774a17-7598-40fe-9d57-02974d78d8a9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "grantExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d188cf0-e6d4-4adc-8aed-7363f3911626",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "grantExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b565cda0-24ae-43b2-bcea-e051ebb03c07",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "grantExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d6cd387-1900-46fb-924f-3990ef9474aa",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "grantExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47d8646e-6e38-44ca-a092-691a06a065a0",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "grantExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f30acef3-76bd-450b-989f-64642772f051",
+          "name": "Decline an extension request",
+          "request": {
+            "name": "Decline an extension request",
+            "description": {
+              "content": "Decline a customer's request for an extension to the due date of a payment request.  Note, this is only relevant if you chose to allow extension requests when creating send via Ordo requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "smartRequests",
+                "declineExtensionMessage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"senderParticipantId\": \"<integer>\",\n  \"recipientParticipantId\": \"<integer>\",\n  \"smartRequestId\": \"<string>\",\n  \"billerExtensionDate\": \"<dateTime>\",\n  \"messageType\": \"<string>\",\n  \"allowFurtherExtensionRequests\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81a6e0df-aae2-43a5-a7fd-da170d99ccfc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "declineExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\",\n  \"billerExtensionDate\": \"2017-07-21T17:32:28Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30b348ed-1390-466d-9e91-f554b06fa7a9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "declineExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\",\n  \"billerExtensionDate\": \"2017-07-21T17:32:28Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f18de1f-d2bc-4e65-a1cd-890eac91b4a1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "declineExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\",\n  \"billerExtensionDate\": \"2017-07-21T17:32:28Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc63e07d-3ecb-4649-b4ec-6da4f179ae6b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "declineExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\",\n  \"billerExtensionDate\": \"2017-07-21T17:32:28Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02e627fd-df75-433b-8528-607dccc6dea4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "declineExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\",\n  \"billerExtensionDate\": \"2017-07-21T17:32:28Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ddd1255-f1ab-4e57-aac1-b296b4410bc6",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "smartRequests",
+                    "declineExtensionMessage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"senderParticipantId\": 0,\n  \"recipientParticipantId\": 0,\n  \"smartRequestId\": \"string\",\n  \"messageType\": \"REQUESTTOPAY\",\n  \"allowFurtherExtensionRequests\": \"Yes\",\n  \"billerExtensionDate\": \"2017-07-21T17:32:28Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://test.api.ordopay.com/smartrequestmanager/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a92b0938-fe71-4d17-9df6-ae3bc86e7413",
+    "name": "Single Payments",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

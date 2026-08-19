@@ -1,0 +1,166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Single Payments",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ordo hosted",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a payment request with link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/smartrequestmanager/v1/smartRequests/newSmartRequestBDRLink",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new payment request with a link.\r\nThis includes the creation of the payment request as well as returning a unique URL (bdRlink) for you to present to your customer."
+        },
+        {
+          "info": {
+            "name": "Get single payment request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/smartrequestmanager/v1/smartRequests/:smartRequestId",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              },
+              {
+                "name": "payerAliasType",
+                "value": ""
+              },
+              {
+                "name": "payerAliasValue",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "smartRequestId",
+                "value": "",
+                "type": "path",
+                "description": "System generated unique identifier of the smart request."
+              }
+            ]
+          },
+          "docs": "Retrieve the details of a single specified payment request. Note - this information is also available via a webhook notification."
+        },
+        {
+          "info": {
+            "name": "Get all payment requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://test.api.ordopay.com/smartrequestmanager/v1/smartRequests/smartRequestMessages",
+            "headers": [
+              {
+                "name": "participantId",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve the details of all payment requests for a specified biller participant id.  Note - this information is also available via a webhook notification per payment request."
+        },
+        {
+          "info": {
+            "name": "Withdraw a biller delivered payment request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/smartrequestmanager/v1/smartRequests/withdrawSmartRequestMessageBDR",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Withdraw a biller delivered payment request if it is no longer needed."
+        },
+        {
+          "info": {
+            "name": "Create a new payment request that Ordo sends",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/smartrequestmanager/v1/smartRequests/newSmartRequestMessage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new payment request.\r\nThis includes the Ordo platform delivering the request for payment via email or SMS."
+        },
+        {
+          "info": {
+            "name": "Withdraw a payment request sent via Ordo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/smartrequestmanager/v1/smartRequests/withdrawSmartRequestMessage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Withdraw a payment request that was sent via Ordo if it is no longer needed."
+        },
+        {
+          "info": {
+            "name": "Agree an extension request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/smartrequestmanager/v1/smartRequests/grantExtensionMessage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Allows an extension to the due date for a payment request when asked for by the payer.  Note, this is only relevant if you chose to allow extension requests when creating payment requests sent via Ordo."
+        },
+        {
+          "info": {
+            "name": "Decline an extension request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://test.api.ordopay.com/smartrequestmanager/v1/smartRequests/declineExtensionMessage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decline a customer's request for an extension to the due date of a payment request.  Note, this is only relevant if you chose to allow extension requests when creating send via Ordo requests."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

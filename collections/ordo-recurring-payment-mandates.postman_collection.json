@@ -1,0 +1,2529 @@
+{
+  "item": [
+    {
+      "id": "766ec69b-70ea-44db-be18-ebcd844ee1f3",
+      "name": "Create a mandate",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "663e9bb9-1e82-4613-bc3c-007b085baa8e",
+          "name": "Creates a new sweeping VRP Mandate",
+          "request": {
+            "name": "Creates a new sweeping VRP Mandate",
+            "description": {
+              "content": "Creates a new VRP Mandate",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "VRPMandate",
+                "sweeping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Format - int32. Format - int32. Participant ID",
+                "key": "participantId",
+                "value": "<integer>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"billerAccountId\": \"<string>\",\n  \"billerParticipantId\": \"<integer>\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": \"<double>\",\n    \"maximumIndividualAmountCurrency\": \"<string>\",\n    \"controlParameters\": [\n      {\n        \"amount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"periodAlignment\": \"<string>\",\n        \"periodType\": \"<string>\"\n      },\n      {\n        \"amount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"periodAlignment\": \"<string>\",\n        \"periodType\": \"<string>\"\n      }\n    ]\n  },\n  \"vrpMandateName\": \"<string>\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"<string>\",\n    \"cancelURL\": \"<string>\",\n    \"errorURL\": \"<string>\"\n  },\n  \"validFromDate\": \"<dateTime>\",\n  \"validToDate\": \"<dateTime>\",\n  \"billerReference\": \"<string>\",\n  \"payerAliasType\": \"<string>\",\n  \"payerAliasValue\": \"<string>\",\n  \"payerReference\": \"<string>\",\n  \"attachmentBatchId\": \"<string>\",\n  \"refundAccountRequired\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "baddfa81-6a26-4157-9354-11150defc6be",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "sweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vrpAuthUrl\": \"string\",\n  \"vrpMandate\": {\n    \"vrpMandateId\": \"string\",\n    \"vrpMandateName\": \"string\",\n    \"vrpType\": \"SWEEPING\",\n    \"createdDate\": \"string\",\n    \"status\": \"string\",\n    \"validFromDate\": \"string\",\n    \"validToDate\": \"string\",\n    \"billerParticipantId\": 0,\n    \"billerApprovedName\": \"string\",\n    \"billerReference\": \"string\",\n    \"billerAccountId\": \"string\",\n    \"payerParticipantId\": 0,\n    \"payerAliasType\": \"EMAIL\",\n    \"payerAliasValue\": \"string\",\n    \"payerReference\": \"string\",\n    \"templateId\": \"string\",\n    \"payerRead\": true,\n    \"psuAuthenticationMethods\": \"string\",\n    \"vrpControlParameters\": {\n      \"maximumIndividualAmount\": 0,\n      \"maximumIndividualAmountCurrency\": \"string\",\n      \"controlParameters\": [\n        {\n          \"amount\": 0,\n          \"currency\": \"string\",\n          \"periodAlignment\": \"string\",\n          \"periodType\": \"string\"\n        }\n      ]\n    },\n    \"updatedDate\": \"string\",\n    \"cancelledBy\": \"string\",\n    \"refundAccountRequired\": true\n  },\n  \"vrpURLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "babfbe00-ab03-4c68-9638-fd285195e472",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "sweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "921c9dc7-9557-4be3-9955-45d61832ad8d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "sweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1257385e-6f50-4aea-9294-b7d4ddfaeb0b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "sweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7484b8c5-ed13-45fe-8ceb-54c85211d2a6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "sweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6a4b955-6b68-4f4d-9031-6a8d15a2d0f9",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "sweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf39a15a-b826-471b-a5a4-a8c330012ce6",
+          "name": "Creates a new non sweeping VRP Mandate",
+          "request": {
+            "name": "Creates a new non sweeping VRP Mandate",
+            "description": {
+              "content": "Creates a new non sweeping VRP Mandate",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "VRPMandate",
+                "nonsweeping"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Format - int32. Format - int32. Participant ID",
+                "key": "participantId",
+                "value": "<integer>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"billerAccountId\": \"<string>\",\n  \"billerParticipantId\": \"<integer>\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": \"<double>\",\n    \"maximumIndividualAmountCurrency\": \"<string>\",\n    \"controlParameters\": [\n      {\n        \"amount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"periodAlignment\": \"<string>\",\n        \"periodType\": \"<string>\"\n      },\n      {\n        \"amount\": \"<double>\",\n        \"currency\": \"<string>\",\n        \"periodAlignment\": \"<string>\",\n        \"periodType\": \"<string>\"\n      }\n    ]\n  },\n  \"vrpMandateName\": \"<string>\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"<string>\",\n    \"cancelURL\": \"<string>\",\n    \"errorURL\": \"<string>\"\n  },\n  \"validFromDate\": \"<dateTime>\",\n  \"validToDate\": \"<dateTime>\",\n  \"billerReference\": \"<string>\",\n  \"payerAliasType\": \"<string>\",\n  \"payerAliasValue\": \"<string>\",\n  \"payerReference\": \"<string>\",\n  \"attachmentBatchId\": \"<string>\",\n  \"refundAccountRequired\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "88fbc1f4-3d64-4bdc-b3c1-ab60d5227465",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "nonsweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vrpAuthUrl\": \"string\",\n  \"vrpMandate\": {\n    \"vrpMandateId\": \"string\",\n    \"vrpMandateName\": \"string\",\n    \"vrpType\": \"SWEEPING\",\n    \"createdDate\": \"string\",\n    \"status\": \"string\",\n    \"validFromDate\": \"string\",\n    \"validToDate\": \"string\",\n    \"billerParticipantId\": 0,\n    \"billerApprovedName\": \"string\",\n    \"billerReference\": \"string\",\n    \"billerAccountId\": \"string\",\n    \"payerParticipantId\": 0,\n    \"payerAliasType\": \"EMAIL\",\n    \"payerAliasValue\": \"string\",\n    \"payerReference\": \"string\",\n    \"templateId\": \"string\",\n    \"payerRead\": true,\n    \"psuAuthenticationMethods\": \"string\",\n    \"vrpControlParameters\": {\n      \"maximumIndividualAmount\": 0,\n      \"maximumIndividualAmountCurrency\": \"string\",\n      \"controlParameters\": [\n        {\n          \"amount\": 0,\n          \"currency\": \"string\",\n          \"periodAlignment\": \"string\",\n          \"periodType\": \"string\"\n        }\n      ]\n    },\n    \"updatedDate\": \"string\",\n    \"cancelledBy\": \"string\",\n    \"refundAccountRequired\": true\n  },\n  \"vrpURLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88bb7130-731f-4355-9300-356b3805a10f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "nonsweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "006e4e5b-f341-4caa-a355-0d4ac0d3d4df",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "nonsweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "beabe16f-0638-48e3-881c-e28b2dd70640",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "nonsweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09d19b3e-e3b4-4297-b070-d5ffbf879001",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "nonsweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fe01f74-3274-4c02-840d-dd95044b1a6c",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    "nonsweeping"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vrpMandateName\": \"string\",\n  \"validFromDate\": \"string\",\n  \"validToDate\": \"string\",\n  \"billerParticipantId\": 0,\n  \"billerReference\": \"string\",\n  \"billerAccountId\": \"string\",\n  \"payerAliasType\": \"EMAIL\",\n  \"payerAliasValue\": \"string\",\n  \"payerReference\": \"string\",\n  \"vrpControlParameters\": {\n    \"maximumIndividualAmount\": 0,\n    \"maximumIndividualAmountCurrency\": \"string\",\n    \"controlParameters\": [\n      {\n        \"amount\": 0,\n        \"currency\": \"string\",\n        \"periodAlignment\": \"string\",\n        \"periodType\": \"string\"\n      }\n    ]\n  },\n  \"attachmentBatchId\": \"string\",\n  \"vrpurLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  },\n  \"refundAccountRequired\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6adfb190-2d48-4fc4-9fd8-f3b1c31d3332",
+      "name": "Retrieve mandate details",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d385644-ebd0-4c43-b38a-5c740d508bea",
+          "name": "Retrieves an existing VRP mandate",
+          "request": {
+            "name": "Retrieves an existing VRP mandate",
+            "description": {
+              "content": "Retrieves an existing VRP mandate",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "VRPMandate",
+                ":mandateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mandateId",
+                  "description": "(Required) VRP Mandate ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                "key": "participantId",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb33f483-9e16-41c5-a87f-ae2d9ae86cd3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    ":mandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vrpMandate\": {\n    \"vrpMandateId\": \"string\",\n    \"vrpMandateName\": \"string\",\n    \"vrpType\": \"SWEEPING\",\n    \"createdDate\": \"string\",\n    \"status\": \"string\",\n    \"validFromDate\": \"string\",\n    \"validToDate\": \"string\",\n    \"billerParticipantId\": 0,\n    \"billerApprovedName\": \"string\",\n    \"billerReference\": \"string\",\n    \"billerAccountId\": \"string\",\n    \"payerParticipantId\": 0,\n    \"payerAliasType\": \"EMAIL\",\n    \"payerAliasValue\": \"string\",\n    \"payerReference\": \"string\",\n    \"templateId\": \"string\",\n    \"payerRead\": true,\n    \"psuAuthenticationMethods\": \"string\",\n    \"vrpControlParameters\": {\n      \"maximumIndividualAmount\": 0,\n      \"maximumIndividualAmountCurrency\": \"string\",\n      \"controlParameters\": [\n        {\n          \"amount\": 0,\n          \"currency\": \"string\",\n          \"periodAlignment\": \"string\",\n          \"periodType\": \"string\"\n        }\n      ]\n    },\n    \"updatedDate\": \"string\",\n    \"cancelledBy\": \"string\",\n    \"refundAccountRequired\": true\n  },\n  \"vrpURLs\": {\n    \"redirectURL\": \"string\",\n    \"cancelURL\": \"string\",\n    \"errorURL\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa98d5e4-f7fe-4b8a-af40-6c88526f136d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    ":mandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5231318a-8617-4ef2-a204-a4cab3773b8a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    ":mandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bbee15ce-3a5f-4630-8eba-d892d8cf4c2e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    ":mandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "616667b9-bb8b-4713-9dfa-af2e5e2f79a5",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    ":mandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e2d28b3-a8eb-4bb8-bd20-61f628ca89a7",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandate",
+                    ":mandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8467d186-e97c-417a-b7f0-364fb495d921",
+          "name": "Gets all VRP mandates associated with a participant",
+          "request": {
+            "name": "Gets all VRP mandates associated with a participant",
+            "description": {
+              "content": "Gets all VRP mandates associated with a participant",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "VRPMandates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PageNumber",
+                  "value": "<integer>",
+                  "description": "Format - int32. Format - int32. Format - int32."
+                },
+                {
+                  "disabled": false,
+                  "key": "PageSize",
+                  "value": "<integer>",
+                  "description": "Format - int32. Format - int32. Format - int32."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Format - int32. Format - int32. Format - int32. Participant ID.",
+                "key": "participantId",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b12da744-5ac4-479c-acb1-02180ac22efc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vrpMandates\": [\n    {\n      \"vrpMandateId\": \"string\",\n      \"vrpMandateName\": \"string\",\n      \"vrpType\": \"SWEEPING\",\n      \"createdDate\": \"string\",\n      \"status\": \"string\",\n      \"validFromDate\": \"string\",\n      \"validToDate\": \"string\",\n      \"billerParticipantId\": 0,\n      \"billerApprovedName\": \"string\",\n      \"billerReference\": \"string\",\n      \"billerAccountId\": \"string\",\n      \"payerParticipantId\": 0,\n      \"payerAliasType\": \"EMAIL\",\n      \"payerAliasValue\": \"string\",\n      \"payerReference\": \"string\",\n      \"templateId\": \"string\",\n      \"payerRead\": true,\n      \"psuAuthenticationMethods\": \"string\",\n      \"vrpControlParameters\": {\n        \"maximumIndividualAmount\": 0,\n        \"maximumIndividualAmountCurrency\": \"string\",\n        \"controlParameters\": [\n          {\n            \"amount\": 0,\n            \"currency\": \"string\",\n            \"periodAlignment\": \"string\",\n            \"periodType\": \"string\"\n          }\n        ]\n      },\n      \"updatedDate\": \"string\",\n      \"cancelledBy\": \"string\",\n      \"refundAccountRequired\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6a8ae90-8ea9-4aac-945c-fe905cf8ae69",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bbd435c-04f6-4ec0-acd6-4c8cbdd292b1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d71158f-0d58-450c-a33c-a3b598afe017",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08bb16f9-a8d7-4db7-ac16-9f0a9c01af9b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b2b2f43-c5f9-43da-b233-dcb6be58fe7a",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPMandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID.",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf44c15a-1b29-4701-9f4f-9754bb5aac80",
+          "name": "Gets a VRP Transaction",
+          "request": {
+            "name": "Gets a VRP Transaction",
+            "description": {
+              "content": "Gets a VRP Transaction",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "VRPTransaction",
+                ":vrpTransactionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vrpTransactionId",
+                  "description": "(Required) VRP Transaction ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                "key": "participantId",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a21ed339-e7ec-4589-a080-95f0409f05d6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransaction",
+                    ":vrpTransactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpTransactionId",
+                      "description": "(Required) VRP Transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vrpTransaction\": {\n    \"vrpTransactionId\": \"string\",\n    \"vrpMandateId\": \"string\",\n    \"billerParticipantId\": 0,\n    \"payerAliasType\": \"EMAIL\",\n    \"payerAliasValue\": \"string\",\n    \"amount\": 0,\n    \"currency\": \"string\",\n    \"aspspTransactionId\": \"string\",\n    \"paymentDate\": \"string\",\n    \"status\": \"string\",\n    \"paymentStatus\": \"string\",\n    \"billerReference\": \"string\",\n    \"createdDate\": \"string\",\n    \"updatedDate\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d5a8ad7-7399-45c5-bf37-82a7e2ec75d1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransaction",
+                    ":vrpTransactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpTransactionId",
+                      "description": "(Required) VRP Transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "079da4d8-1cbb-4b9b-8b89-b74f161c66da",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransaction",
+                    ":vrpTransactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpTransactionId",
+                      "description": "(Required) VRP Transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2ecd7f3-bab0-4797-8416-0fec4eb80160",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransaction",
+                    ":vrpTransactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpTransactionId",
+                      "description": "(Required) VRP Transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd425216-aaef-474b-80e0-010d75c5b099",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransaction",
+                    ":vrpTransactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpTransactionId",
+                      "description": "(Required) VRP Transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb6bcc91-68e4-4636-a2dc-e31c6f25028e",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransaction",
+                    ":vrpTransactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpTransactionId",
+                      "description": "(Required) VRP Transaction ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d0a9e26-16cf-414f-a644-a8ee99d5bdda",
+          "name": "Gets VRP Transactions for VRP Mandate\r\nand Participant combo",
+          "request": {
+            "name": "Gets VRP Transactions for VRP Mandate\r\nand Participant combo",
+            "description": {
+              "content": "Gets VRP Transactions for VRP Mandate\r\nand Participant combo",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "VRPTransactions",
+                ":vrpMandateId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "0",
+                  "description": "Format - int32. Format - int32. Format - int32. Page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "0",
+                  "description": "Format - int32. Format - int32. Format - int32. Page number"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vrpMandateId",
+                  "description": "(Required) VRP Mandate ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                "key": "participantId",
+                "value": "<integer>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed2f0336-e3c0-46b0-99e9-0e92c9632949",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransactions",
+                    ":vrpMandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpMandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vrpTransaction\": {\n    \"vrpTransactionId\": \"string\",\n    \"vrpMandateId\": \"string\",\n    \"billerParticipantId\": 0,\n    \"payerAliasType\": \"EMAIL\",\n    \"payerAliasValue\": \"string\",\n    \"amount\": 0,\n    \"currency\": \"string\",\n    \"aspspTransactionId\": \"string\",\n    \"paymentDate\": \"string\",\n    \"status\": \"string\",\n    \"paymentStatus\": \"string\",\n    \"billerReference\": \"string\",\n    \"createdDate\": \"string\",\n    \"updatedDate\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29cda654-bf47-4938-9384-d51d6eaebd8a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransactions",
+                    ":vrpMandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpMandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1230c296-8aeb-4f06-94a4-59a8cda25eff",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransactions",
+                    ":vrpMandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpMandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efcc4b0d-c33a-4522-a2d8-e873880d66f0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransactions",
+                    ":vrpMandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpMandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "098ade1d-2f87-4974-9f89-d4e3eb026b10",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransactions",
+                    ":vrpMandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpMandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9bb78e8-712e-4c41-b0ca-a5e7779b4f85",
+              "name": "Client Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VRPTransactions",
+                    ":vrpMandateId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vrpMandateId",
+                      "description": "(Required) VRP Mandate ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Format - int32. Format - int32. Format - int32. Participant ID",
+                    "key": "participantId",
+                    "value": "<integer>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {},\n  \"type\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://test.api.ordopay.com/vrp/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "804e9b46-f5a5-4a6a-b2a0-d025ba14d1e9",
+    "name": "Recurring Payment Mandates",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
