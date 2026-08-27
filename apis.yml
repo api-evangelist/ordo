@@ -35,134 +35,276 @@ created: '2026-07-24'
 modified: '2026-07-24'
 specificationVersion: '0.23'
 apis:
-- aid: ordo:ordo-single-payments-api
-  name: Ordo Single Payments API
+- aid: ordo:ordo-account-data-client-hosted-api
+  name: Ordo Account Data - Client Hosted API
   description: >-
-    Single, one-off open-banking payment initiation — list supported institutions,
-    create a payment, initiate authorisation, and withdraw a payment. Server base
-    is the Ordo Azure API Management gateway. 4 documented operations.
+    The Account Data - Client Hosted API from Ordo — 9 operation(s) for account data - client hosted.
   humanURL: https://ordopay.com/products/payments
   baseURL: https://test.api.ordopay.com/payments
   tags:
-  - Payments
-  - Payment Initiation
-  - Single Payments
+  - Account Data - Client Hosted
   properties:
   - type: OpenAPI
-    url: openapi/ordo-single-payments.yml
-  - type: Overlay
-    url: overlays/ordo-single-payments-overlay.yaml
+    url: openapi/ordo-account-data-client-hosted-api-openapi.yml
   - type: Documentation
     url: https://ordopay.com/products/payments
   - type: APIReference
     url: https://docs.myordo.com/docs/introduction-single-payments
-- aid: ordo:ordo-smart-request-manager-api
-  name: Ordo Smart Request Manager API
-  description: >-
-    Request to Pay / "Smart Request" management for one-off payment requests —
-    create and manage smart requests and their messages, Biller Delivery Request
-    (BDR) links, extensions and withdrawals. 8 documented operations.
-  humanURL: https://ordopay.com/products/payments
-  baseURL: https://test.api.ordopay.com/smartrequestmanager/v1
-  tags:
-  - Payments
-  - Request to Pay
-  - Smart Request
-  properties:
-  - type: OpenAPI
-    url: openapi/ordo-smart-request-manager.yml
-  - type: Overlay
-    url: overlays/ordo-smart-request-manager-overlay.yaml
-  - type: Documentation
-    url: https://ordopay.com/products/payments
-  - type: APIReference
-    url: https://docs.myordo.com/docs/introduction-single-payments
-- aid: ordo:ordo-recurring-payment-mandates-api
-  name: Ordo Recurring Payment Mandates (VRP) API
-  description: >-
-    Variable Recurring Payments — create sweeping and non-sweeping VRP mandates,
-    read mandates, execute mandate payments and read VRP transactions. Enables
-    fixed, variable and ad-hoc recurring collections as an alternative to Direct
-    Debit and card CPA. 6 documented operations.
-  humanURL: https://ordopay.com/products/vrp
-  baseURL: https://test.api.ordopay.com/vrp/v1
-  tags:
-  - Payments
-  - Variable Recurring Payments
-  - Recurring Payments
-  properties:
-  - type: OpenAPI
-    url: openapi/ordo-recurring-payment-mandates.yml
-  - type: Overlay
-    url: overlays/ordo-recurring-payment-mandates-overlay.yaml
   - type: Documentation
     url: https://ordopay.com/products/vrp
   - type: APIReference
     url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
-- aid: ordo:ordo-account-data-ordo-hosted-api
-  name: Ordo Account Data (Ordo Hosted) API
-  description: >-
-    Ordo-hosted Account Information (AIS) and Account Verification — create and
-    manage account information consents, request and read account data, cancel
-    consents, and run account verification against supported institutions, with
-    Ordo hosting the end-user authorisation UX. 13 documented operations.
-  humanURL: https://ordopay.com/products/account/data
-  baseURL: https://test.api.ordopay.com/hosted
-  tags:
-  - Account Information
-  - Open Banking
-  - Account Verification
-  properties:
-  - type: OpenAPI
-    url: openapi/ordo-account-data-ordo-hosted.yml
   - type: Documentation
     url: https://ordopay.com/products/account/data
   - type: APIReference
     url: https://docs.myordo.com/docs/introduction-account-data
-- aid: ordo:ordo-account-data-client-hosted-api
-  name: Ordo Account Data (Client Hosted) API
-  description: >-
-    Client-hosted Account Information (AIS) and Account Verification — the same
-    consent, data-request and verification lifecycle as the Ordo-hosted variant,
-    but with the integrating client hosting the end-user authorisation UX and
-    initiating the consent flow. 15 documented operations.
-  humanURL: https://ordopay.com/products/account/verify
-  baseURL: https://test.api.ordopay.com/client
-  tags:
-  - Account Information
-  - Open Banking
-  - Account Verification
-  properties:
-  - type: OpenAPI
-    url: openapi/ordo-account-data-client-hosted.yml
-  - type: Overlay
-    url: overlays/ordo-account-data-client-hosted-overlay.yaml
   - type: Documentation
     url: https://ordopay.com/products/account/verify
   - type: APIReference
     url: https://docs.myordo.com/docs/client-hosted-account-data
-- aid: ordo:ordo-registry-manager-api
-  name: Ordo Registry Manager API
+  - type: APIReference
+    url: https://docs.myordo.com/docs/financial-institution
+- aid: ordo:ordo-account-data-ordo-hosted-api
+  name: Ordo Account Data - Ordo Hosted API
   description: >-
-    Bank account configuration / registry management — create, read and manage the
-    biller bank accounts into which collected payments settle. 3 documented
-    operations.
+    The Account Data - Ordo Hosted API from Ordo — 7 operation(s) for account data - ordo hosted.
   humanURL: https://ordopay.com/products/payments
-  baseURL: https://test.api.ordopay.com/registrymanager/v1
+  baseURL: https://test.api.ordopay.com/payments
   tags:
-  - Payments
-  - Configuration
-  - Biller Accounts
+  - Account Data - Ordo Hosted
   properties:
   - type: OpenAPI
-    url: openapi/ordo-registry-manager.yml
-  - type: Overlay
-    url: overlays/ordo-registry-manager-overlay.yaml
+    url: openapi/ordo-account-data-ordo-hosted-api-openapi.yml
   - type: Documentation
     url: https://ordopay.com/products/payments
   - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-single-payments
+  - type: Documentation
+    url: https://ordopay.com/products/vrp
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
+  - type: Documentation
+    url: https://ordopay.com/products/account/data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-account-data
+  - type: Documentation
+    url: https://ordopay.com/products/account/verify
+  - type: APIReference
+    url: https://docs.myordo.com/docs/client-hosted-account-data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/financial-institution
+- aid: ordo:ordo-account-verification-client-hosted-api
+  name: Ordo Account Verification - Client Hosted API
+  description: >-
+    The Account Verification - Client Hosted API from Ordo — 6 operation(s) for account verification -
+    client hosted.
+  humanURL: https://ordopay.com/products/payments
+  baseURL: https://test.api.ordopay.com/payments
+  tags:
+  - Account Verification - Client Hosted
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-account-verification-client-hosted-api-openapi.yml
+  - type: Documentation
+    url: https://ordopay.com/products/payments
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-single-payments
+  - type: Documentation
+    url: https://ordopay.com/products/vrp
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
+  - type: Documentation
+    url: https://ordopay.com/products/account/data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-account-data
+  - type: Documentation
+    url: https://ordopay.com/products/account/verify
+  - type: APIReference
+    url: https://docs.myordo.com/docs/client-hosted-account-data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/financial-institution
+- aid: ordo:ordo-account-verification-ordo-hosted-api
+  name: Ordo Account Verification - Ordo Hosted API
+  description: >-
+    The Account Verification - Ordo Hosted API from Ordo — 6 operation(s) for account verification - ordo
+    hosted.
+  humanURL: https://ordopay.com/products/payments
+  baseURL: https://test.api.ordopay.com/payments
+  tags:
+  - Account Verification - Ordo Hosted
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-account-verification-ordo-hosted-api-openapi.yml
+  - type: Documentation
+    url: https://ordopay.com/products/payments
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-single-payments
+  - type: Documentation
+    url: https://ordopay.com/products/vrp
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
+  - type: Documentation
+    url: https://ordopay.com/products/account/data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-account-data
+  - type: Documentation
+    url: https://ordopay.com/products/account/verify
+  - type: APIReference
+    url: https://docs.myordo.com/docs/client-hosted-account-data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/financial-institution
+- aid: ordo:ordo-bank-accounts-api
+  name: Ordo Bank accounts API
+  description: The Bank accounts API from Ordo — 3 operation(s) for bank accounts.
+  humanURL: https://ordopay.com/products/payments
+  baseURL: https://test.api.ordopay.com/payments
+  tags:
+  - Bank accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-bank-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://ordopay.com/products/payments
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-single-payments
+  - type: Documentation
+    url: https://ordopay.com/products/vrp
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
+  - type: Documentation
+    url: https://ordopay.com/products/account/data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-account-data
+  - type: Documentation
+    url: https://ordopay.com/products/account/verify
+  - type: APIReference
+    url: https://docs.myordo.com/docs/client-hosted-account-data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/financial-institution
+- aid: ordo:ordo-client-hosted-api
+  name: Ordo Client hosted API
+  description: The Client hosted API from Ordo — 4 operation(s) for client hosted.
+  humanURL: https://ordopay.com/products/payments
+  baseURL: https://test.api.ordopay.com/payments
+  tags:
+  - Client hosted
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-client-hosted-api-openapi.yml
+  - type: Documentation
+    url: https://ordopay.com/products/payments
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-single-payments
+  - type: Documentation
+    url: https://ordopay.com/products/vrp
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
+  - type: Documentation
+    url: https://ordopay.com/products/account/data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-account-data
+  - type: Documentation
+    url: https://ordopay.com/products/account/verify
+  - type: APIReference
+    url: https://docs.myordo.com/docs/client-hosted-account-data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/financial-institution
+- aid: ordo:ordo-create-a-mandate-api
+  name: Ordo Create a mandate API
+  description: The Create a mandate API from Ordo — 2 operation(s) for create a mandate.
+  humanURL: https://ordopay.com/products/payments
+  baseURL: https://test.api.ordopay.com/payments
+  tags:
+  - Create a mandate
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-create-a-mandate-api-openapi.yml
+  - type: Documentation
+    url: https://ordopay.com/products/payments
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-single-payments
+  - type: Documentation
+    url: https://ordopay.com/products/vrp
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
+  - type: Documentation
+    url: https://ordopay.com/products/account/data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-account-data
+  - type: Documentation
+    url: https://ordopay.com/products/account/verify
+  - type: APIReference
+    url: https://docs.myordo.com/docs/client-hosted-account-data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/financial-institution
+- aid: ordo:ordo-ordo-hosted-api
+  name: Ordo Ordo hosted API
+  description: The Ordo hosted API from Ordo — 8 operation(s) for ordo hosted.
+  humanURL: https://ordopay.com/products/payments
+  baseURL: https://test.api.ordopay.com/payments
+  tags:
+  - Ordo hosted
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-ordo-hosted-api-openapi.yml
+  - type: Documentation
+    url: https://ordopay.com/products/payments
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-single-payments
+  - type: Documentation
+    url: https://ordopay.com/products/vrp
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
+  - type: Documentation
+    url: https://ordopay.com/products/account/data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-account-data
+  - type: Documentation
+    url: https://ordopay.com/products/account/verify
+  - type: APIReference
+    url: https://docs.myordo.com/docs/client-hosted-account-data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/financial-institution
+- aid: ordo:ordo-retrieve-mandate-details-api
+  name: Ordo Retrieve mandate details API
+  description: >-
+    The Retrieve mandate details API from Ordo — 4 operation(s) for retrieve mandate details.
+  humanURL: https://ordopay.com/products/payments
+  baseURL: https://test.api.ordopay.com/payments
+  tags:
+  - Retrieve mandate details
+  properties:
+  - type: OpenAPI
+    url: openapi/ordo-retrieve-mandate-details-api-openapi.yml
+  - type: Documentation
+    url: https://ordopay.com/products/payments
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-single-payments
+  - type: Documentation
+    url: https://ordopay.com/products/vrp
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
+  - type: Documentation
+    url: https://ordopay.com/products/account/data
+  - type: APIReference
+    url: https://docs.myordo.com/docs/introduction-account-data
+  - type: Documentation
+    url: https://ordopay.com/products/account/verify
+  - type: APIReference
+    url: https://docs.myordo.com/docs/client-hosted-account-data
+  - type: APIReference
     url: https://docs.myordo.com/docs/financial-institution
 common:
+- type: Overlay
+  url: overlays/ordo-single-payments-overlay.yaml
+- type: Overlay
+  url: overlays/ordo-smart-request-manager-overlay.yaml
+- type: Overlay
+  url: overlays/ordo-recurring-payment-mandates-overlay.yaml
+- type: Overlay
+  url: overlays/ordo-account-data-client-hosted-overlay.yaml
+- type: Overlay
+  url: overlays/ordo-registry-manager-overlay.yaml
 - type: DomainSecurity
   url: security/ordo-domain-security.yml
 - type: AgenticAccess
