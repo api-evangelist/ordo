@@ -18,6 +18,18 @@ description: >-
   at ordopay.com remains live while the developer portal is now offline. Its API
   posture is documented here honestly from six OpenAPI 3.0.1 definitions harvested
   verbatim from the archived developer portal.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Payments
