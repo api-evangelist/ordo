@@ -307,6 +307,9 @@ apis:
   - type: APIReference
     url: https://docs.myordo.com/docs/financial-institution
 common:
+- type: CapabilityMap
+  url: capabilities/ordo-capability-edges.yml
+  name: Ordo Business Capability Map
 - type: Overlay
   url: overlays/ordo-single-payments-overlay.yaml
 - type: Overlay

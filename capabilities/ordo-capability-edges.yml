@@ -1,0 +1,55 @@
+slug: ordo
+provider: Ordo
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Client hosted
+  spec_file: ordo-client-hosted-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: '"Create a payment request with link", "Initiate payment request", "Withdraw a payment request"'
+  reason: Creates, initiates and withdraws payment requests over Open Banking payment initiation — payment
+    instruction capture and authorisation.
+- tag: Ordo hosted
+  spec_file: ordo-ordo-hosted-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: '"Create a new payment request that Ordo sends", "Withdraw a payment request sent via Ordo",
+    "Get single payment request"'
+  reason: Operations create, retrieve and withdraw Request-to-Pay payment requests, which is payment instruction
+    capture/authorisation on Faster Payments — payment initiation.
+- tag: Create a mandate
+  spec_file: ordo-create-a-mandate-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.75
+  evidence: POST /VRPMandate/sweeping — "Creates a new sweeping VRP Mandate"; schemas VRPControlParameters,
+    VRPMandatePostResponse
+  reason: Creating variable recurring payment mandates on UK Open Banking rails is capture of a payment
+    authorisation/instruction mandate, i.e. payment initiation within Payments & Card Management. Sub-capability
+    choice between initiation and real-time rails carries some ambiguity.
+- tag: Retrieve mandate details
+  spec_file: ordo-retrieve-mandate-details-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.7
+  evidence: '"Retrieves an existing VRP mandate", "Gets VRP Transactions for VRP Mandate and Participant
+    combo"'
+  reason: Read-side of the VRP mandate and transaction surface for open-banking payment initiation; same
+    capability as mandate creation, though purely retrieval makes the sub-capability slightly less certain.
