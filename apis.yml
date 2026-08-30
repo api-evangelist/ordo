@@ -171,6 +171,8 @@ apis:
   humanURL: https://ordopay.com/products/payments
   baseURL: https://test.api.ordopay.com/payments
   tags:
+  - Bank Accounts
+  tags_raw:
   - Bank accounts
   properties:
   - type: OpenAPI
