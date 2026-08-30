@@ -1,0 +1,1243 @@
+openapi: 3.2.0
+info:
+  title: Recurring Payment Mandates Retrieve mandate details API
+  version: v1
+servers:
+- url: https://test.api.ordopay.com/vrp/v1
+security:
+- apiKeyHeader: []
+- apiKeyQuery: []
+tags:
+- name: Retrieve mandate details
+paths:
+  /VRPMandate/{mandateId}:
+    get:
+      tags:
+      - Retrieve mandate details
+      summary: Retrieves an existing VRP mandate
+      description: Retrieves an existing VRP mandate
+      operationId: get-vrpmandate-mandateid
+      parameters:
+      - name: mandateId
+        in: path
+        description: VRP Mandate ID
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32. Format - int32. Format - int32. Participant ID
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/VRPMandateGetResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VRPMandateGetResponse'
+              example:
+                vrpMandate:
+                  vrpMandateId: string
+                  vrpMandateName: string
+                  vrpType: SWEEPING
+                  createdDate: string
+                  status: string
+                  validFromDate: string
+                  validToDate: string
+                  billerParticipantId: 0
+                  billerApprovedName: string
+                  billerReference: string
+                  billerAccountId: string
+                  payerParticipantId: 0
+                  payerAliasType: EMAIL
+                  payerAliasValue: string
+                  payerReference: string
+                  templateId: string
+                  payerRead: true
+                  psuAuthenticationMethods: string
+                  vrpControlParameters:
+                    maximumIndividualAmount: 0
+                    maximumIndividualAmountCurrency: string
+                    controlParameters:
+                    - amount: 0
+                      currency: string
+                      periodAlignment: string
+                      periodType: string
+                  updatedDate: string
+                  cancelledBy: string
+                  refundAccountRequired: true
+                vrpURLs:
+                  redirectURL: string
+                  cancelURL: string
+                  errorURL: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VRPMandateGetResponse'
+              example:
+                vrpMandate:
+                  vrpMandateId: string
+                  vrpMandateName: string
+                  vrpType: SWEEPING
+                  createdDate: string
+                  status: string
+                  validFromDate: string
+                  validToDate: string
+                  billerParticipantId: 0
+                  billerApprovedName: string
+                  billerReference: string
+                  billerAccountId: string
+                  payerParticipantId: 0
+                  payerAliasType: EMAIL
+                  payerAliasValue: string
+                  payerReference: string
+                  templateId: string
+                  payerRead: true
+                  psuAuthenticationMethods: string
+                  vrpControlParameters:
+                    maximumIndividualAmount: 0
+                    maximumIndividualAmountCurrency: string
+                    controlParameters:
+                    - amount: 0
+                      currency: string
+                      periodAlignment: string
+                      periodType: string
+                  updatedDate: string
+                  cancelledBy: string
+                  refundAccountRequired: true
+                vrpURLs:
+                  redirectURL: string
+                  cancelURL: string
+                  errorURL: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /VRPMandates:
+    get:
+      tags:
+      - Retrieve mandate details
+      summary: Gets all VRP mandates associated with a participant
+      description: Gets all VRP mandates associated with a participant
+      operationId: get-vrpmandates
+      parameters:
+      - name: PageNumber
+        in: query
+        description: Format - int32. Format - int32. Format - int32.
+        schema:
+          type: integer
+          format: int32
+      - name: PageSize
+        in: query
+        description: Format - int32. Format - int32. Format - int32.
+        schema:
+          type: integer
+          format: int32
+      - name: participantId
+        in: header
+        description: Format - int32. Format - int32. Format - int32. Participant ID.
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/VRPMandatesResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VRPMandatesResponse'
+              example:
+                vrpMandates:
+                - vrpMandateId: string
+                  vrpMandateName: string
+                  vrpType: SWEEPING
+                  createdDate: string
+                  status: string
+                  validFromDate: string
+                  validToDate: string
+                  billerParticipantId: 0
+                  billerApprovedName: string
+                  billerReference: string
+                  billerAccountId: string
+                  payerParticipantId: 0
+                  payerAliasType: EMAIL
+                  payerAliasValue: string
+                  payerReference: string
+                  templateId: string
+                  payerRead: true
+                  psuAuthenticationMethods: string
+                  vrpControlParameters:
+                    maximumIndividualAmount: 0
+                    maximumIndividualAmountCurrency: string
+                    controlParameters:
+                    - amount: 0
+                      currency: string
+                      periodAlignment: string
+                      periodType: string
+                  updatedDate: string
+                  cancelledBy: string
+                  refundAccountRequired: true
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VRPMandatesResponse'
+              example:
+                vrpMandates:
+                - vrpMandateId: string
+                  vrpMandateName: string
+                  vrpType: SWEEPING
+                  createdDate: string
+                  status: string
+                  validFromDate: string
+                  validToDate: string
+                  billerParticipantId: 0
+                  billerApprovedName: string
+                  billerReference: string
+                  billerAccountId: string
+                  payerParticipantId: 0
+                  payerAliasType: EMAIL
+                  payerAliasValue: string
+                  payerReference: string
+                  templateId: string
+                  payerRead: true
+                  psuAuthenticationMethods: string
+                  vrpControlParameters:
+                    maximumIndividualAmount: 0
+                    maximumIndividualAmountCurrency: string
+                    controlParameters:
+                    - amount: 0
+                      currency: string
+                      periodAlignment: string
+                      periodType: string
+                  updatedDate: string
+                  cancelledBy: string
+                  refundAccountRequired: true
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /VRPTransaction/{vrpTransactionId}:
+    get:
+      tags:
+      - Retrieve mandate details
+      summary: Gets a VRP Transaction
+      description: Gets a VRP Transaction
+      operationId: get-vrptransaction-vrptransactionid
+      parameters:
+      - name: vrpTransactionId
+        in: path
+        description: VRP Transaction ID
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32. Format - int32. Format - int32. Participant ID
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/VRPTransactionPostResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VRPTransactionPostResponse'
+              example:
+                vrpTransaction:
+                  vrpTransactionId: string
+                  vrpMandateId: string
+                  billerParticipantId: 0
+                  payerAliasType: EMAIL
+                  payerAliasValue: string
+                  amount: 0
+                  currency: string
+                  aspspTransactionId: string
+                  paymentDate: string
+                  status: string
+                  paymentStatus: string
+                  billerReference: string
+                  createdDate: string
+                  updatedDate: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VRPTransactionPostResponse'
+              example:
+                vrpTransaction:
+                  vrpTransactionId: string
+                  vrpMandateId: string
+                  billerParticipantId: 0
+                  payerAliasType: EMAIL
+                  payerAliasValue: string
+                  amount: 0
+                  currency: string
+                  aspspTransactionId: string
+                  paymentDate: string
+                  status: string
+                  paymentStatus: string
+                  billerReference: string
+                  createdDate: string
+                  updatedDate: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+  /VRPTransactions/{vrpMandateId}:
+    get:
+      tags:
+      - Retrieve mandate details
+      summary: 'Gets VRP Transactions for VRP Mandate
+
+        and Participant combo'
+      description: 'Gets VRP Transactions for VRP Mandate
+
+        and Participant combo'
+      operationId: get-vrptransactions-vrpmandateid
+      parameters:
+      - name: vrpMandateId
+        in: path
+        description: VRP Mandate ID
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        description: Format - int32. Format - int32. Format - int32. Page size
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageNumber
+        in: query
+        description: Format - int32. Format - int32. Format - int32. Page number
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: participantId
+        in: header
+        description: Format - int32. Format - int32. Format - int32. Participant ID
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/VRPTransactionPostResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VRPTransactionPostResponse'
+              example:
+                vrpTransaction:
+                  vrpTransactionId: string
+                  vrpMandateId: string
+                  billerParticipantId: 0
+                  payerAliasType: EMAIL
+                  payerAliasValue: string
+                  amount: 0
+                  currency: string
+                  aspspTransactionId: string
+                  paymentDate: string
+                  status: string
+                  paymentStatus: string
+                  billerReference: string
+                  createdDate: string
+                  updatedDate: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VRPTransactionPostResponse'
+              example:
+                vrpTransaction:
+                  vrpTransactionId: string
+                  vrpMandateId: string
+                  billerParticipantId: 0
+                  payerAliasType: EMAIL
+                  payerAliasValue: string
+                  amount: 0
+                  currency: string
+                  aspspTransactionId: string
+                  paymentDate: string
+                  status: string
+                  paymentStatus: string
+                  billerReference: string
+                  createdDate: string
+                  updatedDate: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '404':
+          description: Not Found
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                title: string
+                status: 0
+                detail: string
+                code: string
+                errors: {}
+                type: string
+                instance: string
+components:
+  schemas:
+    VRPMandatesResponse:
+      type: object
+      properties:
+        vrpMandates:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/VRPMandateResponse'
+      additionalProperties: false
+    VRPURLs:
+      type: object
+      properties:
+        redirectURL:
+          type:
+          - string
+          - 'null'
+        cancelURL:
+          type:
+          - string
+          - 'null'
+        errorURL:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    VRPTransactionPostResponse:
+      type: object
+      properties:
+        vrpTransaction:
+          $ref: '#/components/schemas/VRPTransactionResponse'
+      additionalProperties: false
+    VRPMandateGetResponse:
+      type: object
+      properties:
+        vrpMandate:
+          $ref: '#/components/schemas/VRPMandateResponse'
+        vrpURLs:
+          $ref: '#/components/schemas/VRPURLs'
+      additionalProperties: false
+    PayerAliasType:
+      enum:
+      - EMAIL
+      - PHONE
+      type: string
+    VRPMandateResponse:
+      type: object
+      properties:
+        vrpMandateId:
+          type:
+          - string
+          - 'null'
+        vrpMandateName:
+          type:
+          - string
+          - 'null'
+        vrpType:
+          $ref: '#/components/schemas/VRPType'
+        createdDate:
+          type: string
+          format: date-time
+        status:
+          type:
+          - string
+          - 'null'
+        validFromDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        validToDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        billerParticipantId:
+          type: integer
+          format: int32
+        billerApprovedName:
+          type:
+          - string
+          - 'null'
+        billerReference:
+          type:
+          - string
+          - 'null'
+        billerAccountId:
+          type:
+          - string
+          - 'null'
+        payerParticipantId:
+          type: integer
+          format: int32
+        payerAliasType:
+          $ref: '#/components/schemas/PayerAliasType'
+        payerAliasValue:
+          type:
+          - string
+          - 'null'
+        payerReference:
+          type:
+          - string
+          - 'null'
+        payerRead:
+          type: boolean
+        vrpControlParameters:
+          $ref: '#/components/schemas/VRPControlParameters'
+        updatedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        cancelledBy:
+          type:
+          - string
+          - 'null'
+        refundAccountRequired:
+          type: boolean
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    VRPTransactionResponse:
+      type: object
+      properties:
+        vrpTransactionId:
+          type:
+          - string
+          - 'null'
+        vrpMandateId:
+          type:
+          - string
+          - 'null'
+        billerParticipantId:
+          type: integer
+          format: int32
+        payerAliasType:
+          $ref: '#/components/schemas/PayerAliasType'
+        payerAliasValue:
+          type:
+          - string
+          - 'null'
+        amount:
+          type: number
+          format: double
+        currency:
+          type:
+          - string
+          - 'null'
+        aspspTransactionId:
+          type:
+          - string
+          - 'null'
+        paymentDate:
+          type: string
+          format: date-time
+        status:
+          type:
+          - string
+          - 'null'
+        paymentStatus:
+          type:
+          - string
+          - 'null'
+        billerReference:
+          type:
+          - string
+          - 'null'
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    VRPType:
+      enum:
+      - SWEEPING
+      - NONSWEEPING
+      type: string
+    OrdoValidationProblemDetails:
+      type: object
+      properties:
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          readOnly: true
+        type:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    VRPControlParameters:
+      required:
+      - maximumIndividualAmount
+      - maximumIndividualAmountCurrency
+      type: object
+      properties:
+        maximumIndividualAmount:
+          type: number
+          format: double
+        maximumIndividualAmountCurrency:
+          minLength: 1
+          type: string
+        controlParameters:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ControlParameter'
+      additionalProperties: false
+    ControlParameter:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currency:
+          type:
+          - string
+          - 'null'
+        periodAlignment:
+          type:
+          - string
+          - 'null'
+        periodType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
+  samples-enabled: true

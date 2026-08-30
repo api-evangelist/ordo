@@ -1,0 +1,2858 @@
+openapi: 3.2.0
+info:
+  title: Single Payments Ordo hosted API
+  version: v1
+servers:
+- url: https://test.api.ordopay.com/smartrequestmanager/v1
+security:
+- apiKeyHeader: []
+- apiKeyQuery: []
+tags:
+- name: Ordo hosted
+paths:
+  /smartRequests/newSmartRequestBDRLink:
+    post:
+      tags:
+      - Ordo hosted
+      summary: Create a payment request with link
+      description: 'Create a new payment request with a link.
+
+        This includes the creation of the payment request as well as returning a unique URL (bdRlink) for you to present to your customer.'
+      operationId: PostSmartRequestBDRAsync
+      requestBody:
+        description: Smart Request message object.
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/NewBDRSmartRequestMessage'
+            example:
+              bdrRedirectURL: string
+              bdrCancelURL: string
+              bdrErrorURL: string
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              billerParticipantId: 0
+              billerContactEmail: string
+              billerContactPhone: string
+              billerReference: string
+              billerAccountId: string
+              payerParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              payerReference: string
+              amountDue: 0
+              amountCurrency: GBP
+              dueDate: '2017-07-21T17:32:28Z'
+              expiryDate: '2017-07-21T17:32:28Z'
+              partialPaymentAllowed: true
+              dueDateExtensionsAllowed: true
+              partialPaymentsRemaining: 0
+              attachmentBatchId: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewBDRSmartRequestMessage'
+            example:
+              bdrRedirectURL: string
+              bdrCancelURL: string
+              bdrErrorURL: string
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              billerParticipantId: 0
+              billerContactEmail: string
+              billerContactPhone: string
+              billerReference: string
+              billerAccountId: string
+              payerParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              payerReference: string
+              amountDue: 0
+              amountCurrency: GBP
+              dueDate: '2017-07-21T17:32:28Z'
+              expiryDate: '2017-07-21T17:32:28Z'
+              partialPaymentAllowed: true
+              dueDateExtensionsAllowed: true
+              partialPaymentsRemaining: 0
+              attachmentBatchId: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/NewBDRSmartRequestMessage'
+            example:
+              bdrRedirectURL: string
+              bdrCancelURL: string
+              bdrErrorURL: string
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              billerParticipantId: 0
+              billerContactEmail: string
+              billerContactPhone: string
+              billerReference: string
+              billerAccountId: string
+              payerParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              payerReference: string
+              amountDue: 0
+              amountCurrency: GBP
+              dueDate: '2017-07-21T17:32:28Z'
+              expiryDate: '2017-07-21T17:32:28Z'
+              partialPaymentAllowed: true
+              dueDateExtensionsAllowed: true
+              partialPaymentsRemaining: 0
+              attachmentBatchId: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/NewBDRSmartRequestMessage'
+            example:
+              bdrRedirectURL: string
+              bdrCancelURL: string
+              bdrErrorURL: string
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              billerParticipantId: 0
+              billerContactEmail: string
+              billerContactPhone: string
+              billerReference: string
+              billerAccountId: string
+              payerParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              payerReference: string
+              amountDue: 0
+              amountCurrency: GBP
+              dueDate: '2017-07-21T17:32:28Z'
+              expiryDate: '2017-07-21T17:32:28Z'
+              partialPaymentAllowed: true
+              dueDateExtensionsAllowed: true
+              partialPaymentsRemaining: 0
+              attachmentBatchId: string
+      responses:
+        '201':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/NewBDRSmartRequestResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewBDRSmartRequestResponse'
+              example:
+                bdRlink: string
+                smartRequestId: string
+                creationDateTime: '2017-07-21T17:32:28Z'
+                status: BLOCKED
+                paymentStatus: FULLPAID
+                billerParticipantId: 0
+                billerContactEmail: string
+                billerContactPhone: string
+                billerReference: string
+                billerAccountId: string
+                payerParticipantId: 0
+                payerAliasType: EMAIL
+                payerAliasValue: 'Email : example@mail.com
+
+                  Phone : +countrycode 7712345678.'
+                payerReference: string
+                amountDue: 0
+                amountCurrency: GBP
+                dueDate: '2017-07-21T17:32:28Z'
+                expiryDate: '2017-07-21T17:32:28Z'
+                dueDateExtensionsAllowed: true
+                partialPaymentAllowed: true
+                partialPaymentsRemaining: 0
+                attachmentBatchId: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/NewBDRSmartRequestResponse'
+              example:
+                bdRlink: string
+                smartRequestId: string
+                creationDateTime: '2017-07-21T17:32:28Z'
+                status: BLOCKED
+                paymentStatus: FULLPAID
+                billerParticipantId: 0
+                billerContactEmail: string
+                billerContactPhone: string
+                billerReference: string
+                billerAccountId: string
+                payerParticipantId: 0
+                payerAliasType: EMAIL
+                payerAliasValue: 'Email : example@mail.com
+
+                  Phone : +countrycode 7712345678.'
+                payerReference: string
+                amountDue: 0
+                amountCurrency: GBP
+                dueDate: '2017-07-21T17:32:28Z'
+                expiryDate: '2017-07-21T17:32:28Z'
+                dueDateExtensionsAllowed: true
+                partialPaymentAllowed: true
+                partialPaymentsRemaining: 0
+                attachmentBatchId: string
+                refundAccountRequired: false
+                smartRequestUrls:
+                  bdrRedirectURL: https://www.myLink.com?customerID=24
+                  bdrCancelURL: https://www.myLink.com?customerID=24
+                  bdrErrorURL: https://www.myLink.com?customerID=24
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+  /smartRequests/{smartRequestId}:
+    get:
+      tags:
+      - Ordo hosted
+      summary: Get single payment request
+      description: Retrieve the details of a single specified payment request. Note - this information is also available via a webhook notification.
+      operationId: GetSmartRequestAsync
+      parameters:
+      - name: smartRequestId
+        in: path
+        description: System generated unique identifier of the smart request.
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32. System generated unique identifier of the participant.
+        schema:
+          type: integer
+          format: int32
+      - name: payerAliasType
+        in: header
+        description: PayerAliasType.
+        schema:
+          type: string
+      - name: payerAliasValue
+        in: header
+        description: PayerAliasValue.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetSmartRequestResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSmartRequestResponse'
+              example:
+                smartRequestId: string
+                threadId: string
+                creationDateTime: '2017-07-21T17:32:28Z'
+                status: BLOCKED
+                billerParticipantId: 0
+                billerApprovedName: string
+                billerContactEmail: string
+                billerContactPhone: string
+                billerReference: string
+                billerAccountId: string
+                billerAccountName: string
+                payerAliasType: EMAIL
+                payerAliasValue: 'Email : example@mail.com. or
+
+                  Phone : +countrycode 7712345678.'
+                payerParticipantId: 0
+                payerReference: string
+                payerLastAccessed: '2017-07-21T17:32:28Z'
+                billerLastAccessed: '2017-07-21T17:32:28Z'
+                amountDue: 0
+                amountCurrency: GBP
+                amountPaid: 0
+                paymentStatus: FULLPAID
+                dueDate: '2017-07-21T17:32:28Z'
+                dueDateExtensionsAllowed: true
+                expiryDate: '2017-07-21T17:32:28Z'
+                extensionDateRequested: true
+                requestedExtensionDate: '2017-07-21T17:32:28Z'
+                partialPaymentAllowed: true
+                partialPaymentsRemaining: 0
+                declineReasonCode: string
+                declineReasonText: string
+                withdrawReasonCode: string
+                withdrawReasonText: string
+                paymentInProgress: true
+                smartRequestMessages:
+                - smartRequestMessageId: string
+                  senderParticipantId: 0
+                  recipientParticipantId: 0
+                  messageType: REQUESTTOPAY
+                  messageDateTime: '2017-07-21T17:32:28Z'
+                  messageBody: string
+                  documentBatchId:
+                  - string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetSmartRequestResponse'
+              example:
+                smartRequestId: string
+                threadId: string
+                creationDateTime: '2017-07-21T17:32:28Z'
+                status: BLOCKED
+                billerParticipantId: 0
+                billerApprovedName: string
+                billerContactEmail: string
+                billerContactPhone: string
+                billerReference: string
+                billerAccountId: string
+                billerAccountName: string
+                payerAliasType: EMAIL
+                payerAliasValue: 'Email : example@mail.com. or
+
+                  Phone : +countrycode 7712345678.'
+                payerParticipantId: 0
+                payerReference: string
+                payerLastAccessed: '2017-07-21T17:32:28Z'
+                billerLastAccessed: '2017-07-21T17:32:28Z'
+                amountDue: 0
+                amountCurrency: GBP
+                amountPaid: 0
+                paymentStatus: FULLPAID
+                dueDate: '2017-07-21T17:32:28Z'
+                dueDateExtensionsAllowed: true
+                expiryDate: '2017-07-21T17:32:28Z'
+                extensionDateRequested: true
+                requestedExtensionDate: '2017-07-21T17:32:28Z'
+                partialPaymentAllowed: true
+                partialPaymentsRemaining: 0
+                declineReasonCode: string
+                declineReasonText: string
+                withdrawReasonCode: string
+                withdrawReasonText: string
+                paymentInProgress: true
+                smartRequestMessages:
+                - smartRequestMessageId: string
+                  senderParticipantId: 0
+                  recipientParticipantId: 0
+                  messageType: REQUESTTOPAY
+                  messageDateTime: '2017-07-21T17:32:28Z'
+                  messageBody: string
+                  documentBatchId:
+                  - string
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+  /smartRequests/smartRequestMessages:
+    get:
+      tags:
+      - Ordo hosted
+      summary: Get all payment requests
+      description: Retrieve the details of all payment requests for a specified biller participant id.  Note - this information is also available via a webhook notification per payment request.
+      operationId: GetSmartRequestsAsync
+      parameters:
+      - name: participantId
+        in: header
+        description: Format - int32. System generated unique identifier of the participant.
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetSmartRequestsResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSmartRequestsResponse'
+              example:
+                participantId: 0
+                smartRequestDetails:
+                - id: string
+                  threadId: string
+                  creationDateTime: string
+                  updatedDateTime: '2017-07-21T17:32:28Z'
+                  status: BLOCKED
+                  billerParticipantId: 0
+                  billerApprovedName: string
+                  billerReference: string
+                  billerAccountName: string
+                  payerAliasType: EMAIL
+                  payerAliasValue: 'Email : example@mail.com. or
+
+                    Phone : +countrycode 7712345678.'
+                  payerParticipantId: 0
+                  payerReference: string
+                  amountDue: 0
+                  amountCurrency: GBP
+                  amountPaid: 0
+                  paymentStatus: FULLPAID
+                  dueDate: '2017-07-21T17:32:28Z'
+                  extensionDateRequested: true
+                  paymentInProgress: true
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetSmartRequestsResponse'
+              example:
+                participantId: 0
+                smartRequestDetails:
+                - id: string
+                  threadId: string
+                  creationDateTime: string
+                  updatedDateTime: '2017-07-21T17:32:28Z'
+                  status: BLOCKED
+                  billerParticipantId: 0
+                  billerApprovedName: string
+                  billerReference: string
+                  billerAccountName: string
+                  payerAliasType: EMAIL
+                  payerAliasValue: 'Email : example@mail.com. or
+
+                    Phone : +countrycode 7712345678.'
+                  payerParticipantId: 0
+                  payerReference: string
+                  amountDue: 0
+                  amountCurrency: GBP
+                  amountPaid: 0
+                  paymentStatus: FULLPAID
+                  dueDate: '2017-07-21T17:32:28Z'
+                  extensionDateRequested: true
+                  paymentInProgress: true
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+  /smartRequests/withdrawSmartRequestMessageBDR:
+    post:
+      tags:
+      - Ordo hosted
+      summary: Withdraw a biller delivered payment request
+      description: Withdraw a biller delivered payment request if it is no longer needed.
+      operationId: PostWithdrawSmartRequestBDRAsync
+      requestBody:
+        description: Withdraw smart request object.
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/WithdrawSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              withdrawReasonCode: string
+              withdrawReasonText: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WithdrawSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              withdrawReasonCode: string
+              withdrawReasonText: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/WithdrawSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              withdrawReasonCode: string
+              withdrawReasonText: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/WithdrawSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              withdrawReasonCode: string
+              withdrawReasonText: string
+      responses:
+        '201':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WithdrawSmartRequestMessageResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WithdrawSmartRequestMessageResponse'
+              example:
+                senderParticipantId: 0
+                recipientParticipantId: 0
+                payerAliasType: EMAIL
+                payerAliasValue: 'Email : example@mail.com
+
+                  Phone : +countrycode 7712345678.'
+                smartRequestId: string
+                messageType: REQUESTTOPAY
+                withdrawReasonCode: string
+                withdrawReasonText: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WithdrawSmartRequestMessageResponse'
+              example:
+                senderParticipantId: 0
+                recipientParticipantId: 0
+                payerAliasType: EMAIL
+                payerAliasValue: 'Email : example@mail.com
+
+                  Phone : +countrycode 7712345678.'
+                smartRequestId: string
+                messageType: REQUESTTOPAY
+                withdrawReasonCode: string
+                withdrawReasonText: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+  /smartRequests/newSmartRequestMessage:
+    post:
+      tags:
+      - Ordo hosted
+      summary: Create a new payment request that Ordo sends
+      description: 'Create a new payment request.
+
+        This includes the Ordo platform delivering the request for payment via email or SMS.'
+      operationId: PostSmartRequestAsync
+      requestBody:
+        description: Smart Request message object.
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/NewSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              billerParticipantId: 0
+              billerContactEmail: string
+              billerContactPhone: string
+              billerReference: string
+              billerAccountId: string
+              payerParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              payerReference: string
+              amountDue: 0
+              amountCurrency: GBP
+              dueDate: '2017-07-21T17:32:28Z'
+              expiryDate: '2017-07-21T17:32:28Z'
+              partialPaymentAllowed: true
+              dueDateExtensionsAllowed: true
+              partialPaymentsRemaining: 0
+              attachmentBatchId: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              billerParticipantId: 0
+              billerContactEmail: string
+              billerContactPhone: string
+              billerReference: string
+              billerAccountId: string
+              payerParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              payerReference: string
+              amountDue: 0
+              amountCurrency: GBP
+              dueDate: '2017-07-21T17:32:28Z'
+              expiryDate: '2017-07-21T17:32:28Z'
+              partialPaymentAllowed: true
+              dueDateExtensionsAllowed: true
+              partialPaymentsRemaining: 0
+              attachmentBatchId: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/NewSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              billerParticipantId: 0
+              billerContactEmail: string
+              billerContactPhone: string
+              billerReference: string
+              billerAccountId: string
+              payerParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              payerReference: string
+              amountDue: 0
+              amountCurrency: GBP
+              dueDate: '2017-07-21T17:32:28Z'
+              expiryDate: '2017-07-21T17:32:28Z'
+              partialPaymentAllowed: true
+              dueDateExtensionsAllowed: true
+              partialPaymentsRemaining: 0
+              attachmentBatchId: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/NewSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              billerParticipantId: 0
+              billerContactEmail: string
+              billerContactPhone: string
+              billerReference: string
+              billerAccountId: string
+              payerParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              payerReference: string
+              amountDue: 0
+              amountCurrency: GBP
+              dueDate: '2017-07-21T17:32:28Z'
+              expiryDate: '2017-07-21T17:32:28Z'
+              partialPaymentAllowed: true
+              dueDateExtensionsAllowed: true
+              partialPaymentsRemaining: 0
+              attachmentBatchId: string
+      responses:
+        '201':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/NewSmartRequestResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewSmartRequestResponse'
+              example:
+                smartRequestId: string
+                creationDateTime: '2017-07-21T17:32:28Z'
+                status: BLOCKED
+                paymentStatus: FULLPAID
+                billerParticipantId: 0
+                billerContactEmail: string
+                billerContactPhone: string
+                billerReference: string
+                billerAccountId: string
+                payerParticipantId: 0
+                payerAliasType: EMAIL
+                payerAliasValue: 'Email : example@mail.com
+
+                  Phone : +countrycode 7712345678.'
+                payerReference: string
+                amountDue: 0
+                amountCurrency: GBP
+                dueDate: '2017-07-21T17:32:28Z'
+                expiryDate: '2017-07-21T17:32:28Z'
+                dueDateExtensionsAllowed: true
+                partialPaymentAllowed: true
+                partialPaymentsRemaining: 0
+                attachmentBatchId: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/NewSmartRequestResponse'
+              example:
+                smartRequestId: string
+                creationDateTime: '2017-07-21T17:32:28Z'
+                status: BLOCKED
+                paymentStatus: FULLPAID
+                billerParticipantId: 0
+                billerContactEmail: string
+                billerContactPhone: string
+                billerReference: string
+                billerAccountId: string
+                payerParticipantId: 0
+                payerAliasType: EMAIL
+                payerAliasValue: 'Email : example@mail.com
+
+                  Phone : +countrycode 7712345678.'
+                payerReference: string
+                amountDue: 0
+                amountCurrency: GBP
+                dueDate: '2017-07-21T17:32:28Z'
+                expiryDate: '2017-07-21T17:32:28Z'
+                dueDateExtensionsAllowed: true
+                partialPaymentAllowed: true
+                partialPaymentsRemaining: 0
+                attachmentBatchId: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+  /smartRequests/withdrawSmartRequestMessage:
+    post:
+      tags:
+      - Ordo hosted
+      summary: Withdraw a payment request sent via Ordo
+      description: Withdraw a payment request that was sent via Ordo if it is no longer needed.
+      operationId: PostWithdrawSmartRequestAsync
+      requestBody:
+        description: Withdraw smart request object.
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/WithdrawSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              withdrawReasonCode: string
+              withdrawReasonText: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WithdrawSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              withdrawReasonCode: string
+              withdrawReasonText: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/WithdrawSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              withdrawReasonCode: string
+              withdrawReasonText: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/WithdrawSmartRequestMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              payerAliasType: EMAIL
+              payerAliasValue: 'Email : example@mail.com
+
+                Phone : +countrycode 7712345678.'
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              withdrawReasonCode: string
+              withdrawReasonText: string
+      responses:
+        '201':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/WithdrawSmartRequestMessageResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WithdrawSmartRequestMessageResponse'
+              example:
+                senderParticipantId: 0
+                recipientParticipantId: 0
+                payerAliasType: EMAIL
+                payerAliasValue: 'Email : example@mail.com
+
+                  Phone : +countrycode 7712345678.'
+                smartRequestId: string
+                messageType: REQUESTTOPAY
+                withdrawReasonCode: string
+                withdrawReasonText: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/WithdrawSmartRequestMessageResponse'
+              example:
+                senderParticipantId: 0
+                recipientParticipantId: 0
+                payerAliasType: EMAIL
+                payerAliasValue: 'Email : example@mail.com
+
+                  Phone : +countrycode 7712345678.'
+                smartRequestId: string
+                messageType: REQUESTTOPAY
+                withdrawReasonCode: string
+                withdrawReasonText: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+  /smartRequests/grantExtensionMessage:
+    post:
+      tags:
+      - Ordo hosted
+      summary: Agree an extension request
+      description: Allows an extension to the due date for a payment request when asked for by the payer.  Note, this is only relevant if you chose to allow extension requests when creating payment requests sent via Ordo.
+      operationId: PostSmartRequestMessagesGrantDueDateAsync
+      requestBody:
+        description: Grant extension message object.
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/GrantExtensionMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              allowFurtherExtensionRequests: 'Yes'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GrantExtensionMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              allowFurtherExtensionRequests: 'Yes'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GrantExtensionMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              allowFurtherExtensionRequests: 'Yes'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GrantExtensionMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              allowFurtherExtensionRequests: 'Yes'
+      responses:
+        '201':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GrantExtensionMessageResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GrantExtensionMessageResponse'
+              example:
+                senderParticipantId: 0
+                recipientParticipantId: 0
+                smartRequestId: string
+                messageType: REQUESTTOPAY
+                allowFurtherExtensionRequests: 'Yes'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GrantExtensionMessageResponse'
+              example:
+                senderParticipantId: 0
+                recipientParticipantId: 0
+                smartRequestId: string
+                messageType: REQUESTTOPAY
+                allowFurtherExtensionRequests: 'Yes'
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+  /smartRequests/declineExtensionMessage:
+    post:
+      tags:
+      - Ordo hosted
+      summary: Decline an extension request
+      description: Decline a customer's request for an extension to the due date of a payment request.  Note, this is only relevant if you chose to allow extension requests when creating send via Ordo requests.
+      operationId: PostSmartRequestMessagesDeclineDueDateAsync
+      requestBody:
+        description: Decline extension message object.
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/DeclineExtensionMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              allowFurtherExtensionRequests: 'Yes'
+              billerExtensionDate: '2017-07-21T17:32:28Z'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeclineExtensionMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              allowFurtherExtensionRequests: 'Yes'
+              billerExtensionDate: '2017-07-21T17:32:28Z'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DeclineExtensionMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              allowFurtherExtensionRequests: 'Yes'
+              billerExtensionDate: '2017-07-21T17:32:28Z'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/DeclineExtensionMessage'
+            example:
+              senderParticipantId: 0
+              recipientParticipantId: 0
+              smartRequestId: string
+              messageType: REQUESTTOPAY
+              allowFurtherExtensionRequests: 'Yes'
+              billerExtensionDate: '2017-07-21T17:32:28Z'
+      responses:
+        '201':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeclineExtensionMessageResponse'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeclineExtensionMessageResponse'
+              example:
+                senderParticipantId: 0
+                recipientParticipantId: 0
+                smartRequestId: string
+                messageType: REQUESTTOPAY
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeclineExtensionMessageResponse'
+              example:
+                senderParticipantId: 0
+                recipientParticipantId: 0
+                smartRequestId: string
+                messageType: REQUESTTOPAY
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+components:
+  schemas:
+    GrantExtensionMessageResponse:
+      type: object
+      properties:
+        senderParticipantId:
+          type: integer
+          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
+          format: int32
+        recipientParticipantId:
+          type: integer
+          description: Gets or sets the property. The payerparticipant is identified as the recipient of this message type.
+          format: int32
+        smartRequestId:
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart request transaction.
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
+          type: string
+          description: 'Gets or sets the property. The message type needs to be EXTENSIONGRANTED.
+
+            <para>
+
+            EXTENSIONGRANTED - Indicates that the Biller has an granted extension to the due date, based on request from Payer.
+
+            </para>'
+        allowFurtherExtensionRequests:
+          enum:
+          - 'Yes'
+          - 'No'
+          type: string
+          description: Gets or sets the property. Indicates if the Biller allows further extension requests for the due date of the Smart Request.
+      description: Class GrantDueDateResponse.
+    DeclineExtensionMessageResponse:
+      type: object
+      properties:
+        senderParticipantId:
+          type: integer
+          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
+          format: int32
+        recipientParticipantId:
+          type: integer
+          description: Gets or sets the property. The Payerparticipant is identified as the recipient of this message type.
+          format: int32
+        smartRequestId:
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart Request transaction.
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
+          type: string
+          description: 'Gets or sets the property. The message type needs to be EXTENSIONDECLINED.
+
+            <para>
+
+            EXTENSIONDECLINED - Indicates that the Biller declines the due date extension request from the payer.
+
+            </para>'
+      description: class Decline Extension Message.
+    NewBDRSmartRequestResponse:
+      type: object
+      properties:
+        bdRlink:
+          type: string
+          description: Gets or sets the property. Refers to the Biller Delivered Request.
+        smartRequestId:
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart request.
+        creationDateTime:
+          type: string
+          description: Gets or sets the property. Date and time of creation of Smart request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        status:
+          enum:
+          - BLOCKED
+          - CLOSED
+          - DECLINED
+          - OPEN
+          - PENDING
+          - WITHDRWN
+          - EXPIRED
+          type: string
+          description: 'Gets or sets the property. Refers to status of Smart request being created.
+
+            <para>
+
+            OPEN - Status is Open, if the recipient of the request is already available within Smart request.
+
+            PENDING - Status is Pending, if the recipient of the request does not exist within the system.
+
+            BLOCKED - Status could be Blocked, if the Biller is blocked.
+
+            </para>'
+        paymentStatus:
+          enum:
+          - FULLPAID
+          - PARTPAID
+          - UNPAID
+          type: string
+          description: "Gets or sets the property. Status of payment is set as below:\n<para>\n UNPAID - 'Unpaid' - when a Smart request is created, the status is Unpaid.\n</para>"
+        billerParticipantId:
+          type: integer
+          description: Gets or sets the property. Unique identifier of the Biller.
+          format: int32
+        billerContactEmail:
+          type: string
+          description: Gets or sets the property. Contact email of the Biller.
+        billerContactPhone:
+          type: string
+          description: Gets or sets the property. Contact phone number of the Biller.
+        billerReference:
+          type: string
+          description: Gets or sets the property. Reference information provided by the Biller to the Payer.
+        billerAccountId:
+          type: string
+          description: Gets or sets the property. Unique identifier for the Biller account.
+        payerParticipantId:
+          type: integer
+          description: Gets or sets the property. Refers to the payer within a Smart request transaction. Unique identifier of the Payer.
+          format: int32
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com
+
+            Phone : +countrycode 7712345678.'
+        payerReference:
+          type: string
+          description: Gets or sets the property. Reference information provided by the Payer to the Biller.
+        amountDue:
+          type: number
+          description: Gets or sets the property. Total amount to be paid by the Payer to the Biller in the Smart Request.
+          format: double
+        amountCurrency:
+          enum:
+          - GBP
+          type: string
+          description: 'Gets or sets the property. Currency of the payment in the Smart Request. For this release it should be set to GBP.
+
+            <para>
+
+            ''GBP'' - ''British Pound''.
+
+            </para>'
+        dueDate:
+          type: string
+          description: Gets or sets the property. Refers to the date by which the complete payment needs to be made by the Payer to the Biller in a Smart Request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        expiryDate:
+          type: string
+          description: Gets or sets the property. Date on which the Smart Request expires.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        dueDateExtensionsAllowed:
+          type: boolean
+          description: Gets or sets the property. Indicates whether an extension to the original due date is allowed within a Smart Request.
+        partialPaymentAllowed:
+          type: boolean
+          description: 'Gets or sets the property. Indicates if payment of the Smart Request can be made in partial amounts.
+
+            This option can be chosen by the Biller when creating the Smart Request.'
+        partialPaymentsRemaining:
+          type: integer
+          description: Gets or sets the property. Indicates the remaining number of partial payments allowed for the Smart Request, if partial payments are set to be allowed.
+          format: int32
+        attachmentBatchId:
+          type: string
+          description: Gets or sets the property. Unique identifier of the Batch containing documents attached to the Smart Request. A Batch can hold multiple documents.
+        refundAccountRequired:
+          type: boolean
+        smartRequestUrls:
+          type: object
+          properties:
+            bdrRedirectURL:
+              type: string
+            bdrCancelURL:
+              type: string
+            bdrErrorURL:
+              type: string
+      description: Class NewBDRSmartRequestResponse.
+    GetSmartRequestResponse:
+      type: object
+      properties:
+        smartRequestId:
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart Request transaction.
+        threadId:
+          type: string
+          description: Gets or sets the property. Unique identifier of the thread.
+        creationDateTime:
+          type: string
+          description: Gets or sets the property. Date and time of creation of the Smart Request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        status:
+          enum:
+          - BLOCKED
+          - CLOSED
+          - DECLINED
+          - OPEN
+          - PENDING
+          - WITHDRWN
+          - EXPIRED
+          type: string
+          description: 'Gets or sets the property. Status of the Smart Request retrieved. Blocked Smart Requests are excluded.
+
+            <para>
+
+            CLOSED  - Status is Closed. Status could be set to Closed during any of the below scenarios:
+
+            (i) After Smart Requests are marked as Paid.
+
+            (ii) After the Biller withdraws a Smart Request.
+
+            DECLINED  - Status is Declined,  when the Payer declines a Smart Request.
+
+            OPEN  - Status is Open, when a Smart Request is created and the recipient of the request is registered in the system.
+
+            PENDING  - Status is Pending, when a Smart Request is created and the recipient of the request does not exist within the system.
+
+            WITHDRWN  - Status is Withdrawn, when the Biller withdraws the Smart Request.
+
+            </para>'
+        billerParticipantId:
+          type: integer
+          description: Gets or sets the property. Unique identifier of the Biller.
+          format: int32
+        billerApprovedName:
+          type: string
+          description: Gets or sets the property. Approved name of the Biller.
+        billerContactEmail:
+          type: string
+          description: Gets or sets the property. Contact email of the Biller.
+        billerContactPhone:
+          type: string
+          description: Gets or sets the property. Contact phone number of the Biller.
+        billerReference:
+          type: string
+          description: Gets or sets the property. Reference information provided by the Biller to the Payer.
+        billerAccountId:
+          type: string
+          description: Gets or sets the property. Unique identifier for the Biller account.
+        billerAccountName:
+          type: string
+          description: Gets or sets the property. Name of the Biller account.
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com. or
+
+            Phone : +countrycode 7712345678.'
+        payerParticipantId:
+          type: integer
+          description: Gets or sets the property. Unique identifier of the Payer.
+          format: int32
+        payerReference:
+          type: string
+          description: Gets or sets the property. Reference information provided by the Payer to the Biller.
+        payerLastAccessed:
+          type: string
+          description: Gets or sets the property. Last date and time that the Payer accessed the Smart Request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        billerLastAccessed:
+          type: string
+          description: Gets or sets the property. Last date and time that the Biller accessed the Smart Request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        amountDue:
+          type: number
+          description: Gets or sets the property. Total amount to be paid by the Payer to the Biller in the Smart Request.
+          format: double
+        amountCurrency:
+          enum:
+          - GBP
+          type: string
+          description: 'Gets or sets the property. Currency of the payment in the Smart Request. For this release it should be set to GBP.
+
+            <para>
+
+            GBP - British Pound.
+
+            </para>'
+        amountPaid:
+          type: number
+          description: Gets or sets the property. Amount paid by the Payer to the Biller either in full or in parts within a Smart Request.
+          format: double
+        paymentStatus:
+          enum:
+          - FULLPAID
+          - PARTPAID
+          - UNPAID
+          type: string
+          description: "Gets or sets the property. Status of the payment made by the Payer.\n<para>\nFULLPAID - 'Fully Paid' - when the payer pays the entire outstanding amount in a request.\nPARTPAID  - 'Partially Paid' -  when the payer pays only a part of the outstanding amount in a request.\n UNPAID - 'Unpaid' - when a Smart request is created, the status is Unpaid.\n</para>"
+        dueDate:
+          type: string
+          description: Gets or sets the property. Date by which the complete payment needs to be made by the Payer to the Biller in a Smart Request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        dueDateExtensionsAllowed:
+          type: boolean
+          description: Gets or sets the property. Indicates whether an extension to the original due date is allowed for the Smart Request.
+        expiryDate:
+          type: string
+          description: Gets or sets the property. Date on which the Smart Request expires.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        extensionDateRequested:
+          type: boolean
+          description: Gets or sets the property. Indicates whether an extension to the original due date is allowed within a Smart Request.
+        requestedExtensionDate:
+          type: string
+          description: Gets or sets the property. New date the payer has requested for an extension to the original due date.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        partialPaymentAllowed:
+          type: boolean
+          description: Gets or sets the property. Indicates if payment of the Smart Request can be made in partial amounts. This option can be chosen by the Biller when creating the Smart Request.
+        partialPaymentsRemaining:
+          type: number
+          description: Gets or sets the property. Indicates the remaining number of partial payments allowed for the Smart Requests, if partial payments are set to be allowed.
+          format: double
+        declineReasonCode:
+          type: string
+          description: Gets or sets the property. Reason code given by the payer for declining the Smart Request.
+        declineReasonText:
+          type: string
+          description: Gets or sets the property. Description text of the selected decline reason.
+        withdrawReasonCode:
+          type: string
+          description: Gets or sets the property. Reason code for withdrawing the Smart Request.
+        withdrawReasonText:
+          type: string
+          description: Gets or sets the property. Description text of the selected withdraw reason code.
+        paymentInProgress:
+          type: boolean
+          description: Gets or sets the property. Indicates if the payment is in progress for a Smart Request.
+        smartRequestMessages:
+          uniqueItems: false
+          type: array
+          items:
+            $ref: '#/components/schemas/SmartRequestMessageTypes'
+          description: Gets or sets the property. Retrieves Smart request messages associated with the Smart request.
+      description: Class GetSmartRequestResponse.
+    NewSmartRequestResponse:
+      type: object
+      properties:
+        smartRequestId:
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart request.
+        creationDateTime:
+          type: string
+          description: Gets or sets the property. Date and time of creation of Smart request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        status:
+          enum:
+          - BLOCKED
+          - CLOSED
+          - DECLINED
+          - OPEN
+          - PENDING
+          - WITHDRWN
+          - EXPIRED
+          type: string
+          description: 'Gets or sets the property. Refers to status of Smart request being created.
+
+            <para>
+
+            OPEN - Status is Open, if the recipient of the request is already available within Smart request.
+
+            PENDING - Status is Pending, if the recipient of the request does not exist within the system.
+
+            BLOCKED - Status could be Blocked, if the Biller is blocked.
+
+            </para>'
+        paymentStatus:
+          enum:
+          - FULLPAID
+          - PARTPAID
+          - UNPAID
+          type: string
+          description: "Gets or sets the property. Status of payment is set as below:\n<para>\n UNPAID - 'Unpaid' - when a Smart request is created, the status is Unpaid.\n</para>"
+        billerParticipantId:
+          type: integer
+          description: Gets or sets the property. Unique identifier of the Biller.
+          format: int32
+        billerContactEmail:
+          type: string
+          description: Gets or sets the property. Contact email of the Biller.
+        billerContactPhone:
+          type: string
+          description: Gets or sets the property. Contact phone number of the Biller.
+        billerReference:
+          type: string
+          description: Gets or sets the property. Reference information provided by the Biller to the Payer.
+        billerAccountId:
+          type: string
+          description: Gets or sets the property. Unique identifier for the Biller account.
+        payerParticipantId:
+          type: integer
+          description: Gets or sets the property. Refers to the payer within a Smart request transaction. Unique identifier of the Payer.
+          format: int32
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com
+
+            Phone : +countrycode 7712345678.'
+        payerReference:
+          type: string
+          description: Gets or sets the property. Reference information provided by the Payer to the Biller.
+        amountDue:
+          type: number
+          description: Gets or sets the property. Total amount to be paid by the Payer to the Biller in the Smart Request.
+          format: double
+        amountCurrency:
+          enum:
+          - GBP
+          type: string
+          description: 'Gets or sets the property. Currency of the payment in the Smart Request. For this release it should be set to GBP.
+
+            <para>
+
+            ''GBP'' - ''British Pound''.
+
+            </para>'
+        dueDate:
+          type: string
+          description: Gets or sets the property. Refers to the date by which the complete payment needs to be made by the Payer to the Biller in a Smart Request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        expiryDate:
+          type: string
+          description: Gets or sets the property. Date on which the Smart Request expires.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        dueDateExtensionsAllowed:
+          type: boolean
+          description: Gets or sets the property. Indicates whether an extension to the original due date is allowed within a Smart Request.
+        partialPaymentAllowed:
+          type: boolean
+          description: 'Gets or sets the property. Indicates if payment of the Smart Request can be made in partial amounts.
+
+            This option can be chosen by the Biller when creating the Smart Request.'
+        partialPaymentsRemaining:
+          type: integer
+          description: Gets or sets the property. Indicates the remaining number of partial payments allowed for the Smart Request, if partial payments are set to be allowed.
+          format: int32
+        attachmentBatchId:
+          type: string
+          description: Gets or sets the property. Unique identifier of the Batch containing documents attached to the Smart Request. A Batch can hold multiple documents.
+      description: Class NewSmartRequestResponse.
+    WithdrawSmartRequestMessage:
+      required:
+      - senderParticipantId
+      - smartRequestId
+      - withdrawReasonCode
+      - withdrawReasonText
+      type: object
+      properties:
+        senderParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
+          format: int32
+        recipientParticipantId:
+          type: integer
+          description: Gets or sets the property. The Payerparticipant is identified as the recipient of this message type.
+          format: int32
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com
+
+            Phone : +countrycode 7712345678.'
+        smartRequestId:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart Request transaction.
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
+          type: string
+          description: 'Gets or sets the property. The message type needs to be ''WITHDRAW''.
+
+            <para>
+
+            WITHDRAW - Indicates that the Biller withdraws the Smart Request.
+
+            </para>'
+        withdrawReasonCode:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Reason code for withdrawing the Smart Request.
+        withdrawReasonText:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Description text of the selected withdraw reason code.
+      description: Class Withdraw Smart Request.
+    GetSmartRequestsResponse:
+      type: object
+      properties:
+        participantId:
+          type: integer
+          description: Gets or sets the property. Refers to unique identifier of the Participant.
+          format: int32
+        smartRequestDetails:
+          uniqueItems: false
+          type: array
+          items:
+            $ref: '#/components/schemas/SmartRequestDetails'
+          description: Gets or sets the property. Refers to a list containing the information for each Smart Request retrieved.
+      description: Class GetSmartRequestsResponse.
+    GrantExtensionMessage:
+      required:
+      - senderParticipantId
+      - recipientParticipantId
+      - smartRequestId
+      type: object
+      properties:
+        senderParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
+          format: int32
+        recipientParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. The payerparticipant is identified as the recipient of this message type.
+          format: int32
+        smartRequestId:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart request transaction.
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
+          type: string
+          description: 'Gets or sets the property. The message type needs to be EXTENSIONGRANTED.
+
+            <para>
+
+            EXTENSIONGRANTED - Indicates that the Biller has granted an extension to the due date, based on the request from the Payer.
+
+            </para>'
+        allowFurtherExtensionRequests:
+          enum:
+          - 'Yes'
+          - 'No'
+          type: string
+          description: Gets or sets the property. Indicates if the Biller allows further extension requests for the due date of the Smart Request.
+      description: Class GrantDueDateRequest.
+    SmartRequestDetails:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart Request transaction.
+        threadId:
+          type: string
+          description: Gets or sets the property. Unique identifier of the thread.
+        creationDateTime:
+          type: string
+          description: 'Gets or sets the property. Date and time of creation of the Smart Request.
+
+            <example>
+
+            2017-07-21T17:32:28Z
+
+            </example>'
+          format: date-time
+        updatedDateTime:
+          type: string
+          description: Gets or sets the property. Date and time of updation of Smart request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        status:
+          enum:
+          - BLOCKED
+          - CLOSED
+          - DECLINED
+          - OPEN
+          - PENDING
+          - WITHDRWN
+          - EXPIRED
+          type: string
+          description: 'Gets or sets the property. Status of the Smart Request retrieved. Blocked Smart Requests are excluded.
+
+            <para>
+
+            CLOSED  - Status is Closed. Status could be set to Closed during any of the below scenarios:
+
+            (i) After Smart Requests are marked as Paid.
+
+            (ii) After the Biller withdraws a Smart Request.
+
+            DECLINED  - Status is Declined,  when the Payer declines a Smart Request.
+
+            OPEN  - Status is Open, when a Smart Request is created and the recipient of the request is registered in the system.
+
+            PENDING  - Status is Pending, when a Smart Request is created and the recipient of the request does not exist within the system.
+
+            WITHDRWN  - Status is Withdrawn, when the Biller withdraws the Smart Request.
+
+            </para>'
+        billerParticipantId:
+          type: integer
+          description: Gets or sets the property. Unique identifier of the Biller.
+          format: int32
+        billerApprovedName:
+          type: string
+          description: Gets or sets the property. Approved name of the Biller.
+        billerReference:
+          type: string
+          description: Gets or sets the property. Reference information provided by the Biller to the Payer.
+        billerAccountName:
+          type: string
+          description: Gets or sets the property. Name of the Biller account.
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com. or
+
+            Phone : +countrycode 7712345678.'
+        payerParticipantId:
+          type: integer
+          description: Gets or sets the property. Unique identifier of the Payer.
+          format: int32
+        payerReference:
+          type: string
+          description: Gets or sets the property. Reference information provided by the Payer to the Biller.
+        amountDue:
+          type: number
+          description: Gets or sets the property. Total amount to be paid by the Payer to the Biller in the Smart Request.
+          format: double
+        amountCurrency:
+          enum:
+          - GBP
+          type: string
+          description: 'Gets or sets the property. Currency of the payment in the Smart Request. For this release it should be set to GBP.
+
+            <para>
+
+            ''GBP'' - ''British Pound''.
+
+            </para>'
+        amountPaid:
+          type: number
+          description: Gets or sets the property. Amount paid by the Payer to the Biller either in full or in parts within a Smart Request.
+          format: double
+        paymentStatus:
+          enum:
+          - FULLPAID
+          - PARTPAID
+          - UNPAID
+          type: string
+          description: 'Gets or sets the property. Status of the payment made by the Payer.
+
+            <para>
+
+            FULLPAID - ''Fully Paid'' - when the payer pays the entire outstanding amount in a request.
+
+            PARTPAID  - ''Partially Paid'' -  when the payer pays only a part of the outstanding amount in a request.
+
+            UNPAID - ''Unpaid'' - when a Smart request is created, the status is Unpaid.
+
+            </para>'
+        dueDate:
+          type: string
+          description: Gets or sets the property. Date by which the complete payment needs to be made by the Payer to the Biller in a Smart Request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        extensionDateRequested:
+          type: boolean
+          description: Gets or sets the property. Indicates whether an extension to the original due date is allowed within a Smart Request.
+        paymentInProgress:
+          type: boolean
+          description: Gets or sets the property. Indicates if the payment is in progress for a Smart Request.
+      description: Class SmartRequestDetails.
+    SmartRequestMessageTypes:
+      type: object
+      properties:
+        smartRequestMessageId:
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart request message.
+        senderParticipantId:
+          type: integer
+          description: Gets or sets the property. The biller is identified as the sender initiating the Smart request. Should be populated as the billerParticipantId for a new Smart Request.
+          format: int32
+        recipientParticipantId:
+          type: integer
+          description: Gets or sets the property. The payer is identified as the recipient of the Smart request. Only applicable for payment of bundle requests.
+          format: int32
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
+          type: string
+          description: 'Gets or sets the property. When the status of Smart request is any of these: Open, Pending, Blocked.
+
+            <para>
+
+            . REQPAYEXTENSION - Refers to request from payer for an extension of the due date of the Smart request.
+
+            . WITHDRAW        - Indicates that the Biller withdraws the Smart request.
+
+            . EXTENSIONDECLINED  - Indicates that the Biller declines the due date extension request from payer.
+
+            . DECLINE           - Indicates that the payer will be able to decline the Smart request.
+
+            . DECLINEBLOCK      - Indicates that the payer will be able to decline the Smart request as well as Block the biller here.
+
+            . EXTENSIONGRANTED    - Indicates that the Biller has granted extension on the due date, based on request from Payer.
+
+            </para>'
+        messageDateTime:
+          type: string
+          description: Gets or sets the property. Indicates the system date and time.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        messageBody:
+          type: string
+          description: Gets or sets the property. Represents the body of the Input request.
+        documentBatchId:
+          uniqueItems: false
+          type: array
+          items:
+            type: string
+          description: Gets or sets the property. Refers to the unique identifier of the Batch. A batch can hold multiple documents.
+      description: SmartRequestMessages.
+    DeclineExtensionMessage:
+      required:
+      - senderParticipantId
+      - recipientParticipantId
+      - smartRequestId
+      - billerExtensionDate
+      type: object
+      properties:
+        senderParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
+          format: int32
+        recipientParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. The payerparticipant is identified as the recipient of this message type.
+          format: int32
+        smartRequestId:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart request transaction.
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
+          type: string
+          description: 'Gets or sets the property. The message type needs to be EXTENSIONDECLINED.
+
+            <para>
+
+            EXTENSIONDECLINED - Indicates that the Biller declines the due date extension request from the payer.
+
+            </para>'
+        allowFurtherExtensionRequests:
+          enum:
+          - 'Yes'
+          - 'No'
+          type: string
+          description: Gets or sets the property. Indicates if the Biller allows further extension requests for the due date of the Smart Request.
+        billerExtensionDate:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Alternative extension date provided by the Biller.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+      description: Class DeclineDueDateRequest.
+    OrdoValidationProblemDetails:
+      type: object
+      properties:
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            uniqueItems: false
+            type: array
+            items:
+              type: string
+          readOnly: true
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+      additionalProperties:
+        type: object
+    WithdrawSmartRequestMessageResponse:
+      type: object
+      properties:
+        senderParticipantId:
+          type: integer
+          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
+          format: int32
+        recipientParticipantId:
+          type: integer
+          description: Gets or sets the property. The Payerparticipant is identified as the recipient of this message type.
+          format: int32
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com
+
+            Phone : +countrycode 7712345678.'
+        smartRequestId:
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart Request transaction.
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
+          type: string
+          description: 'Gets or sets the property. The message type needs to be WITHDRAW.
+
+            <para>
+
+            WITHDRAW - Indicates that the Biller withdraws the Smart Request.
+
+            </para>'
+        withdrawReasonCode:
+          type: string
+          description: Gets or sets the property. Reason code for withdrawing the Smart Request.
+        withdrawReasonText:
+          type: string
+          description: Gets or sets the property. Description text of the selected withdraw reason code.
+      description: Class Withdraw SmartRequest Message Response.
+    NewSmartRequestMessage:
+      required:
+      - senderParticipantId
+      - billerParticipantId
+      - billerReference
+      - billerAccountId
+      - payerReference
+      - amountDue
+      - amountCurrency
+      - dueDate
+      - expiryDate
+      - partialPaymentAllowed
+      - dueDateExtensionsAllowed
+      - partialPaymentsRemaining
+      type: object
+      properties:
+        senderParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. Identifies the Biller initiating the Smart Request. Should be populated as the billerParticipantId for a new Smart Request.
+          format: int32
+        recipientParticipantId:
+          type: integer
+          description: Gets or sets the property. Identifies the Payer who is the recipient of the Smart Request. Only applicable for payment of bundle requests. Not applicable for requests from end user applications.
+          format: int32
+        billerParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. Unique identifier of the Biller.
+          format: int32
+        billerContactEmail:
+          maxLength: 320
+          minLength: 0
+          type: string
+          description: Gets or sets the property. Contact email of the Biller.
+        billerContactPhone:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: Gets or sets the property. Contact phone number of the Biller.
+        billerReference:
+          maxLength: 18
+          minLength: 1
+          pattern: ^[a-zA-Z0-9-/.#%*()}{:;+=!,?@&amp<>'"/\r ]*$
+          type: string
+          description: Gets or sets the property. Reference information provided by the Biller to the Payer.
+        billerAccountId:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Unique identifier for the Biller account.
+        payerParticipantId:
+          type: integer
+          description: Gets or sets the property. Refers to the payer within a Smart request transaction. Unique identifier of the Payer.
+          format: int32
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          maxLength: 320
+          minLength: 0
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com
+
+            Phone : +countrycode 7712345678.'
+        payerReference:
+          maxLength: 128
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Reference information provided by the Payer to the Biller.
+        amountDue:
+          minLength: 1
+          type: number
+          description: Gets or sets the property. Total amount to be paid by the Payer to the Biller in the Smart Request.
+          format: double
+        amountCurrency:
+          minLength: 1
+          enum:
+          - GBP
+          type: string
+          description: 'Gets or sets the property. Currency of the payment in the Smart Request. For this release it should be set to GBP.
+
+            <para>
+
+            ''GBP'' - ''British Pound''.
+
+            </para>'
+        dueDate:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Refers to the date by which the complete payment needs to be made by the Payer to the Biller in a Smart Request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        expiryDate:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Date on which the Smart Request expires.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        partialPaymentAllowed:
+          minLength: 1
+          type: boolean
+          description: 'Gets or sets the property. Indicates if payment of the Smart Request can be made in partial amounts.
+
+            This option can be chosen by the Biller when creating the Smart Request.'
+        dueDateExtensionsAllowed:
+          minLength: 1
+          type: boolean
+          description: Gets or sets the property. Indicates whether an extension to the original due date is allowed within a Smart Request.
+        partialPaymentsRemaining:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. Indicates the remaining number of partial payments allowed for the Smart Request, if partial payments are set to be allowed.
+          format: int32
+        attachmentBatchId:
+          type: string
+          description: Gets or sets the property. Unique identifier of the Batch containing documents attached to the Smart Request. A Batch can hold multiple documents.
+      description: class NewSmartRequest.
+    NewBDRSmartRequestMessage:
+      required:
+      - senderParticipantId
+      - billerParticipantId
+      - billerReference
+      - billerAccountId
+      - payerReference
+      - amountDue
+      - amountCurrency
+      - dueDate
+      - expiryDate
+      - partialPaymentAllowed
+      - dueDateExtensionsAllowed
+      - partialPaymentsRemaining
+      type: object
+      properties:
+        bdrRedirectURL:
+          type: string
+          description: 'The url set for the return button on the final page of our payment journey when your customer has successfully completed their payment.
+
+            This will then return your customers to your site once clicked using the value provided.'
+        bdrCancelURL:
+          type: string
+          description: 'The url set for the button on the first page of our payment journey labelled “Cancel payment” on desktop and “Cancel” on mobile.
+
+            This will then return your customers to your site once clicked using the value provided.
+
+            Defaults to bdrRedirectURL if omitted.'
+        bdrErrorURL:
+          type: string
+          description: 'The url set for the return button on the final page of our payment journey when your customer has been unable to complete a payment with their bank or when an error has occurred.
+
+            This will return your customers to your site once clicked using the value provided. Defaults to bdrRedirectURL if omitted.'
+        senderParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. Identifies the Biller initiating the Smart Request. Should be populated as the billerParticipantId for a new Smart Request.
+          format: int32
+        recipientParticipantId:
+          type: integer
+          description: Gets or sets the property. Identifies the Payer who is the recipient of the Smart Request. Only applicable for payment of bundle requests. Not applicable for requests from end user applications.
+          format: int32
+        billerParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. Unique identifier of the Biller.
+          format: int32
+        billerContactEmail:
+          maxLength: 320
+          minLength: 0
+          type: string
+          description: Gets or sets the property. Contact email of the Biller.
+        billerContactPhone:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: Gets or sets the property. Contact phone number of the Biller.
+        billerReference:
+          maxLength: 18
+          minLength: 1
+          pattern: ^[a-zA-Z0-9-/.#%*()}{:;+=!,?@&amp<>'"/\r ]*$
+          type: string
+          description: Gets or sets the property. Reference information provided by the Biller to the Payer.
+        billerAccountId:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Unique identifier for the Biller account.
+        payerParticipantId:
+          type: integer
+          description: Gets or sets the property. Refers to the payer within a Smart request transaction. Unique identifier of the Payer.
+          format: int32
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          maxLength: 320
+          minLength: 0
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com
+
+            Phone : +countrycode 7712345678.'
+        payerReference:
+          maxLength: 128
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Reference information provided by the Payer to the Biller.
+        amountDue:
+          minLength: 1
+          type: number
+          description: Gets or sets the property. Total amount to be paid by the Payer to the Biller in the Smart Request.
+          format: double
+        amountCurrency:
+          minLength: 1
+          enum:
+          - GBP
+          type: string
+          description: 'Gets or sets the property. Currency of the payment in the Smart Request. For this release it should be set to GBP.
+
+            <para>
+
+            ''GBP'' - ''British Pound''.
+
+            </para>'
+        dueDate:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Refers to the date by which the complete payment needs to be made by the Payer to the Biller in a Smart Request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        expiryDate:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Date on which the Smart Request expires.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        partialPaymentAllowed:
+          minLength: 1
+          type: boolean
+          description: 'Gets or sets the property. Indicates if payment of the Smart Request can be made in partial amounts.
+
+            This option can be chosen by the Biller when creating the Smart Request.'
+        dueDateExtensionsAllowed:
+          minLength: 1
+          type: boolean
+          description: Gets or sets the property. Indicates whether an extension to the original due date is allowed within a Smart Request.
+        partialPaymentsRemaining:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. Indicates the remaining number of partial payments allowed for the Smart Request, if partial payments are set to be allowed.
+          format: int32
+        attachmentBatchId:
+          type: string
+          description: Gets or sets the property. Unique identifier of the Batch containing documents attached to the Smart Request. A Batch can hold multiple documents.
+        refundAccountRequired:
+          minLength: 1
+          type: boolean
+          description: Gets or sets the property. Indicates whether the payer account details should be obtained for future manual refund capability.
+      description: class NewSmartRequest.
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
+  samples-enabled: true

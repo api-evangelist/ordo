@@ -1,0 +1,1279 @@
+openapi: 3.2.0
+info:
+  title: Bank account configuration Bank accounts API
+  version: v1
+servers:
+- url: https://test.api.ordopay.com/registrymanager/v1
+security:
+- apiKeyHeader: []
+- apiKeyQuery: []
+tags:
+- name: Bank accounts
+paths:
+  /Registry/{billerAccountId}:
+    get:
+      tags:
+      - Bank accounts
+      summary: Retrieve bank account information
+      description: Retrieve the details of a specific bank account(s) associated with a biller participant id.
+      operationId: GetBillerAccountDetailsAsync
+      parameters:
+      - name: billerAccountId
+        in: path
+        description: System generated unique identifier of the Biller Account.
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32. System generated unique identifier of the Participant.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BillerAccountDetailsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillerAccountDetailsResponse'
+              example:
+                billerAccountId: string
+                accountType: string
+                accountSubType: CURRENTACCOUNT
+                paymentServiceProvider: string
+                currency: GBP
+                schemeName: string
+                accountName: string
+                sortCode: string
+                accountNumber: string
+                identification: string
+                secondaryIdentification: string
+                default: true
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BillerAccountDetailsResponse'
+              example:
+                billerAccountId: string
+                accountType: string
+                accountSubType: CURRENTACCOUNT
+                paymentServiceProvider: string
+                currency: GBP
+                schemeName: string
+                accountName: string
+                sortCode: string
+                accountNumber: string
+                identification: string
+                secondaryIdentification: string
+                default: true
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+    delete:
+      tags:
+      - Bank accounts
+      summary: Delete a bank account
+      description: Delete a bank account from associated with a biller participant id.
+      operationId: DeleteBillerAccountAsync
+      parameters:
+      - name: billerAccountId
+        in: path
+        description: System generated unique identifier of the BillerAccount.
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32. System generated unique identifier of the Participant.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedBillerAccount'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedBillerAccount'
+              example:
+                participantId: 0
+                billerAccountId: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedBillerAccount'
+              example:
+                participantId: 0
+                billerAccountId: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+  /Registry:
+    put:
+      tags:
+      - Bank accounts
+      summary: Update a bank account
+      description: 'Update a bank account associated with a biller participant id.
+
+        Currently the only update function available is to make the selected bank account the default bank account for that biller participant id.'
+      operationId: PutBillerAccountAsync
+      requestBody:
+        description: Update Biller Account Object.
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/UpdateBillerAccount'
+            example:
+              participantId: 0
+              billerAccountId: string
+              isDefault: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBillerAccount'
+            example:
+              participantId: 0
+              billerAccountId: string
+              isDefault: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBillerAccount'
+            example:
+              participantId: 0
+              billerAccountId: string
+              isDefault: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateBillerAccount'
+            example:
+              participantId: 0
+              billerAccountId: string
+              isDefault: string
+      responses:
+        '201':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UpdatedBillerAccountDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatedBillerAccountDetails'
+              example:
+                participantId: 0
+                billerAccountId: string
+                isDefault: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UpdatedBillerAccountDetails'
+              example:
+                participantId: 0
+                billerAccountId: string
+                isDefault: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+    post:
+      tags:
+      - Bank accounts
+      summary: Add a bank account
+      description: Add bank account details to a specified biller participant id as an account into which the biller participant can receive payment.
+      operationId: PostBillerAccountAsync
+      requestBody:
+        description: New Biller Account Object.
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/NewBillerAccount'
+            example:
+              participantId: 0
+              accountType: BUSINESS
+              accountSubType: CURRENTACCOUNT
+              paymentServiceProvider: string
+              currency: GBP
+              schemeName: string
+              accountName: string
+              sortCode: string
+              accountNumber: string
+              identification: string
+              secondaryIdentification: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewBillerAccount'
+            example:
+              participantId: 0
+              accountType: BUSINESS
+              accountSubType: CURRENTACCOUNT
+              paymentServiceProvider: string
+              currency: GBP
+              schemeName: string
+              accountName: string
+              sortCode: string
+              accountNumber: string
+              identification: string
+              secondaryIdentification: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/NewBillerAccount'
+            example:
+              participantId: 0
+              accountType: BUSINESS
+              accountSubType: CURRENTACCOUNT
+              paymentServiceProvider: string
+              currency: GBP
+              schemeName: string
+              accountName: string
+              sortCode: string
+              accountNumber: string
+              identification: string
+              secondaryIdentification: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/NewBillerAccount'
+            example:
+              participantId: 0
+              accountType: BUSINESS
+              accountSubType: CURRENTACCOUNT
+              paymentServiceProvider: string
+              currency: GBP
+              schemeName: string
+              accountName: string
+              sortCode: string
+              accountNumber: string
+              identification: string
+              secondaryIdentification: string
+      responses:
+        '201':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RegisteredBillerAccount'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisteredBillerAccount'
+              example:
+                participantId: 0
+                billerAccountId: string
+                accountType: BUSINESS
+                accountSubType: CURRENTACCOUNT
+                paymentServiceProvider: string
+                currency: GBP
+                schemeName: string
+                accountName: string
+                sortCode: string
+                accountNumber: string
+                identification: string
+                secondaryIdentification: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RegisteredBillerAccount'
+              example:
+                participantId: 0
+                billerAccountId: string
+                accountType: BUSINESS
+                accountSubType: CURRENTACCOUNT
+                paymentServiceProvider: string
+                currency: GBP
+                schemeName: string
+                accountName: string
+                sortCode: string
+                accountNumber: string
+                identification: string
+                secondaryIdentification: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+    get:
+      tags:
+      - Bank accounts
+      summary: Retrieve bank account details
+      description: Retrieve the account names and numbers of bank accounts associated with a specified biller participant id.
+      operationId: GetBillerAccountsAsync
+      parameters:
+      - name: participantId
+        in: header
+        description: Format - int32. System generated unique identifier of the Participant.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RegisteredBillerAccounts'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisteredBillerAccounts'
+              example:
+                participantId: 0
+                billerAccounts:
+                - billerAccountId: string
+                  accountType: BUSINESS
+                  accountSubType: CURRENTACCOUNT
+                  paymentServiceProvider: string
+                  accountName: string
+                  sortCode: string
+                  accountNumber: string
+                  default: true
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RegisteredBillerAccounts'
+              example:
+                participantId: 0
+                billerAccounts:
+                - billerAccountId: string
+                  accountType: BUSINESS
+                  accountSubType: CURRENTACCOUNT
+                  paymentServiceProvider: string
+                  accountName: string
+                  sortCode: string
+                  accountNumber: string
+                  default: true
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+  /Registry/BillerAccountId:
+    get:
+      tags:
+      - Bank accounts
+      summary: Get biller account id by bank account
+      description: Retrieve the Biller Account id for a specified bank account.
+      operationId: GetBillerAccountIdAsync
+      parameters:
+      - name: sortCode
+        in: header
+        description: Bank account sort code e.g. 123456.
+        required: true
+        schema:
+          type: string
+      - name: accountNumber
+        in: header
+        description: Bank account number e.g. 12345678.
+        required: true
+        schema:
+          type: string
+      - name: accountName
+        in: header
+        description: The name assigned to the bank account.
+        required: true
+        schema:
+          type: string
+      - name: participantId
+        in: header
+        description: Format - int32. System generated unique identifier of the Participant.
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BillerAccountIdResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillerAccountIdResponse'
+              example:
+                billerAccountId: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BillerAccountIdResponse'
+              example:
+                billerAccountId: string
+        '400':
+          description: Bad Request
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+        '403':
+          description: Forbidden
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '404':
+          description: Not Found
+          content:
+            text/plain: {}
+            application/json: {}
+            text/json: {}
+        '422':
+          description: Client Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/OrdoValidationProblemDetails'
+              example:
+                code: string
+                errors: {}
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+components:
+  schemas:
+    NewBillerAccount:
+      required:
+      - participantId
+      - accountType
+      - accountSubType
+      - currency
+      - schemeName
+      - accountName
+      - sortCode
+      - accountNumber
+      type: object
+      properties:
+        participantId:
+          minLength: 1
+          type: integer
+          description: 'Gets or sets the property.
+
+            System generated unique identifier of the Participant.'
+          format: int32
+        accountType:
+          enum:
+          - BUSINESS
+          - PERSONAL
+          type: string
+          description: 'Gets or sets the property.
+
+            Type of account. Should be either Business or Personal.'
+        accountSubType:
+          enum:
+          - CURRENTACCOUNT
+          - EMONEY
+          - PREPAIDCARD
+          - SAVINGS
+          type: string
+          description: 'Gets or sets the property.
+
+            <param>
+
+            This could be any of the below:
+
+            Current Account - CURRENTACCOUNT.
+
+            E-money - EMONEY.
+
+            Prepaid Card - PREPAIDCARD.
+
+            Savings - SAVINGS.
+
+            </param>'
+        paymentServiceProvider:
+          maxLength: 256
+          minLength: 0
+          type: string
+          description: "Gets or sets the property.\n Refers to Service provider of the payment account held by the participant."
+        currency:
+          enum:
+          - GBP
+          type: string
+          description: 'Gets or sets the property.
+
+            Currency should be GBP.
+
+            <param>
+
+            GBP - ''British Pound''.
+
+            </param>'
+        schemeName:
+          maxLength: 256
+          minLength: 1
+          type: string
+          description: 'Gets or sets the property.
+
+            Name of the identification scheme, in a coded form as published in an external list. For this release it should be set to ''SortCodeAccountNumber''.'
+        accountName:
+          maxLength: 256
+          minLength: 1
+          type: string
+          description: 'Gets or sets the property.
+
+            Name of the Biller account as assigned by the account servicing institution.'
+        sortCode:
+          maxLength: 6
+          minLength: 1
+          type: string
+          description: 'Gets or sets the property.
+
+            Sort Code of the Biller account. This is a 6 digit code indicating both the bank and the branch where the account is held.'
+        accountNumber:
+          maxLength: 20
+          minLength: 1
+          type: string
+          description: 'Gets or sets the property.
+
+            Number of the Biller account.'
+        identification:
+          maxLength: 256
+          minLength: 0
+          type: string
+          description: 'Gets or sets the property.
+
+            Identification assigned by an institution to identify an account. This identification is known by the account owner. Note: in this release the account is identified by the separate Sort Code and Account Number (as well as the Account Name) parameters.  If this field is populated the value will only be stored in the platform for potential future use.'
+        secondaryIdentification:
+          maxLength: 256
+          minLength: 0
+          type: string
+          description: 'Gets or sets the property.
+
+            This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). Note: in this release the account is identified by the separate Sort Code and Account Number (as well as the Account Name) parameters.  If this field is populated the value will only be stored in the platform for potential future use.'
+      description: New Biller Account.
+    BillerAccountIdResponse:
+      type: object
+      properties:
+        billerAccountId:
+          type: string
+          description: Gets or sets the property. Refers to system generated Unique identifier of the BillerAccount.
+      description: Biller account ID response for specific biller account.
+    RegisteredBillerAccount:
+      type: object
+      properties:
+        participantId:
+          type: integer
+          description: 'Gets or sets the property.
+
+            System generated unique identifier of the Participant.'
+          format: int32
+        billerAccountId:
+          type: string
+          description: 'Gets or sets the property.
+
+            System generated unique identifier of the BillerAccount.'
+        accountType:
+          enum:
+          - BUSINESS
+          - PERSONAL
+          type: string
+          description: 'Gets or sets the property.
+
+            Type of account. Should be either Business or Personal.'
+        accountSubType:
+          enum:
+          - CURRENTACCOUNT
+          - EMONEY
+          - PREPAIDCARD
+          - SAVINGS
+          type: string
+          description: 'Gets or sets the property.
+
+            <param>
+
+            This could be any of the below:
+
+            Current Account - CURRENTACCOUNT.
+
+            E-money - EMONEY.
+
+            Prepaid Card - PREPAIDCARD.
+
+            Savings - SAVINGS.
+
+            </param>'
+        paymentServiceProvider:
+          type: string
+          description: "Gets or sets the property.\n Refers to Service provider of the payment account held by the participant."
+        currency:
+          enum:
+          - GBP
+          type: string
+          description: 'Gets or sets the property.
+
+            Currency Should be GBP.
+
+            <para>
+
+            GBP - ''British Pound''.
+
+            </para>'
+        schemeName:
+          type: string
+          description: 'Gets or sets the property.
+
+            Name of the identification scheme, in a coded form as published in an external list. For this release it should be set to ''SortCodeAccountNumber''.'
+        accountName:
+          type: string
+          description: 'Gets or sets the property.
+
+            Name of the Biller account as assigned by the account servicing institution.'
+        sortCode:
+          type: string
+          description: 'Gets or sets the property.
+
+            Sort Code of the Biller account. This is a 6 digit code indicating both the bank and the branch where the account is held.'
+        accountNumber:
+          type: string
+          description: 'Gets or sets the property.
+
+            Number of the Biller account.'
+        identification:
+          type: string
+          description: 'Gets or sets the property.
+
+            Identification assigned by an institution to identify an account. This identification is known by the account owner. Note: in this release the account is identified by the separate Sort Code and Account Number (as well as the Account Name) parameters.  If this field is populated the value will only be stored in the platform for potential future use.'
+        secondaryIdentification:
+          type: string
+          description: 'Gets or sets the property.
+
+            This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). Note: in this release the account is identified by the separate Sort Code and Account Number (as well as the Account Name) parameters.  If this field is populated the value will only be stored in the platform for potential future use.'
+      description: Registered Biller Account.
+    BillerAccounts:
+      type: object
+      properties:
+        billerAccountId:
+          type: string
+          description: 'Gets or sets the property.
+
+            System generated unique identifier of the BillerAccount.'
+        accountType:
+          enum:
+          - BUSINESS
+          - PERSONAL
+          type: string
+          description: 'Gets or sets the property.
+
+            Type of account. Should be either Business or Personal.'
+        accountSubType:
+          enum:
+          - CURRENTACCOUNT
+          - EMONEY
+          - PREPAIDCARD
+          - SAVINGS
+          type: string
+          description: 'Gets or sets the property.
+
+            <param>
+
+            This could be any of the below:
+
+            Current Account - CURRENTACCOUNT.
+
+            E-money - EMONEY.
+
+            Prepaid Card - PREPAIDCARD.
+
+            Savings - SAVINGS.
+
+            </param>'
+        paymentServiceProvider:
+          type: string
+          description: 'Gets or sets the property.
+
+            Refers to Service provider of the payment account held by the participant.'
+        accountName:
+          type: string
+          description: 'Gets or sets the property.
+
+            Name of the Biller account as assigned by the account servicing institution.'
+        sortCode:
+          type: string
+          description: 'Gets or sets the property.
+
+            Sort Code of the Biller account. This is a 6 digit code indicating both the bank and the branch where the account is held.'
+        accountNumber:
+          type: string
+          description: 'Gets or sets the property.
+
+            Number of the Biller account.'
+        default:
+          type: boolean
+          description: 'Gets or sets the property.
+
+            Indicates whether this is the default account for the Biller.'
+      description: Registered Biller Account Details.
+    RegisteredBillerAccounts:
+      type: object
+      properties:
+        participantId:
+          type: integer
+          description: 'Gets or sets the property.
+
+            System generated unique identifier of the Participant.'
+          format: int32
+        billerAccounts:
+          uniqueItems: false
+          type: array
+          items:
+            $ref: '#/components/schemas/BillerAccounts'
+          description: 'Gets or sets the property.
+
+            Biller Accounts List.'
+      description: Get Biller Account Details against Participant.
+    UpdateBillerAccount:
+      required:
+      - participantId
+      - billerAccountId
+      - isDefault
+      type: object
+      properties:
+        participantId:
+          minLength: 1
+          type: integer
+          description: 'Gets or sets the property.
+
+            System generated unique identifier of the Participant.'
+          format: int32
+        billerAccountId:
+          minLength: 1
+          type: string
+          description: 'Gets or sets the property.
+
+            System generated unique identifier of the BillerAccount.'
+        isDefault:
+          minLength: 1
+          type: string
+          description: 'Gets or sets the property.
+
+            Indicates whether this is the default account for the Biller.'
+      description: Update biller account.
+    DeletedBillerAccount:
+      type: object
+      properties:
+        participantId:
+          type: integer
+          description: 'Gets or sets the property.
+
+            System generated unique identifier of the Participant.'
+          format: int32
+        billerAccountId:
+          type: string
+          description: 'Gets or sets the property.
+
+            System generated unique identifier of the BillerAccount.'
+      description: Deleted biller account.
+    BillerAccountDetailsResponse:
+      type: object
+      properties:
+        billerAccountId:
+          type: string
+          description: Gets or sets the property. Refers to system generated Unique identifier of the BillerAccount.
+        accountType:
+          type: string
+          description: Gets or sets the property. Type of account. Should be either Business or Personal.
+        accountSubType:
+          enum:
+          - CURRENTACCOUNT
+          - EMONEY
+          - PREPAIDCARD
+          - SAVINGS
+          type: string
+          description: 'Gets or sets the property.
+
+            <param>
+
+            This could be any of the below:
+
+            Current Account - CURRENTACCOUNT.
+
+            E-money - EMONEY.
+
+            Prepaid Card - PREPAIDCARD.
+
+            Savings - SAVINGS.
+
+            </param>'
+        paymentServiceProvider:
+          type: string
+          description: Gets or sets the property. Refers to Service provider of the payment account held by the participant.
+        currency:
+          enum:
+          - GBP
+          type: string
+          description: 'Gets or sets the property. Currency Should be GBP.
+
+            <param>
+
+            GBP - ''British Pound''.
+
+            </param>'
+        schemeName:
+          type: string
+          description: Gets or sets the property. Name of the identification scheme, in a coded form as published in an external list. For this release it should be set to 'SortCodeAccountNumber'.
+        accountName:
+          type: string
+          description: Gets or sets the property. Name of the Biller account as assigned by the account servicing institution.
+        sortCode:
+          type: string
+          description: Gets or sets the property. Sort Code of the Biller account. This is a 6 digit code indicating both the bank and the branch where the account is held.
+        accountNumber:
+          type: string
+          description: Gets or sets the property. Refers to number of the Biller account.
+        identification:
+          type: string
+          description: 'Gets or sets the property. Identification assigned by an institution to identify an account. This identification is known by the account owner. Note: in this release the account is identified by the separate Sort Code and Account Number (as well as the Account Name) parameters.  If this field is populated the value will only be stored in the platform for potential future use.'
+        secondaryIdentification:
+          type: string
+          description: 'Gets or sets the property. This is secondary identification of the account, as assigned by the account servicing institution. This can be used by building societies to additionally identify accounts with a roll number (in addition to a sort code and account number combination). Note: in this release the account is identified by the separate Sort Code and Account Number (as well as the Account Name) parameters.  If this field is populated the value will only be stored in the platform for potential future use.'
+        default:
+          type: boolean
+          description: Gets or sets the property. Indicates whether this is the default account for the Biller.
+      description: Biller account details response for specific biller account.
+    OrdoValidationProblemDetails:
+      type: object
+      properties:
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            uniqueItems: false
+            type: array
+            items:
+              type: string
+          readOnly: true
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+          format: int32
+        detail:
+          type: string
+        instance:
+          type: string
+      additionalProperties:
+        type: object
+    UpdatedBillerAccountDetails:
+      type: object
+      properties:
+        participantId:
+          type: integer
+          description: 'Gets or sets the property.
+
+            System generated unique identifier of the Participant.'
+          format: int32
+        billerAccountId:
+          type: string
+          description: 'Gets or sets the property.
+
+            System generated unique identifier of the BillerAccount.'
+        isDefault:
+          type: string
+          description: 'Gets or sets the property.
+
+            Indicates whether this is the default account for the Biller.'
+      description: Updated Biller Account Details.
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
+  samples-enabled: true
