@@ -2,22 +2,17 @@ aid: ordo
 url: https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/apis.yml
 name: Ordo
 kind: company
-description: >-
-  Ordo (operated by The Smart Request Company Ltd, ordohq.com / ordopay.com) is
-  a United Kingdom open-banking payments provider that lets businesses collect
-  money directly from a customer's bank account over the UK Faster Payments
-  rails, avoiding card fees and chargebacks. Built on PSD2 / Open Banking payment
-  initiation, its fully hosted, white-labelled platform delivers Request to Pay,
-  one-off payment requests, e-commerce, Point of Sale / QR code and contact
-  centre payments, plus Variable Recurring Payments (VRP) for fixed, variable and
-  sweeping collections, and account information (AIS) and account verification
-  services. Ordo is FCA-authorised and an Open Banking regulated provider, with a
-  developer surface historically published as a ReadMe.io portal at
-  docs.myordo.com backed by an Azure API Management gateway (test.api.ordopay.com).
-  Ordo has since ceased trading and been acquired by Neonomics; the marketing site
-  at ordopay.com remains live while the developer portal is now offline. Its API
-  posture is documented here honestly from six OpenAPI 3.0.1 definitions harvested
-  verbatim from the archived developer portal.
+description: Ordo (operated by The Smart Request Company Ltd, ordohq.com / ordopay.com) is a United Kingdom
+  open-banking payments provider that lets businesses collect money directly from a customer's bank account
+  over the UK Faster Payments rails, avoiding card fees and chargebacks. Built on PSD2 / Open Banking
+  payment initiation, its fully hosted, white-labelled platform delivers Request to Pay, one-off payment
+  requests, e-commerce, Point of Sale / QR code and contact centre payments, plus Variable Recurring Payments
+  (VRP) for fixed, variable and sweeping collections, and account information (AIS) and account verification
+  services. Ordo is FCA-authorised and an Open Banking regulated provider, with a developer surface historically
+  published as a ReadMe.io portal at docs.myordo.com backed by an Azure API Management gateway (test.api.ordopay.com).
+  Ordo has since ceased trading and been acquired by Neonomics; the marketing site at ordopay.com remains
+  live while the developer portal is now offline. Its API posture is documented here honestly from six
+  OpenAPI 3.0.1 definitions harvested verbatim from the archived developer portal.
 deliveryModel:
   model: saas
   open_source: false
@@ -57,13 +52,13 @@ tags:
 - PSD2
 - Account Information
 created: '2026-07-24'
-modified: '2026-07-24'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 apis:
 - aid: ordo:ordo-account-data-client-hosted-api
   name: Ordo Account Data - Client Hosted API
-  description: >-
-    The Account Data - Client Hosted API from Ordo — 9 operation(s) for account data - client hosted.
+  description: The Account Data - Client Hosted API from Ordo — 9 operation(s) for account data - client
+    hosted.
   humanURL: https://ordopay.com/products/payments
   baseURL: https://test.api.ordopay.com/payments
   tags:
@@ -91,8 +86,7 @@ apis:
     url: https://docs.myordo.com/docs/financial-institution
 - aid: ordo:ordo-account-data-ordo-hosted-api
   name: Ordo Account Data - Ordo Hosted API
-  description: >-
-    The Account Data - Ordo Hosted API from Ordo — 7 operation(s) for account data - ordo hosted.
+  description: The Account Data - Ordo Hosted API from Ordo — 7 operation(s) for account data - ordo hosted.
   humanURL: https://ordopay.com/products/payments
   baseURL: https://test.api.ordopay.com/payments
   tags:
@@ -120,9 +114,8 @@ apis:
     url: https://docs.myordo.com/docs/financial-institution
 - aid: ordo:ordo-account-verification-client-hosted-api
   name: Ordo Account Verification - Client Hosted API
-  description: >-
-    The Account Verification - Client Hosted API from Ordo — 6 operation(s) for account verification -
-    client hosted.
+  description: The Account Verification - Client Hosted API from Ordo — 6 operation(s) for account verification
+    - client hosted.
   humanURL: https://ordopay.com/products/payments
   baseURL: https://test.api.ordopay.com/payments
   tags:
@@ -150,9 +143,8 @@ apis:
     url: https://docs.myordo.com/docs/financial-institution
 - aid: ordo:ordo-account-verification-ordo-hosted-api
   name: Ordo Account Verification - Ordo Hosted API
-  description: >-
-    The Account Verification - Ordo Hosted API from Ordo — 6 operation(s) for account verification - ordo
-    hosted.
+  description: The Account Verification - Ordo Hosted API from Ordo — 6 operation(s) for account verification
+    - ordo hosted.
   humanURL: https://ordopay.com/products/payments
   baseURL: https://test.api.ordopay.com/payments
   tags:
@@ -265,7 +257,7 @@ apis:
   - type: APIReference
     url: https://docs.myordo.com/docs/financial-institution
 - aid: ordo:ordo-ordo-hosted-api
-  name: Ordo Ordo hosted API
+  name: Ordo hosted API
   description: The Ordo hosted API from Ordo — 8 operation(s) for ordo hosted.
   humanURL: https://ordopay.com/products/payments
   baseURL: https://test.api.ordopay.com/payments
@@ -294,8 +286,7 @@ apis:
     url: https://docs.myordo.com/docs/financial-institution
 - aid: ordo:ordo-retrieve-mandate-details-api
   name: Ordo Retrieve mandate details API
-  description: >-
-    The Retrieve mandate details API from Ordo — 4 operation(s) for retrieve mandate details.
+  description: The Retrieve mandate details API from Ordo — 4 operation(s) for retrieve mandate details.
   humanURL: https://ordopay.com/products/payments
   baseURL: https://test.api.ordopay.com/payments
   tags:
@@ -371,7 +362,10 @@ common:
   url: data-model/ordo-data-model.yml
 - type: X-MCPServerCandidate
   url: mcp/ordo-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
 - type: LLMsTxt
   url: llms/ordo-llms.txt
 - type: AgentSkill
