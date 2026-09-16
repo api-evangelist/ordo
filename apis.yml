@@ -57,8 +57,8 @@ specificationVersion: '0.23'
 apis:
 - aid: ordo:ordo-account-data-client-hosted-api
   name: Ordo Account Data - Client Hosted API
-  description: The Account Data - Client Hosted API from Ordo — 9 operation(s) for account data - client
-    hosted.
+  description: >-
+    The Account Data - Client Hosted API from Ordo — 9 operation(s) for account data - client hosted.
   humanURL: https://ordopay.com/products/payments
   baseURL: https://test.api.ordopay.com/payments
   tags:
@@ -84,38 +84,11 @@ apis:
     url: https://docs.myordo.com/docs/client-hosted-account-data
   - type: APIReference
     url: https://docs.myordo.com/docs/financial-institution
-- aid: ordo:ordo-account-data-ordo-hosted-api
-  name: Ordo Account Data - Ordo Hosted API
-  description: The Account Data - Ordo Hosted API from Ordo — 7 operation(s) for account data - ordo hosted.
-  humanURL: https://ordopay.com/products/payments
-  baseURL: https://test.api.ordopay.com/payments
-  tags:
-  - Account Data - Ordo Hosted
-  properties:
-  - type: OpenAPI
-    url: openapi/ordo-account-data-ordo-hosted-api-openapi.yml
-  - type: Documentation
-    url: https://ordopay.com/products/payments
-  - type: APIReference
-    url: https://docs.myordo.com/docs/introduction-single-payments
-  - type: Documentation
-    url: https://ordopay.com/products/vrp
-  - type: APIReference
-    url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
-  - type: Documentation
-    url: https://ordopay.com/products/account/data
-  - type: APIReference
-    url: https://docs.myordo.com/docs/introduction-account-data
-  - type: Documentation
-    url: https://ordopay.com/products/account/verify
-  - type: APIReference
-    url: https://docs.myordo.com/docs/client-hosted-account-data
-  - type: APIReference
-    url: https://docs.myordo.com/docs/financial-institution
 - aid: ordo:ordo-account-verification-client-hosted-api
   name: Ordo Account Verification - Client Hosted API
-  description: The Account Verification - Client Hosted API from Ordo — 6 operation(s) for account verification
-    - client hosted.
+  description: >-
+    The Account Verification - Client Hosted API from Ordo — 6 operation(s) for account verification -
+    client hosted.
   humanURL: https://ordopay.com/products/payments
   baseURL: https://test.api.ordopay.com/payments
   tags:
@@ -123,35 +96,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/ordo-account-verification-client-hosted-api-openapi.yml
-  - type: Documentation
-    url: https://ordopay.com/products/payments
-  - type: APIReference
-    url: https://docs.myordo.com/docs/introduction-single-payments
-  - type: Documentation
-    url: https://ordopay.com/products/vrp
-  - type: APIReference
-    url: https://docs.myordo.com/docs/introduction-recurring-payment-mandates
-  - type: Documentation
-    url: https://ordopay.com/products/account/data
-  - type: APIReference
-    url: https://docs.myordo.com/docs/introduction-account-data
-  - type: Documentation
-    url: https://ordopay.com/products/account/verify
-  - type: APIReference
-    url: https://docs.myordo.com/docs/client-hosted-account-data
-  - type: APIReference
-    url: https://docs.myordo.com/docs/financial-institution
-- aid: ordo:ordo-account-verification-ordo-hosted-api
-  name: Ordo Account Verification - Ordo Hosted API
-  description: The Account Verification - Ordo Hosted API from Ordo — 6 operation(s) for account verification
-    - ordo hosted.
-  humanURL: https://ordopay.com/products/payments
-  baseURL: https://test.api.ordopay.com/payments
-  tags:
-  - Account Verification - Ordo Hosted
-  properties:
-  - type: OpenAPI
-    url: openapi/ordo-account-verification-ordo-hosted-api-openapi.yml
   - type: Documentation
     url: https://ordopay.com/products/payments
   - type: APIReference
@@ -286,7 +230,8 @@ apis:
     url: https://docs.myordo.com/docs/financial-institution
 - aid: ordo:ordo-retrieve-mandate-details-api
   name: Ordo Retrieve mandate details API
-  description: The Retrieve mandate details API from Ordo — 4 operation(s) for retrieve mandate details.
+  description: >-
+    The Retrieve mandate details API from Ordo — 4 operation(s) for retrieve mandate details.
   humanURL: https://ordopay.com/products/payments
   baseURL: https://test.api.ordopay.com/payments
   tags:
