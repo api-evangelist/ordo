@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: ACCOUNT DATA - Client Hosted Account Verification - Client Hosted API
+  title: ACCOUNT DATA - Client Hosted Account Verification - Client…
   version: '1.0'
 servers:
 - url: https://test.api.ordopay.com/client
@@ -15,7 +15,6 @@ paths:
       tags:
       - Account Verification - Client Hosted
       summary: Creates a new AV request
-      description: Creates a new AV request
       operationId: post-account-verification-create
       parameters:
       - name: participantId
@@ -246,7 +245,6 @@ paths:
       tags:
       - Account Verification - Client Hosted
       summary: Initiate an AV request
-      description: Initiate an AV request
       operationId: post-account-verification-clienthostedinitiate
       parameters:
       - name: participantId
@@ -443,7 +441,6 @@ paths:
       tags:
       - Account Verification - Client Hosted
       summary: Gets a list of AV enabled institutions
-      description: Gets a list of AV enabled institutions
       operationId: get-account-verification-institutions
       parameters:
       - name: OrdoInstitutionId
@@ -1244,80 +1241,6 @@ paths:
                 instance: string
 components:
   schemas:
-    MediaElement:
-      type: object
-      properties:
-        iconUrl:
-          type:
-          - string
-          - 'null'
-          format: uri
-        logoUrl:
-          type:
-          - string
-          - 'null'
-          format: uri
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type:
-          - string
-          - 'null'
-        errorMessage:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    AccountAuthResponse:
-      type: object
-      properties:
-        authorisationUrl:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    AVAccountGetResponse:
-      type: object
-      properties:
-        aVid:
-          type:
-          - string
-          - 'null'
-        participantId:
-          type: integer
-          format: int32
-        accounts:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/OBAccount'
-      additionalProperties: false
-    ClientHostedInitiateAVRequest:
-      required:
-      - avId
-      - ordoInstitutionId
-      type: object
-      properties:
-        ordoInstitutionId:
-          type: string
-        avId:
-          type: string
-      additionalProperties: false
-    AVPostResponse:
-      type: object
-      properties:
-        av:
-          $ref: '#/components/schemas/AVResponse'
-        avAuthUrl:
-          type:
-          - string
-          - 'null'
-        avURLs:
-          $ref: '#/components/schemas/AVURLs'
-      additionalProperties: false
     InstitutionResponse:
       type: object
       properties:
@@ -1342,47 +1265,46 @@ components:
           items:
             type: string
       additionalProperties: false
-    AVURLs:
+    AVAccountGetResponse:
       type: object
       properties:
-        redirectURL:
+        aVid:
           type:
           - string
           - 'null'
-        cancelURL:
-          type:
-          - string
-          - 'null'
-        errorURL:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
+        participantId:
+          type: integer
           format: int32
-        detail:
+        accounts:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OBAccount'
+      additionalProperties: false
+    AVPostResponse:
+      type: object
+      properties:
+        av:
+          $ref: '#/components/schemas/AVResponse'
+        avAuthUrl:
           type:
           - string
           - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
+        avURLs:
+          $ref: '#/components/schemas/AVURLs'
+      additionalProperties: false
+    ClientHostedInitiateAVRequest:
+      required:
+      - avId
+      - ordoInstitutionId
+      type: object
+      properties:
+        ordoInstitutionId:
+          type: string
+        avId:
+          type: string
+      additionalProperties: false
     GetAVRecord:
       type: object
       properties:
@@ -1420,37 +1342,77 @@ components:
         avURLs:
           $ref: '#/components/schemas/AVURLs'
       additionalProperties: false
-    AVResponse:
+    ProblemDetails:
       type: object
       properties:
-        avId:
+        type:
           type:
           - string
           - 'null'
-        createdDate:
-          type: string
-          format: date-time
-        createdBy:
+        title:
           type:
           - string
           - 'null'
-        updatedDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        updatedBy:
-          type:
-          - string
-          - 'null'
-        clientReference:
-          type:
-          - string
-          - 'null'
-        participantId:
-          type: integer
-          format: int32
         status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    AccountAuthResponse:
+      type: object
+      properties:
+        authorisationUrl:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    MediaElement:
+      type: object
+      properties:
+        iconUrl:
+          type:
+          - string
+          - 'null'
+          format: uri
+        logoUrl:
+          type:
+          - string
+          - 'null'
+          format: uri
+      additionalProperties: false
+    AVURLs:
+      type: object
+      properties:
+        redirectURL:
+          type:
+          - string
+          - 'null'
+        cancelURL:
+          type:
+          - string
+          - 'null'
+        errorURL:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type:
+          - string
+          - 'null'
+        errorMessage:
           type:
           - string
           - 'null'
@@ -1533,6 +1495,41 @@ components:
           - string
           - 'null'
         pan:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AVResponse:
+      type: object
+      properties:
+        avId:
+          type:
+          - string
+          - 'null'
+        createdDate:
+          type: string
+          format: date-time
+        createdBy:
+          type:
+          - string
+          - 'null'
+        updatedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updatedBy:
+          type:
+          - string
+          - 'null'
+        clientReference:
+          type:
+          - string
+          - 'null'
+        participantId:
+          type: integer
+          format: int32
+        status:
           type:
           - string
           - 'null'

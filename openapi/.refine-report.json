@@ -1,0 +1,49 @@
+{
+  "provider": "ordo",
+  "sources": [
+    "_original/ordo-account-data-client-hosted.yml",
+    "_original/ordo-recurring-payment-mandates.yml",
+    "_original/ordo-registry-manager.yml",
+    "_original/ordo-single-payments.yml",
+    "_original/ordo-smart-request-manager.yml"
+  ],
+  "outputs": [
+    "ordo-account-data-client-hosted-api-openapi.yml",
+    "ordo-account-verification-client-hosted-api-openapi.yml",
+    "ordo-create-a-mandate-api-openapi.yml",
+    "ordo-retrieve-mandate-details-api-openapi.yml",
+    "ordo-bank-accounts-api-openapi.yml",
+    "ordo-client-hosted-api-openapi.yml",
+    "ordo-ordo-hosted-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (5 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "ordo-account-data-client-hosted.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "ordo-account-data-client-hosted.yml: declared missing tag: Account Data - Client Hosted",
+    "ordo-account-data-client-hosted.yml: declared missing tag: Account Verification - Client Hosted",
+    "ordo-recurring-payment-mandates.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "ordo-recurring-payment-mandates.yml: declared missing tag: Create a mandate",
+    "ordo-recurring-payment-mandates.yml: declared missing tag: Retrieve mandate details",
+    "ordo-registry-manager.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "ordo-registry-manager.yml: declared missing tag: Bank accounts",
+    "ordo-single-payments.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "ordo-single-payments.yml: declared missing tag: Client hosted",
+    "ordo-smart-request-manager.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "ordo-smart-request-manager.yml: declared missing tag: Ordo hosted",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/ordo-account-data-ordo-hosted.yml: archived document superseded by a larger archived document",
+    "ordo-account-data-client-hosted-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordo-account-verification-client-hosted-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordo-bank-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordo-client-hosted-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordo-create-a-mandate-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordo-ordo-hosted-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ordo-retrieve-mandate-details-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

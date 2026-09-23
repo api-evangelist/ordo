@@ -290,197 +290,6 @@ paths:
           description: Client Error
 components:
   schemas:
-    NewBDRSmartRequestResponse:
-      type: object
-      properties:
-        bdRlink:
-          type: string
-        smartRequestId:
-          type: string
-        creationDateTime:
-          type: string
-        status:
-          type: string
-        paymentStatus:
-          type: string
-        billerParticipantId:
-          type: integer
-        billerContactEmail: {}
-        billerContactPhone: {}
-        billerReference:
-          type: string
-        billerAccountId:
-          type: string
-        payerParticipantId:
-          type: integer
-        payerAliasType:
-          type: string
-        payerAliasValue:
-          type: string
-        payerReference:
-          type: string
-        amountDue:
-          type: integer
-        amountCurrency:
-          type: string
-        dueDate:
-          type: string
-        expiryDate:
-          type: string
-        dueDateExtensionsAllowed:
-          type: boolean
-        partialPaymentAllowed:
-          type: boolean
-        partialPaymentsRemaining:
-          type: integer
-        attachmentBatchId:
-          type: string
-        refundAccountRequired:
-          type: boolean
-        smartRequestUrls:
-          type: object
-          properties:
-            bdrRedirectURL:
-              type: string
-            bdrCancelURL:
-              type: string
-            bdrErrorURL:
-              type: string
-    WithdrawSmartRequestMessage:
-      required:
-      - senderParticipantId
-      - smartRequestId
-      - withdrawReasonCode
-      - withdrawReasonText
-      type: object
-      properties:
-        senderParticipantId:
-          minLength: 1
-          type: integer
-          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
-          format: int32
-        recipientParticipantId:
-          type: integer
-          description: Gets or sets the property. The Payerparticipant is identified as the recipient of this message type.
-          format: int32
-        payerAliasType:
-          enum:
-          - EMAIL
-          - PHONE
-          type: string
-          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
-        payerAliasValue:
-          type: string
-          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
-          example: 'Email : example@mail.com
-
-            Phone : +countrycode 7712345678.'
-        smartRequestId:
-          minLength: 1
-          type: string
-          description: Gets or sets the property. System generated unique identifier for a Smart Request transaction.
-        messageType:
-          enum:
-          - REQUESTTOPAY
-          - WITHDRAW
-          - EXTENSIONDECLINED
-          - DECLINE
-          - DECLINEBLOCK
-          - EXTENSIONGRANTED
-          - PAYPARTIAL
-          - PAYALL
-          - REQPAYEXTENSION
-          - READ
-          - MATCHALIAS
-          - MATCHALIASPEND
-          - MATCHREGPEND
-          - MATCHREG
-          - PAYMENTFAILURE
-          - PAYMENTINPROGRESS
-          type: string
-          description: 'Gets or sets the property. The message type needs to be ''WITHDRAW''.
-
-            <para>
-
-            WITHDRAW - Indicates that the Biller withdraws the Smart Request.
-
-            </para>'
-        withdrawReasonCode:
-          minLength: 1
-          type: string
-          description: Gets or sets the property. Reason code for withdrawing the Smart Request.
-        withdrawReasonText:
-          minLength: 1
-          type: string
-          description: Gets or sets the property. Description text of the selected withdraw reason code.
-      description: Class Withdraw Smart Request.
-      example:
-        senderParticipantId: 0
-        recipientParticipantId: 0
-        payerAliasType: string
-        payerAliasValue: string
-        smartRequestId: '#'
-        messageType: string
-        withdrawReasonCode: '#'
-        withdrawReasonText: '#'
-    initiatePaymentResponse:
-      required:
-      - authorisationUrl
-      properties:
-        authorisationUrl:
-          type: string
-          example: https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=383a7a2cf3d94f99806c87beb71a
-      example:
-        bdrRedirectURL: string
-        bdrCancelURL: string
-        bdrErrorURL: string
-        senderParticipantId: 0
-        recipientParticipantId: 0
-        billerParticipantId: 0
-        billerContactEmail: string
-        billerContactPhone: string
-        billerReference: '#'
-        billerAccountId: '#'
-        payerParticipantId: 0
-        payerAliasType: string
-        payerAliasValue: string
-        payerReference: '#'
-        amountDue: 0.561416617508866
-        amountCurrency: '#'
-        dueDate: '#'
-        expiryDate: '#'
-        partialPaymentAllowed: false
-        dueDateExtensionsAllowed: false
-        partialPaymentsRemaining: 0
-        attachmentBatchId: string
-        refundAccountRequired: false
-    initiatePaymentRequest:
-      required:
-      - ordoInstitutionId
-      - smartRequestId
-      - amount
-      - currency
-      properties:
-        ordoInstitutionId:
-          type: string
-          description: The identifier of the institution, obtained by calling the /institutions endpoint.
-          example: int_modelo_sandbox
-        smartRequestId:
-          type: string
-          description: The unique identifier of the Smart Request to pay.
-          example: DHEY282H
-        amount:
-          minimum: 0.01
-          type: number
-          description: The amount to pay
-          format: double
-          example: 39.89
-        currency:
-          maxLength: 3
-          minLength: 3
-          type: string
-          description: The currency used for the transaction, specified using the ISO 4217 currency code standard. Only GBP is supported.
-          example: GBP
     OrdoValidationProblemDetails:
       type: object
       properties:
@@ -515,31 +324,37 @@ components:
         status: 0
         detail: string
         instance: string
-    InstitutionsResponse:
-      type: array
-      items:
-        required:
-        - media
-        - features
-        - ordoInstitutionId
-        - name
-        type: object
-        properties:
-          media:
-            type: object
-            properties:
-              logoUrl:
-                type: string
-              iconUrl:
-                type: string
-          features:
-            type: array
-            items:
-              type: string
-          ordoInstitutionId:
-            type: string
-          name:
-            type: string
+    initiatePaymentResponse:
+      required:
+      - authorisationUrl
+      properties:
+        authorisationUrl:
+          type: string
+          example: https://as.aspsp.ob.forgerock.financial/oauth2/realms/root/realms/openbanking/authorize?client_id=9c54251f-3a45-4441-9665-02ef6be588b3&response_type=code+id_token&state=383a7a2cf3d94f99806c87beb71a
+      example:
+        bdrRedirectURL: string
+        bdrCancelURL: string
+        bdrErrorURL: string
+        senderParticipantId: 0
+        recipientParticipantId: 0
+        billerParticipantId: 0
+        billerContactEmail: string
+        billerContactPhone: string
+        billerReference: '#'
+        billerAccountId: '#'
+        payerParticipantId: 0
+        payerAliasType: string
+        payerAliasValue: string
+        payerReference: '#'
+        amountDue: 0.561416617508866
+        amountCurrency: '#'
+        dueDate: '#'
+        expiryDate: '#'
+        partialPaymentAllowed: false
+        dueDateExtensionsAllowed: false
+        partialPaymentsRemaining: 0
+        attachmentBatchId: string
+        refundAccountRequired: false
     WithdrawSmartRequestMessageResponse:
       type: object
       properties:
@@ -774,6 +589,191 @@ components:
         partialPaymentsRemaining: 0
         attachmentBatchId: string
         refundAccountRequired: false
+    WithdrawSmartRequestMessage:
+      required:
+      - senderParticipantId
+      - smartRequestId
+      - withdrawReasonCode
+      - withdrawReasonText
+      type: object
+      properties:
+        senderParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
+          format: int32
+        recipientParticipantId:
+          type: integer
+          description: Gets or sets the property. The Payerparticipant is identified as the recipient of this message type.
+          format: int32
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com
+
+            Phone : +countrycode 7712345678.'
+        smartRequestId:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart Request transaction.
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
+          type: string
+          description: 'Gets or sets the property. The message type needs to be ''WITHDRAW''.
+
+            <para>
+
+            WITHDRAW - Indicates that the Biller withdraws the Smart Request.
+
+            </para>'
+        withdrawReasonCode:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Reason code for withdrawing the Smart Request.
+        withdrawReasonText:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Description text of the selected withdraw reason code.
+      description: Class Withdraw Smart Request.
+      example:
+        senderParticipantId: 0
+        recipientParticipantId: 0
+        payerAliasType: string
+        payerAliasValue: string
+        smartRequestId: '#'
+        messageType: string
+        withdrawReasonCode: '#'
+        withdrawReasonText: '#'
+    NewBDRSmartRequestResponse:
+      type: object
+      properties:
+        bdRlink:
+          type: string
+        smartRequestId:
+          type: string
+        creationDateTime:
+          type: string
+        status:
+          type: string
+        paymentStatus:
+          type: string
+        billerParticipantId:
+          type: integer
+        billerContactEmail: {}
+        billerContactPhone: {}
+        billerReference:
+          type: string
+        billerAccountId:
+          type: string
+        payerParticipantId:
+          type: integer
+        payerAliasType:
+          type: string
+        payerAliasValue:
+          type: string
+        payerReference:
+          type: string
+        amountDue:
+          type: integer
+        amountCurrency:
+          type: string
+        dueDate:
+          type: string
+        expiryDate:
+          type: string
+        dueDateExtensionsAllowed:
+          type: boolean
+        partialPaymentAllowed:
+          type: boolean
+        partialPaymentsRemaining:
+          type: integer
+        attachmentBatchId:
+          type: string
+        refundAccountRequired:
+          type: boolean
+        smartRequestUrls:
+          type: object
+          properties:
+            bdrRedirectURL:
+              type: string
+            bdrCancelURL:
+              type: string
+            bdrErrorURL:
+              type: string
+    initiatePaymentRequest:
+      required:
+      - ordoInstitutionId
+      - smartRequestId
+      - amount
+      - currency
+      properties:
+        ordoInstitutionId:
+          type: string
+          description: The identifier of the institution, obtained by calling the /institutions endpoint.
+          example: int_modelo_sandbox
+        smartRequestId:
+          type: string
+          description: The unique identifier of the Smart Request to pay.
+          example: DHEY282H
+        amount:
+          minimum: 0.01
+          type: number
+          description: The amount to pay
+          format: double
+          example: 39.89
+        currency:
+          maxLength: 3
+          minLength: 3
+          type: string
+          description: The currency used for the transaction, specified using the ISO 4217 currency code standard. Only GBP is supported.
+          example: GBP
+    InstitutionsResponse:
+      type: array
+      items:
+        required:
+        - media
+        - features
+        - ordoInstitutionId
+        - name
+        type: object
+        properties:
+          media:
+            type: object
+            properties:
+              logoUrl:
+                type: string
+              iconUrl:
+                type: string
+          features:
+            type: array
+            items:
+              type: string
+          ordoInstitutionId:
+            type: string
+          name:
+            type: string
   securitySchemes:
     apiKeyHeader:
       type: apiKey

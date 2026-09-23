@@ -15,7 +15,6 @@ paths:
       tags:
       - Retrieve mandate details
       summary: Retrieves an existing VRP mandate
-      description: Retrieves an existing VRP mandate
       operationId: get-vrpmandate-mandateid
       parameters:
       - name: mandateId
@@ -264,7 +263,6 @@ paths:
       tags:
       - Retrieve mandate details
       summary: Gets all VRP mandates associated with a participant
-      description: Gets all VRP mandates associated with a participant
       operationId: get-vrpmandates
       parameters:
       - name: PageNumber
@@ -511,7 +509,6 @@ paths:
       tags:
       - Retrieve mandate details
       summary: Gets a VRP Transaction
-      description: Gets a VRP Transaction
       operationId: get-vrptransaction-vrptransactionid
       parameters:
       - name: vrpTransactionId
@@ -721,9 +718,7 @@ paths:
     get:
       tags:
       - Retrieve mandate details
-      summary: 'Gets VRP Transactions for VRP Mandate
-
-        and Participant combo'
+      summary: Gets VRP Transactions for VRP Mandate and Participant combo
       description: 'Gets VRP Transactions for VRP Mandate
 
         and Participant combo'
@@ -948,15 +943,13 @@ paths:
                 instance: string
 components:
   schemas:
-    VRPMandatesResponse:
+    VRPMandateGetResponse:
       type: object
       properties:
-        vrpMandates:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/VRPMandateResponse'
+        vrpMandate:
+          $ref: '#/components/schemas/VRPMandateResponse'
+        vrpURLs:
+          $ref: '#/components/schemas/VRPURLs'
       additionalProperties: false
     VRPURLs:
       type: object
@@ -974,25 +967,59 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    VRPTransactionPostResponse:
-      type: object
-      properties:
-        vrpTransaction:
-          $ref: '#/components/schemas/VRPTransactionResponse'
-      additionalProperties: false
-    VRPMandateGetResponse:
-      type: object
-      properties:
-        vrpMandate:
-          $ref: '#/components/schemas/VRPMandateResponse'
-        vrpURLs:
-          $ref: '#/components/schemas/VRPURLs'
-      additionalProperties: false
     PayerAliasType:
       enum:
       - EMAIL
       - PHONE
       type: string
+    VRPMandatesResponse:
+      type: object
+      properties:
+        vrpMandates:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/VRPMandateResponse'
+      additionalProperties: false
+    ControlParameter:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currency:
+          type:
+          - string
+          - 'null'
+        periodAlignment:
+          type:
+          - string
+          - 'null'
+        periodType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    VRPControlParameters:
+      required:
+      - maximumIndividualAmount
+      - maximumIndividualAmountCurrency
+      type: object
+      properties:
+        maximumIndividualAmount:
+          type: number
+          format: double
+        maximumIndividualAmountCurrency:
+          minLength: 1
+          type: string
+        controlParameters:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ControlParameter'
+      additionalProperties: false
     VRPMandateResponse:
       type: object
       properties:
@@ -1092,6 +1119,11 @@ components:
           - string
           - 'null'
       additionalProperties: {}
+    VRPType:
+      enum:
+      - SWEEPING
+      - NONSWEEPING
+      type: string
     VRPTransactionResponse:
       type: object
       properties:
@@ -1147,11 +1179,12 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    VRPType:
-      enum:
-      - SWEEPING
-      - NONSWEEPING
-      type: string
+    VRPTransactionPostResponse:
+      type: object
+      properties:
+        vrpTransaction:
+          $ref: '#/components/schemas/VRPTransactionResponse'
+      additionalProperties: false
     OrdoValidationProblemDetails:
       type: object
       properties:
@@ -1190,44 +1223,6 @@ components:
           - string
           - 'null'
       additionalProperties: {}
-    VRPControlParameters:
-      required:
-      - maximumIndividualAmount
-      - maximumIndividualAmountCurrency
-      type: object
-      properties:
-        maximumIndividualAmount:
-          type: number
-          format: double
-        maximumIndividualAmountCurrency:
-          minLength: 1
-          type: string
-        controlParameters:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ControlParameter'
-      additionalProperties: false
-    ControlParameter:
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        currency:
-          type:
-          - string
-          - 'null'
-        periodAlignment:
-          type:
-          - string
-          - 'null'
-        periodType:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
   securitySchemes:
     apiKeyHeader:
       type: apiKey
