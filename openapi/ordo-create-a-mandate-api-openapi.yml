@@ -671,6 +671,36 @@ paths:
                 instance: string
 components:
   schemas:
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    VRPType:
+      enum:
+      - SWEEPING
+      - NONSWEEPING
+      type: string
     VRPURLs:
       type: object
       properties:
@@ -687,11 +717,59 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    PayerAliasType:
-      enum:
-      - EMAIL
-      - PHONE
-      type: string
+    VRPMandateMessage:
+      required:
+      - billerAccountId
+      - billerParticipantId
+      - vrpControlParameters
+      - vrpMandateName
+      - vrpurLs
+      type: object
+      properties:
+        vrpMandateName:
+          minLength: 1
+          type: string
+        validFromDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        validToDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        billerParticipantId:
+          type: integer
+          format: int32
+        billerReference:
+          type:
+          - string
+          - 'null'
+        billerAccountId:
+          minLength: 1
+          type: string
+        payerAliasType:
+          $ref: '#/components/schemas/PayerAliasType'
+        payerAliasValue:
+          type:
+          - string
+          - 'null'
+        payerReference:
+          type:
+          - string
+          - 'null'
+        vrpControlParameters:
+          $ref: '#/components/schemas/VRPControlParameters'
+        attachmentBatchId:
+          type:
+          - string
+          - 'null'
+        vrpurLs:
+          $ref: '#/components/schemas/VRPURLs'
+        refundAccountRequired:
+          type: boolean
+      additionalProperties: false
     ControlParameter:
       type: object
       properties:
@@ -711,6 +789,11 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    PayerAliasType:
+      enum:
+      - EMAIL
+      - PHONE
+      type: string
     VRPControlParameters:
       required:
       - maximumIndividualAmount
@@ -729,6 +812,18 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/ControlParameter'
+      additionalProperties: false
+    VRPMandatePostResponse:
+      type: object
+      properties:
+        vrpAuthUrl:
+          type:
+          - string
+          - 'null'
+        vrpMandate:
+          $ref: '#/components/schemas/VRPMandateResponse'
+        vrpURLs:
+          $ref: '#/components/schemas/VRPURLs'
       additionalProperties: false
     VRPMandateResponse:
       type: object
@@ -804,89 +899,6 @@ components:
         refundAccountRequired:
           type: boolean
       additionalProperties: false
-    VRPMandateMessage:
-      required:
-      - billerAccountId
-      - billerParticipantId
-      - vrpControlParameters
-      - vrpMandateName
-      - vrpurLs
-      type: object
-      properties:
-        vrpMandateName:
-          minLength: 1
-          type: string
-        validFromDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        validToDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        billerParticipantId:
-          type: integer
-          format: int32
-        billerReference:
-          type:
-          - string
-          - 'null'
-        billerAccountId:
-          minLength: 1
-          type: string
-        payerAliasType:
-          $ref: '#/components/schemas/PayerAliasType'
-        payerAliasValue:
-          type:
-          - string
-          - 'null'
-        payerReference:
-          type:
-          - string
-          - 'null'
-        vrpControlParameters:
-          $ref: '#/components/schemas/VRPControlParameters'
-        attachmentBatchId:
-          type:
-          - string
-          - 'null'
-        vrpurLs:
-          $ref: '#/components/schemas/VRPURLs'
-        refundAccountRequired:
-          type: boolean
-      additionalProperties: false
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
-    VRPType:
-      enum:
-      - SWEEPING
-      - NONSWEEPING
-      type: string
     OrdoValidationProblemDetails:
       type: object
       properties:
@@ -925,18 +937,6 @@ components:
           - string
           - 'null'
       additionalProperties: {}
-    VRPMandatePostResponse:
-      type: object
-      properties:
-        vrpAuthUrl:
-          type:
-          - string
-          - 'null'
-        vrpMandate:
-          $ref: '#/components/schemas/VRPMandateResponse'
-        vrpURLs:
-          $ref: '#/components/schemas/VRPURLs'
-      additionalProperties: false
   securitySchemes:
     apiKeyHeader:
       type: apiKey

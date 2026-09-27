@@ -1241,70 +1241,31 @@ paths:
                 instance: string
 components:
   schemas:
-    InstitutionResponse:
+    ProblemDetails:
       type: object
       properties:
-        ordoInstitutionId:
+        type:
           type:
           - string
           - 'null'
-        name:
+        title:
           type:
           - string
           - 'null'
-        media:
-          $ref: '#/components/schemas/MediaElement'
-        refundDataAvailable:
-          type: boolean
-        aisEnabled:
-          type: boolean
-        features:
+        status:
           type:
-          - array
+          - integer
           - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    AVAccountGetResponse:
-      type: object
-      properties:
-        aVid:
-          type:
-          - string
-          - 'null'
-        participantId:
-          type: integer
           format: int32
-        accounts:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/OBAccount'
-      additionalProperties: false
-    AVPostResponse:
-      type: object
-      properties:
-        av:
-          $ref: '#/components/schemas/AVResponse'
-        avAuthUrl:
+        detail:
           type:
           - string
           - 'null'
-        avURLs:
-          $ref: '#/components/schemas/AVURLs'
-      additionalProperties: false
-    ClientHostedInitiateAVRequest:
-      required:
-      - avId
-      - ordoInstitutionId
-      type: object
-      properties:
-        ordoInstitutionId:
-          type: string
-        avId:
-          type: string
-      additionalProperties: false
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
     GetAVRecord:
       type: object
       properties:
@@ -1342,39 +1303,6 @@ components:
         avURLs:
           $ref: '#/components/schemas/AVURLs'
       additionalProperties: false
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
-    AccountAuthResponse:
-      type: object
-      properties:
-        authorisationUrl:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     MediaElement:
       type: object
       properties:
@@ -1389,72 +1317,6 @@ components:
           - 'null'
           format: uri
       additionalProperties: false
-    AVURLs:
-      type: object
-      properties:
-        redirectURL:
-          type:
-          - string
-          - 'null'
-        cancelURL:
-          type:
-          - string
-          - 'null'
-        errorURL:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type:
-          - string
-          - 'null'
-        errorMessage:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    OrdoValidationProblemDetails:
-      type: object
-      properties:
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        code:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type: array
-            items:
-              type: string
-          readOnly: true
-        type:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
     OBAccount:
       type: object
       properties:
@@ -1499,6 +1361,58 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    AVPostResponse:
+      type: object
+      properties:
+        av:
+          $ref: '#/components/schemas/AVResponse'
+        avAuthUrl:
+          type:
+          - string
+          - 'null'
+        avURLs:
+          $ref: '#/components/schemas/AVURLs'
+      additionalProperties: false
+    ClientHostedInitiateAVRequest:
+      required:
+      - avId
+      - ordoInstitutionId
+      type: object
+      properties:
+        ordoInstitutionId:
+          type: string
+        avId:
+          type: string
+      additionalProperties: false
+    AVAccountGetResponse:
+      type: object
+      properties:
+        aVid:
+          type:
+          - string
+          - 'null'
+        participantId:
+          type: integer
+          format: int32
+        accounts:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OBAccount'
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type:
+          - string
+          - 'null'
+        errorMessage:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     AVResponse:
       type: object
       properties:
@@ -1534,6 +1448,68 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    InstitutionResponse:
+      type: object
+      properties:
+        ordoInstitutionId:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        media:
+          $ref: '#/components/schemas/MediaElement'
+        refundDataAvailable:
+          type: boolean
+        aisEnabled:
+          type: boolean
+        features:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    OrdoValidationProblemDetails:
+      type: object
+      properties:
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          readOnly: true
+        type:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
     AVRequest:
       type: object
       properties:
@@ -1543,6 +1519,30 @@ components:
           - 'null'
         avurLs:
           $ref: '#/components/schemas/AVURLs'
+      additionalProperties: false
+    AccountAuthResponse:
+      type: object
+      properties:
+        authorisationUrl:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AVURLs:
+      type: object
+      properties:
+        redirectURL:
+          type:
+          - string
+          - 'null'
+        cancelURL:
+          type:
+          - string
+          - 'null'
+        errorURL:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     apiKeyHeader:

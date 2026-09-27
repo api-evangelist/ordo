@@ -943,6 +943,36 @@ paths:
                 instance: string
 components:
   schemas:
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    VRPType:
+      enum:
+      - SWEEPING
+      - NONSWEEPING
+      type: string
     VRPMandateGetResponse:
       type: object
       properties:
@@ -967,11 +997,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    PayerAliasType:
-      enum:
-      - EMAIL
-      - PHONE
-      type: string
     VRPMandatesResponse:
       type: object
       properties:
@@ -1001,6 +1026,11 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    PayerAliasType:
+      enum:
+      - EMAIL
+      - PHONE
+      type: string
     VRPControlParameters:
       required:
       - maximumIndividualAmount
@@ -1020,6 +1050,99 @@ components:
           items:
             $ref: '#/components/schemas/ControlParameter'
       additionalProperties: false
+    VRPTransactionResponse:
+      type: object
+      properties:
+        vrpTransactionId:
+          type:
+          - string
+          - 'null'
+        vrpMandateId:
+          type:
+          - string
+          - 'null'
+        billerParticipantId:
+          type: integer
+          format: int32
+        payerAliasType:
+          $ref: '#/components/schemas/PayerAliasType'
+        payerAliasValue:
+          type:
+          - string
+          - 'null'
+        amount:
+          type: number
+          format: double
+        currency:
+          type:
+          - string
+          - 'null'
+        aspspTransactionId:
+          type:
+          - string
+          - 'null'
+        paymentDate:
+          type: string
+          format: date-time
+        status:
+          type:
+          - string
+          - 'null'
+        paymentStatus:
+          type:
+          - string
+          - 'null'
+        billerReference:
+          type:
+          - string
+          - 'null'
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    OrdoValidationProblemDetails:
+      type: object
+      properties:
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          readOnly: true
+        type:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
     VRPMandateResponse:
       type: object
       properties:
@@ -1094,135 +1217,12 @@ components:
         refundAccountRequired:
           type: boolean
       additionalProperties: false
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
-    VRPType:
-      enum:
-      - SWEEPING
-      - NONSWEEPING
-      type: string
-    VRPTransactionResponse:
-      type: object
-      properties:
-        vrpTransactionId:
-          type:
-          - string
-          - 'null'
-        vrpMandateId:
-          type:
-          - string
-          - 'null'
-        billerParticipantId:
-          type: integer
-          format: int32
-        payerAliasType:
-          $ref: '#/components/schemas/PayerAliasType'
-        payerAliasValue:
-          type:
-          - string
-          - 'null'
-        amount:
-          type: number
-          format: double
-        currency:
-          type:
-          - string
-          - 'null'
-        aspspTransactionId:
-          type:
-          - string
-          - 'null'
-        paymentDate:
-          type: string
-          format: date-time
-        status:
-          type:
-          - string
-          - 'null'
-        paymentStatus:
-          type:
-          - string
-          - 'null'
-        billerReference:
-          type:
-          - string
-          - 'null'
-        createdDate:
-          type: string
-          format: date-time
-        updatedDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
     VRPTransactionPostResponse:
       type: object
       properties:
         vrpTransaction:
           $ref: '#/components/schemas/VRPTransactionResponse'
       additionalProperties: false
-    OrdoValidationProblemDetails:
-      type: object
-      properties:
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        code:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type: array
-            items:
-              type: string
-          readOnly: true
-        type:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
   securitySchemes:
     apiKeyHeader:
       type: apiKey
