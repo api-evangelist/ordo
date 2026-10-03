@@ -2257,64 +2257,9 @@ paths:
                 instance: string
 components:
   schemas:
-    AISDataRequestResponse:
+    OrdoValidationProblemDetails:
       type: object
       properties:
-        aisDataRequestId:
-          type:
-          - string
-          - 'null'
-        aisConsentId:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        merchantReference:
-          type:
-          - string
-          - 'null'
-        participantId:
-          type: integer
-          format: int32
-        institutionCode:
-          type:
-          - string
-          - 'null'
-        idempotencyId:
-          type:
-          - string
-          - 'null'
-        fromDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        toDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        createdDate:
-          type: string
-          format: date-time
-        createdBy:
-          type:
-          - string
-          - 'null'
-        updatedDate:
-          type: string
-          format: date-time
-      additionalProperties: false
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
         title:
           type:
           - string
@@ -2328,42 +2273,127 @@ components:
           type:
           - string
           - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          readOnly: true
+        type:
+          type:
+          - string
+          - 'null'
         instance:
           type:
           - string
           - 'null'
       additionalProperties: {}
-    CurrencyExchange:
+    Paging:
       type: object
       properties:
-        SourceCurrency:
+        totalRecords:
+          type: integer
+          format: int32
+        currentPage:
+          type: integer
+          format: int32
+        totalPages:
+          type: integer
+          format: int32
+        nextPage:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        previousPage:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    AISRequestResponses:
+      type: object
+      properties:
+        aisRequestResponse:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AISRequestResponse'
+        paging:
+          $ref: '#/components/schemas/Paging'
+      additionalProperties: false
+    BankTransactionCode:
+      type: object
+      properties:
+        Code:
           type:
           - string
           - 'null'
-        TargetCurrency:
+        SubCode:
           type:
           - string
           - 'null'
-        UnitCurrency:
+      additionalProperties: false
+    InstitutionResponse:
+      type: object
+      properties:
+        ordoInstitutionId:
           type:
           - string
           - 'null'
-        ExchangeRate:
-          type:
-          - number
-          - 'null'
-          format: double
-        ContractIdentification:
+        name:
           type:
           - string
           - 'null'
-        QuotationDate:
+        media:
+          $ref: '#/components/schemas/MediaElement'
+        refundDataAvailable:
+          type: boolean
+        aisEnabled:
+          type: boolean
+        features:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ProprietaryBankTransactionCode:
+      type: object
+      properties:
+        code:
           type:
           - string
           - 'null'
-          format: date-time
-        InstructedAmount:
-          $ref: '#/components/schemas/Amount'
+      additionalProperties: false
+    MerchantDetails:
+      type: object
+      properties:
+        MerchantName:
+          type:
+          - string
+          - 'null'
+        MerchantCategoryCode:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DebtorAgent:
+      type: object
+      properties:
+        SchemeName: {}
+        Identification: {}
+        Name: {}
+        PostalAddress:
+          $ref: '#/components/schemas/PostalAddress'
       additionalProperties: false
     Transaction:
       type: object
@@ -2417,6 +2447,243 @@ components:
         CardInstrument:
           $ref: '#/components/schemas/CardInstrument'
         SupplementaryData: {}
+      additionalProperties: false
+    MediaElement:
+      type: object
+      properties:
+        iconUrl:
+          type:
+          - string
+          - 'null'
+          format: uri
+        logoUrl:
+          type:
+          - string
+          - 'null'
+          format: uri
+      additionalProperties: false
+    GetAllAISDataRequestResponse:
+      type: object
+      properties:
+        aisDataRequestResponses:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AISDataRequestResponse'
+        permissionGroupings:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ErrorResponse:
+      type: object
+      properties:
+        errorCode:
+          type:
+          - string
+          - 'null'
+        errorMessage:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    InitiateAISConsentResponse:
+      type: object
+      properties:
+        obapiConsentId:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        accountInitiationUrl:
+          type:
+          - string
+          - 'null'
+          format: uri
+      additionalProperties: false
+    CreditorAccount:
+      type: object
+      properties:
+        SchemeName: {}
+        Identification: {}
+        Name: {}
+        SecondaryIdentification: {}
+      additionalProperties: false
+    CreateAISConsentResponse:
+      type: object
+      properties:
+        aisAuthUrl:
+          type:
+          - string
+          - 'null'
+        aisConsent:
+          $ref: '#/components/schemas/AISRequestResponse'
+      additionalProperties: false
+    DebtorAccount:
+      type: object
+      properties:
+        SchemeName: {}
+        Identification: {}
+        Name: {}
+        SecondaryIdentification: {}
+      additionalProperties: false
+    AISRequestResponse:
+      type: object
+      properties:
+        aisConsentId:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/AISStatusTypeEnum'
+        consentName:
+          type:
+          - string
+          - 'null'
+        merchantReference:
+          type:
+          - string
+          - 'null'
+        participantId:
+          type: integer
+          format: int32
+        payerAliasType:
+          type:
+          - string
+          - 'null'
+        payerAliasValue:
+          type:
+          - string
+          - 'null'
+        ordoInstitutionId:
+          type:
+          - string
+          - 'null'
+        permissions:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        redirectURL:
+          type:
+          - string
+          - 'null'
+        cancelURL:
+          type:
+          - string
+          - 'null'
+        errorURL:
+          type:
+          - string
+          - 'null'
+        expiryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        createdDate:
+          type: string
+          format: date-time
+        cancelledBy:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AISCancelRequestResponse:
+      type: object
+      properties:
+        status:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    AISExecuteDataRequest:
+      required:
+      - aisConsentId
+      type: object
+      properties:
+        aisConsentId:
+          type: string
+        merchantReference:
+          type:
+          - string
+          - 'null'
+        fromDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        toDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    PostalAddress:
+      type: object
+      properties:
+        AddressType:
+          type:
+          - string
+          - 'null'
+        Department:
+          type:
+          - string
+          - 'null'
+        SubDepartment:
+          type:
+          - string
+          - 'null'
+        StreetName: {}
+        BuildingNumber: {}
+        PostCode: {}
+        TownName: {}
+        CountrySubDivision:
+          type:
+          - string
+          - 'null'
+        Country:
+          type:
+          - string
+          - 'null'
+        AddressLine:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       additionalProperties: false
     GetAISRequestResponse:
       type: object
@@ -2487,17 +2754,61 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Amount:
+    PayerAliasTypeEnum:
+      enum:
+      - EMAIL
+      - PHONE
+      type: string
+    AISDataRequestResponse:
       type: object
       properties:
-        Amount:
+        aisDataRequestId:
           type:
           - string
           - 'null'
-        currency:
+        aisConsentId:
           type:
           - string
           - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        merchantReference:
+          type:
+          - string
+          - 'null'
+        participantId:
+          type: integer
+          format: int32
+        institutionCode:
+          type:
+          - string
+          - 'null'
+        idempotencyId:
+          type:
+          - string
+          - 'null'
+        fromDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        toDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        createdDate:
+          type: string
+          format: date-time
+        createdBy:
+          type:
+          - string
+          - 'null'
+        updatedDate:
+          type: string
+          format: date-time
       additionalProperties: false
     AISExecuteDataResponse:
       type: object
@@ -2556,284 +2867,6 @@ components:
           - 'null'
           format: date-time
       additionalProperties: false
-    Paging:
-      type: object
-      properties:
-        totalRecords:
-          type: integer
-          format: int32
-        currentPage:
-          type: integer
-          format: int32
-        totalPages:
-          type: integer
-          format: int32
-        nextPage:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        previousPage:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    GetAllAISDataRequestResponse:
-      type: object
-      properties:
-        aisDataRequestResponses:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AISDataRequestResponse'
-        permissionGroupings:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    MerchantDetails:
-      type: object
-      properties:
-        MerchantName:
-          type:
-          - string
-          - 'null'
-        MerchantCategoryCode:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorResponse:
-      type: object
-      properties:
-        errorCode:
-          type:
-          - string
-          - 'null'
-        errorMessage:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    InstitutionResponse:
-      type: object
-      properties:
-        ordoInstitutionId:
-          type:
-          - string
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-        media:
-          $ref: '#/components/schemas/MediaElement'
-        refundDataAvailable:
-          type: boolean
-        aisEnabled:
-          type: boolean
-        features:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    BalanceAmount:
-      type: object
-      properties:
-        amount:
-          type:
-          - string
-          - 'null'
-        currency:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    AccountTransactionResponses:
-      type: object
-      properties:
-        accountTransactions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Transaction'
-        paging:
-          $ref: '#/components/schemas/Paging'
-      additionalProperties: false
-    AISStatusTypeEnum:
-      enum:
-      - INITIATED
-      - CANCELLED
-      - EXPIRED
-      - AWAITINGAUTHORISATION
-      - AUTHORISED
-      type: string
-    AISCancelRequestResponse:
-      type: object
-      properties:
-        status:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    AISExecuteDataRequest:
-      required:
-      - aisConsentId
-      type: object
-      properties:
-        aisConsentId:
-          type: string
-        merchantReference:
-          type:
-          - string
-          - 'null'
-        fromDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        toDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    MediaElement:
-      type: object
-      properties:
-        iconUrl:
-          type:
-          - string
-          - 'null'
-          format: uri
-        logoUrl:
-          type:
-          - string
-          - 'null'
-          format: uri
-      additionalProperties: false
-    AISRequestResponses:
-      type: object
-      properties:
-        aisRequestResponse:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/AISRequestResponse'
-        paging:
-          $ref: '#/components/schemas/Paging'
-      additionalProperties: false
-    PayerAliasTypeEnum:
-      enum:
-      - EMAIL
-      - PHONE
-      type: string
-    CreditorAccount:
-      type: object
-      properties:
-        SchemeName: {}
-        Identification: {}
-        Name: {}
-        SecondaryIdentification: {}
-      additionalProperties: false
-    CreateAISConsentResponse:
-      type: object
-      properties:
-        aisAuthUrl:
-          type:
-          - string
-          - 'null'
-        aisConsent:
-          $ref: '#/components/schemas/AISRequestResponse'
-      additionalProperties: false
-    DebtorAgent:
-      type: object
-      properties:
-        SchemeName: {}
-        Identification: {}
-        Name: {}
-        PostalAddress:
-          $ref: '#/components/schemas/PostalAddress'
-      additionalProperties: false
-    OrdoValidationProblemDetails:
-      type: object
-      properties:
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        code:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type: array
-            items:
-              type: string
-          readOnly: true
-        type:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
-    InitiateAISConsentResponse:
-      type: object
-      properties:
-        obapiConsentId:
-          type:
-          - string
-          - 'null'
-        state:
-          type:
-          - string
-          - 'null'
-        accountInitiationUrl:
-          type:
-          - string
-          - 'null'
-          format: uri
-      additionalProperties: false
-    ProprietaryBankTransactionCode:
-      type: object
-      properties:
-        code:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    DebtorAccount:
-      type: object
-      properties:
-        SchemeName: {}
-        Identification: {}
-        Name: {}
-        SecondaryIdentification: {}
-      additionalProperties: false
     CardInstrument:
       type: object
       properties:
@@ -2854,74 +2887,58 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    CreditorAgent:
+    CurrencyExchange:
       type: object
       properties:
-        SchemeName: {}
-        Identification: {}
-        Name: {}
-        PostalAddress:
-          $ref: '#/components/schemas/PostalAddress'
+        SourceCurrency:
+          type:
+          - string
+          - 'null'
+        TargetCurrency:
+          type:
+          - string
+          - 'null'
+        UnitCurrency:
+          type:
+          - string
+          - 'null'
+        ExchangeRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        ContractIdentification:
+          type:
+          - string
+          - 'null'
+        QuotationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        InstructedAmount:
+          $ref: '#/components/schemas/Amount'
       additionalProperties: false
-    AISRequestResponse:
+    Amount:
       type: object
       properties:
-        aisConsentId:
+        Amount:
           type:
           - string
           - 'null'
-        status:
-          $ref: '#/components/schemas/AISStatusTypeEnum'
-        consentName:
+        currency:
           type:
           - string
           - 'null'
-        merchantReference:
+      additionalProperties: false
+    BalanceAmount:
+      type: object
+      properties:
+        amount:
           type:
           - string
           - 'null'
-        participantId:
-          type: integer
-          format: int32
-        payerAliasType:
-          type:
-          - string
-          - 'null'
-        payerAliasValue:
-          type:
-          - string
-          - 'null'
-        ordoInstitutionId:
-          type:
-          - string
-          - 'null'
-        permissions:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        redirectURL:
-          type:
-          - string
-          - 'null'
-        cancelURL:
-          type:
-          - string
-          - 'null'
-        errorURL:
-          type:
-          - string
-          - 'null'
-        expiryDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        createdDate:
-          type: string
-          format: date-time
-        cancelledBy:
+        currency:
           type:
           - string
           - 'null'
@@ -2940,52 +2957,6 @@ components:
         amount:
           $ref: '#/components/schemas/BalanceAmount'
       additionalProperties: false
-    PostalAddress:
-      type: object
-      properties:
-        AddressType:
-          type:
-          - string
-          - 'null'
-        Department:
-          type:
-          - string
-          - 'null'
-        SubDepartment:
-          type:
-          - string
-          - 'null'
-        StreetName: {}
-        BuildingNumber: {}
-        PostCode: {}
-        TownName: {}
-        CountrySubDivision:
-          type:
-          - string
-          - 'null'
-        Country:
-          type:
-          - string
-          - 'null'
-        AddressLine:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    BankTransactionCode:
-      type: object
-      properties:
-        Code:
-          type:
-          - string
-          - 'null'
-        SubCode:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     ClientHostedInitiateAISConsentRequest:
       required:
       - aisConsentId
@@ -2998,6 +2969,35 @@ components:
           maxLength: 50
           minLength: 0
           type: string
+      additionalProperties: false
+    AISStatusTypeEnum:
+      enum:
+      - INITIATED
+      - CANCELLED
+      - EXPIRED
+      - AWAITINGAUTHORISATION
+      - AUTHORISED
+      type: string
+    AccountTransactionResponses:
+      type: object
+      properties:
+        accountTransactions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Transaction'
+        paging:
+          $ref: '#/components/schemas/Paging'
+      additionalProperties: false
+    CreditorAgent:
+      type: object
+      properties:
+        SchemeName: {}
+        Identification: {}
+        Name: {}
+        PostalAddress:
+          $ref: '#/components/schemas/PostalAddress'
       additionalProperties: false
   securitySchemes:
     apiKeyHeader:

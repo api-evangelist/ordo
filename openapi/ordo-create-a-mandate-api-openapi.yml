@@ -696,11 +696,44 @@ components:
           - string
           - 'null'
       additionalProperties: {}
-    VRPType:
-      enum:
-      - SWEEPING
-      - NONSWEEPING
-      type: string
+    OrdoValidationProblemDetails:
+      type: object
+      properties:
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          readOnly: true
+        type:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
     VRPURLs:
       type: object
       properties:
@@ -716,6 +749,66 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    VRPType:
+      enum:
+      - SWEEPING
+      - NONSWEEPING
+      type: string
+    PayerAliasType:
+      enum:
+      - EMAIL
+      - PHONE
+      type: string
+    VRPMandatePostResponse:
+      type: object
+      properties:
+        vrpAuthUrl:
+          type:
+          - string
+          - 'null'
+        vrpMandate:
+          $ref: '#/components/schemas/VRPMandateResponse'
+        vrpURLs:
+          $ref: '#/components/schemas/VRPURLs'
+      additionalProperties: false
+    ControlParameter:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currency:
+          type:
+          - string
+          - 'null'
+        periodAlignment:
+          type:
+          - string
+          - 'null'
+        periodType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    VRPControlParameters:
+      required:
+      - maximumIndividualAmount
+      - maximumIndividualAmountCurrency
+      type: object
+      properties:
+        maximumIndividualAmount:
+          type: number
+          format: double
+        maximumIndividualAmountCurrency:
+          minLength: 1
+          type: string
+        controlParameters:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ControlParameter'
       additionalProperties: false
     VRPMandateMessage:
       required:
@@ -769,61 +862,6 @@ components:
           $ref: '#/components/schemas/VRPURLs'
         refundAccountRequired:
           type: boolean
-      additionalProperties: false
-    ControlParameter:
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        currency:
-          type:
-          - string
-          - 'null'
-        periodAlignment:
-          type:
-          - string
-          - 'null'
-        periodType:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PayerAliasType:
-      enum:
-      - EMAIL
-      - PHONE
-      type: string
-    VRPControlParameters:
-      required:
-      - maximumIndividualAmount
-      - maximumIndividualAmountCurrency
-      type: object
-      properties:
-        maximumIndividualAmount:
-          type: number
-          format: double
-        maximumIndividualAmountCurrency:
-          minLength: 1
-          type: string
-        controlParameters:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ControlParameter'
-      additionalProperties: false
-    VRPMandatePostResponse:
-      type: object
-      properties:
-        vrpAuthUrl:
-          type:
-          - string
-          - 'null'
-        vrpMandate:
-          $ref: '#/components/schemas/VRPMandateResponse'
-        vrpURLs:
-          $ref: '#/components/schemas/VRPURLs'
       additionalProperties: false
     VRPMandateResponse:
       type: object
@@ -899,44 +937,6 @@ components:
         refundAccountRequired:
           type: boolean
       additionalProperties: false
-    OrdoValidationProblemDetails:
-      type: object
-      properties:
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        code:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type: array
-            items:
-              type: string
-          readOnly: true
-        type:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
   securitySchemes:
     apiKeyHeader:
       type: apiKey
