@@ -1598,12 +1598,64 @@ paths:
                 instance: string
 components:
   schemas:
-    NewBDRSmartRequestResponse:
+    DeclineExtensionMessageResponse:
       type: object
       properties:
-        bdRlink:
+        senderParticipantId:
+          type: integer
+          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
+          format: int32
+        recipientParticipantId:
+          type: integer
+          description: Gets or sets the property. The Payerparticipant is identified as the recipient of this message type.
+          format: int32
+        smartRequestId:
           type: string
-          description: Gets or sets the property. Refers to the Biller Delivered Request.
+          description: Gets or sets the property. System generated unique identifier for a Smart Request transaction.
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
+          type: string
+          description: 'Gets or sets the property. The message type needs to be EXTENSIONDECLINED.
+
+            <para>
+
+            EXTENSIONDECLINED - Indicates that the Biller declines the due date extension request from the payer.
+
+            </para>'
+      description: class Decline Extension Message.
+    GetSmartRequestsResponse:
+      type: object
+      properties:
+        participantId:
+          type: integer
+          description: Gets or sets the property. Refers to unique identifier of the Participant.
+          format: int32
+        smartRequestDetails:
+          uniqueItems: false
+          type: array
+          items:
+            $ref: '#/components/schemas/SmartRequestDetails'
+          description: Gets or sets the property. Refers to a list containing the information for each Smart Request retrieved.
+      description: Class GetSmartRequestsResponse.
+    NewSmartRequestResponse:
+      type: object
+      properties:
         smartRequestId:
           type: string
           description: Gets or sets the property. System generated unique identifier for a Smart request.
@@ -1715,165 +1767,7 @@ components:
         attachmentBatchId:
           type: string
           description: Gets or sets the property. Unique identifier of the Batch containing documents attached to the Smart Request. A Batch can hold multiple documents.
-        refundAccountRequired:
-          type: boolean
-        smartRequestUrls:
-          type: object
-          properties:
-            bdrRedirectURL:
-              type: string
-            bdrCancelURL:
-              type: string
-            bdrErrorURL:
-              type: string
-      description: Class NewBDRSmartRequestResponse.
-    OrdoValidationProblemDetails:
-      type: object
-      properties:
-        code:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            uniqueItems: false
-            type: array
-            items:
-              type: string
-          readOnly: true
-        type:
-          type: string
-        title:
-          type: string
-        status:
-          type: integer
-          format: int32
-        detail:
-          type: string
-        instance:
-          type: string
-      additionalProperties:
-        type: object
-    NewSmartRequestMessage:
-      required:
-      - senderParticipantId
-      - billerParticipantId
-      - billerReference
-      - billerAccountId
-      - payerReference
-      - amountDue
-      - amountCurrency
-      - dueDate
-      - expiryDate
-      - partialPaymentAllowed
-      - dueDateExtensionsAllowed
-      - partialPaymentsRemaining
-      type: object
-      properties:
-        senderParticipantId:
-          minLength: 1
-          type: integer
-          description: Gets or sets the property. Identifies the Biller initiating the Smart Request. Should be populated as the billerParticipantId for a new Smart Request.
-          format: int32
-        recipientParticipantId:
-          type: integer
-          description: Gets or sets the property. Identifies the Payer who is the recipient of the Smart Request. Only applicable for payment of bundle requests. Not applicable for requests from end user applications.
-          format: int32
-        billerParticipantId:
-          minLength: 1
-          type: integer
-          description: Gets or sets the property. Unique identifier of the Biller.
-          format: int32
-        billerContactEmail:
-          maxLength: 320
-          minLength: 0
-          type: string
-          description: Gets or sets the property. Contact email of the Biller.
-        billerContactPhone:
-          maxLength: 15
-          minLength: 0
-          type: string
-          description: Gets or sets the property. Contact phone number of the Biller.
-        billerReference:
-          maxLength: 18
-          minLength: 1
-          pattern: ^[a-zA-Z0-9-/.#%*()}{:;+=!,?@&amp<>'"/\r ]*$
-          type: string
-          description: Gets or sets the property. Reference information provided by the Biller to the Payer.
-        billerAccountId:
-          minLength: 1
-          type: string
-          description: Gets or sets the property. Unique identifier for the Biller account.
-        payerParticipantId:
-          type: integer
-          description: Gets or sets the property. Refers to the payer within a Smart request transaction. Unique identifier of the Payer.
-          format: int32
-        payerAliasType:
-          enum:
-          - EMAIL
-          - PHONE
-          type: string
-          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
-        payerAliasValue:
-          maxLength: 320
-          minLength: 0
-          type: string
-          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
-          example: 'Email : example@mail.com
-
-            Phone : +countrycode 7712345678.'
-        payerReference:
-          maxLength: 128
-          minLength: 1
-          type: string
-          description: Gets or sets the property. Reference information provided by the Payer to the Biller.
-        amountDue:
-          minLength: 1
-          type: number
-          description: Gets or sets the property. Total amount to be paid by the Payer to the Biller in the Smart Request.
-          format: double
-        amountCurrency:
-          minLength: 1
-          enum:
-          - GBP
-          type: string
-          description: 'Gets or sets the property. Currency of the payment in the Smart Request. For this release it should be set to GBP.
-
-            <para>
-
-            ''GBP'' - ''British Pound''.
-
-            </para>'
-        dueDate:
-          minLength: 1
-          type: string
-          description: Gets or sets the property. Refers to the date by which the complete payment needs to be made by the Payer to the Biller in a Smart Request.
-          format: date-time
-          example: '2017-07-21T17:32:28Z'
-        expiryDate:
-          minLength: 1
-          type: string
-          description: Gets or sets the property. Date on which the Smart Request expires.
-          format: date-time
-          example: '2017-07-21T17:32:28Z'
-        partialPaymentAllowed:
-          minLength: 1
-          type: boolean
-          description: 'Gets or sets the property. Indicates if payment of the Smart Request can be made in partial amounts.
-
-            This option can be chosen by the Biller when creating the Smart Request.'
-        dueDateExtensionsAllowed:
-          minLength: 1
-          type: boolean
-          description: Gets or sets the property. Indicates whether an extension to the original due date is allowed within a Smart Request.
-        partialPaymentsRemaining:
-          minLength: 1
-          type: integer
-          description: Gets or sets the property. Indicates the remaining number of partial payments allowed for the Smart Request, if partial payments are set to be allowed.
-          format: int32
-        attachmentBatchId:
-          type: string
-          description: Gets or sets the property. Unique identifier of the Batch containing documents attached to the Smart Request. A Batch can hold multiple documents.
-      description: class NewSmartRequest.
+      description: Class NewSmartRequestResponse.
     SmartRequestMessageTypes:
       type: object
       properties:
@@ -1939,94 +1833,6 @@ components:
             type: string
           description: Gets or sets the property. Refers to the unique identifier of the Batch. A batch can hold multiple documents.
       description: SmartRequestMessages.
-    DeclineExtensionMessageResponse:
-      type: object
-      properties:
-        senderParticipantId:
-          type: integer
-          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
-          format: int32
-        recipientParticipantId:
-          type: integer
-          description: Gets or sets the property. The Payerparticipant is identified as the recipient of this message type.
-          format: int32
-        smartRequestId:
-          type: string
-          description: Gets or sets the property. System generated unique identifier for a Smart Request transaction.
-        messageType:
-          enum:
-          - REQUESTTOPAY
-          - WITHDRAW
-          - EXTENSIONDECLINED
-          - DECLINE
-          - DECLINEBLOCK
-          - EXTENSIONGRANTED
-          - PAYPARTIAL
-          - PAYALL
-          - REQPAYEXTENSION
-          - READ
-          - MATCHALIAS
-          - MATCHALIASPEND
-          - MATCHREGPEND
-          - MATCHREG
-          - PAYMENTFAILURE
-          - PAYMENTINPROGRESS
-          type: string
-          description: 'Gets or sets the property. The message type needs to be EXTENSIONDECLINED.
-
-            <para>
-
-            EXTENSIONDECLINED - Indicates that the Biller declines the due date extension request from the payer.
-
-            </para>'
-      description: class Decline Extension Message.
-    GrantExtensionMessageResponse:
-      type: object
-      properties:
-        senderParticipantId:
-          type: integer
-          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
-          format: int32
-        recipientParticipantId:
-          type: integer
-          description: Gets or sets the property. The payerparticipant is identified as the recipient of this message type.
-          format: int32
-        smartRequestId:
-          type: string
-          description: Gets or sets the property. System generated unique identifier for a Smart request transaction.
-        messageType:
-          enum:
-          - REQUESTTOPAY
-          - WITHDRAW
-          - EXTENSIONDECLINED
-          - DECLINE
-          - DECLINEBLOCK
-          - EXTENSIONGRANTED
-          - PAYPARTIAL
-          - PAYALL
-          - REQPAYEXTENSION
-          - READ
-          - MATCHALIAS
-          - MATCHALIASPEND
-          - MATCHREGPEND
-          - MATCHREG
-          - PAYMENTFAILURE
-          - PAYMENTINPROGRESS
-          type: string
-          description: 'Gets or sets the property. The message type needs to be EXTENSIONGRANTED.
-
-            <para>
-
-            EXTENSIONGRANTED - Indicates that the Biller has an granted extension to the due date, based on request from Payer.
-
-            </para>'
-        allowFurtherExtensionRequests:
-          enum:
-          - 'Yes'
-          - 'No'
-          type: string
-          description: Gets or sets the property. Indicates if the Biller allows further extension requests for the due date of the Smart Request.
-      description: Class GrantDueDateResponse.
     WithdrawSmartRequestMessageResponse:
       type: object
       properties:
@@ -2086,20 +1892,6 @@ components:
           type: string
           description: Gets or sets the property. Description text of the selected withdraw reason code.
       description: Class Withdraw SmartRequest Message Response.
-    GetSmartRequestsResponse:
-      type: object
-      properties:
-        participantId:
-          type: integer
-          description: Gets or sets the property. Refers to unique identifier of the Participant.
-          format: int32
-        smartRequestDetails:
-          uniqueItems: false
-          type: array
-          items:
-            $ref: '#/components/schemas/SmartRequestDetails'
-          description: Gets or sets the property. Refers to a list containing the information for each Smart Request retrieved.
-      description: Class GetSmartRequestsResponse.
     GetSmartRequestResponse:
       type: object
       properties:
@@ -2270,6 +2062,203 @@ components:
             $ref: '#/components/schemas/SmartRequestMessageTypes'
           description: Gets or sets the property. Retrieves Smart request messages associated with the Smart request.
       description: Class GetSmartRequestResponse.
+    WithdrawSmartRequestMessage:
+      required:
+      - senderParticipantId
+      - smartRequestId
+      - withdrawReasonCode
+      - withdrawReasonText
+      type: object
+      properties:
+        senderParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
+          format: int32
+        recipientParticipantId:
+          type: integer
+          description: Gets or sets the property. The Payerparticipant is identified as the recipient of this message type.
+          format: int32
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com
+
+            Phone : +countrycode 7712345678.'
+        smartRequestId:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart Request transaction.
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
+          type: string
+          description: 'Gets or sets the property. The message type needs to be ''WITHDRAW''.
+
+            <para>
+
+            WITHDRAW - Indicates that the Biller withdraws the Smart Request.
+
+            </para>'
+        withdrawReasonCode:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Reason code for withdrawing the Smart Request.
+        withdrawReasonText:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Description text of the selected withdraw reason code.
+      description: Class Withdraw Smart Request.
+    NewBDRSmartRequestResponse:
+      type: object
+      properties:
+        bdRlink:
+          type: string
+          description: Gets or sets the property. Refers to the Biller Delivered Request.
+        smartRequestId:
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart request.
+        creationDateTime:
+          type: string
+          description: Gets or sets the property. Date and time of creation of Smart request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        status:
+          enum:
+          - BLOCKED
+          - CLOSED
+          - DECLINED
+          - OPEN
+          - PENDING
+          - WITHDRWN
+          - EXPIRED
+          type: string
+          description: 'Gets or sets the property. Refers to status of Smart request being created.
+
+            <para>
+
+            OPEN - Status is Open, if the recipient of the request is already available within Smart request.
+
+            PENDING - Status is Pending, if the recipient of the request does not exist within the system.
+
+            BLOCKED - Status could be Blocked, if the Biller is blocked.
+
+            </para>'
+        paymentStatus:
+          enum:
+          - FULLPAID
+          - PARTPAID
+          - UNPAID
+          type: string
+          description: "Gets or sets the property. Status of payment is set as below:\n<para>\n UNPAID - 'Unpaid' - when a Smart request is created, the status is Unpaid.\n</para>"
+        billerParticipantId:
+          type: integer
+          description: Gets or sets the property. Unique identifier of the Biller.
+          format: int32
+        billerContactEmail:
+          type: string
+          description: Gets or sets the property. Contact email of the Biller.
+        billerContactPhone:
+          type: string
+          description: Gets or sets the property. Contact phone number of the Biller.
+        billerReference:
+          type: string
+          description: Gets or sets the property. Reference information provided by the Biller to the Payer.
+        billerAccountId:
+          type: string
+          description: Gets or sets the property. Unique identifier for the Biller account.
+        payerParticipantId:
+          type: integer
+          description: Gets or sets the property. Refers to the payer within a Smart request transaction. Unique identifier of the Payer.
+          format: int32
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com
+
+            Phone : +countrycode 7712345678.'
+        payerReference:
+          type: string
+          description: Gets or sets the property. Reference information provided by the Payer to the Biller.
+        amountDue:
+          type: number
+          description: Gets or sets the property. Total amount to be paid by the Payer to the Biller in the Smart Request.
+          format: double
+        amountCurrency:
+          enum:
+          - GBP
+          type: string
+          description: 'Gets or sets the property. Currency of the payment in the Smart Request. For this release it should be set to GBP.
+
+            <para>
+
+            ''GBP'' - ''British Pound''.
+
+            </para>'
+        dueDate:
+          type: string
+          description: Gets or sets the property. Refers to the date by which the complete payment needs to be made by the Payer to the Biller in a Smart Request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        expiryDate:
+          type: string
+          description: Gets or sets the property. Date on which the Smart Request expires.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        dueDateExtensionsAllowed:
+          type: boolean
+          description: Gets or sets the property. Indicates whether an extension to the original due date is allowed within a Smart Request.
+        partialPaymentAllowed:
+          type: boolean
+          description: 'Gets or sets the property. Indicates if payment of the Smart Request can be made in partial amounts.
+
+            This option can be chosen by the Biller when creating the Smart Request.'
+        partialPaymentsRemaining:
+          type: integer
+          description: Gets or sets the property. Indicates the remaining number of partial payments allowed for the Smart Request, if partial payments are set to be allowed.
+          format: int32
+        attachmentBatchId:
+          type: string
+          description: Gets or sets the property. Unique identifier of the Batch containing documents attached to the Smart Request. A Batch can hold multiple documents.
+        refundAccountRequired:
+          type: boolean
+        smartRequestUrls:
+          type: object
+          properties:
+            bdrRedirectURL:
+              type: string
+            bdrCancelURL:
+              type: string
+            bdrErrorURL:
+              type: string
+      description: Class NewBDRSmartRequestResponse.
     NewBDRSmartRequestMessage:
       required:
       - senderParticipantId
@@ -2412,154 +2401,18 @@ components:
           type: boolean
           description: Gets or sets the property. Indicates whether the payer account details should be obtained for future manual refund capability.
       description: class NewSmartRequest.
-    WithdrawSmartRequestMessage:
-      required:
-      - senderParticipantId
-      - smartRequestId
-      - withdrawReasonCode
-      - withdrawReasonText
+    GrantExtensionMessageResponse:
       type: object
       properties:
         senderParticipantId:
-          minLength: 1
           type: integer
           description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
           format: int32
         recipientParticipantId:
-          type: integer
-          description: Gets or sets the property. The Payerparticipant is identified as the recipient of this message type.
-          format: int32
-        payerAliasType:
-          enum:
-          - EMAIL
-          - PHONE
-          type: string
-          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
-        payerAliasValue:
-          type: string
-          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
-          example: 'Email : example@mail.com
-
-            Phone : +countrycode 7712345678.'
-        smartRequestId:
-          minLength: 1
-          type: string
-          description: Gets or sets the property. System generated unique identifier for a Smart Request transaction.
-        messageType:
-          enum:
-          - REQUESTTOPAY
-          - WITHDRAW
-          - EXTENSIONDECLINED
-          - DECLINE
-          - DECLINEBLOCK
-          - EXTENSIONGRANTED
-          - PAYPARTIAL
-          - PAYALL
-          - REQPAYEXTENSION
-          - READ
-          - MATCHALIAS
-          - MATCHALIASPEND
-          - MATCHREGPEND
-          - MATCHREG
-          - PAYMENTFAILURE
-          - PAYMENTINPROGRESS
-          type: string
-          description: 'Gets or sets the property. The message type needs to be ''WITHDRAW''.
-
-            <para>
-
-            WITHDRAW - Indicates that the Biller withdraws the Smart Request.
-
-            </para>'
-        withdrawReasonCode:
-          minLength: 1
-          type: string
-          description: Gets or sets the property. Reason code for withdrawing the Smart Request.
-        withdrawReasonText:
-          minLength: 1
-          type: string
-          description: Gets or sets the property. Description text of the selected withdraw reason code.
-      description: Class Withdraw Smart Request.
-    DeclineExtensionMessage:
-      required:
-      - senderParticipantId
-      - recipientParticipantId
-      - smartRequestId
-      - billerExtensionDate
-      type: object
-      properties:
-        senderParticipantId:
-          minLength: 1
-          type: integer
-          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
-          format: int32
-        recipientParticipantId:
-          minLength: 1
           type: integer
           description: Gets or sets the property. The payerparticipant is identified as the recipient of this message type.
           format: int32
         smartRequestId:
-          minLength: 1
-          type: string
-          description: Gets or sets the property. System generated unique identifier for a Smart request transaction.
-        messageType:
-          enum:
-          - REQUESTTOPAY
-          - WITHDRAW
-          - EXTENSIONDECLINED
-          - DECLINE
-          - DECLINEBLOCK
-          - EXTENSIONGRANTED
-          - PAYPARTIAL
-          - PAYALL
-          - REQPAYEXTENSION
-          - READ
-          - MATCHALIAS
-          - MATCHALIASPEND
-          - MATCHREGPEND
-          - MATCHREG
-          - PAYMENTFAILURE
-          - PAYMENTINPROGRESS
-          type: string
-          description: 'Gets or sets the property. The message type needs to be EXTENSIONDECLINED.
-
-            <para>
-
-            EXTENSIONDECLINED - Indicates that the Biller declines the due date extension request from the payer.
-
-            </para>'
-        allowFurtherExtensionRequests:
-          enum:
-          - 'Yes'
-          - 'No'
-          type: string
-          description: Gets or sets the property. Indicates if the Biller allows further extension requests for the due date of the Smart Request.
-        billerExtensionDate:
-          minLength: 1
-          type: string
-          description: Gets or sets the property. Alternative extension date provided by the Biller.
-          format: date-time
-          example: '2017-07-21T17:32:28Z'
-      description: Class DeclineDueDateRequest.
-    GrantExtensionMessage:
-      required:
-      - senderParticipantId
-      - recipientParticipantId
-      - smartRequestId
-      type: object
-      properties:
-        senderParticipantId:
-          minLength: 1
-          type: integer
-          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
-          format: int32
-        recipientParticipantId:
-          minLength: 1
-          type: integer
-          description: Gets or sets the property. The payerparticipant is identified as the recipient of this message type.
-          format: int32
-        smartRequestId:
-          minLength: 1
           type: string
           description: Gets or sets the property. System generated unique identifier for a Smart request transaction.
         messageType:
@@ -2585,7 +2438,7 @@ components:
 
             <para>
 
-            EXTENSIONGRANTED - Indicates that the Biller has granted an extension to the due date, based on the request from the Payer.
+            EXTENSIONGRANTED - Indicates that the Biller has an granted extension to the due date, based on request from Payer.
 
             </para>'
         allowFurtherExtensionRequests:
@@ -2594,7 +2447,128 @@ components:
           - 'No'
           type: string
           description: Gets or sets the property. Indicates if the Biller allows further extension requests for the due date of the Smart Request.
-      description: Class GrantDueDateRequest.
+      description: Class GrantDueDateResponse.
+    NewSmartRequestMessage:
+      required:
+      - senderParticipantId
+      - billerParticipantId
+      - billerReference
+      - billerAccountId
+      - payerReference
+      - amountDue
+      - amountCurrency
+      - dueDate
+      - expiryDate
+      - partialPaymentAllowed
+      - dueDateExtensionsAllowed
+      - partialPaymentsRemaining
+      type: object
+      properties:
+        senderParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. Identifies the Biller initiating the Smart Request. Should be populated as the billerParticipantId for a new Smart Request.
+          format: int32
+        recipientParticipantId:
+          type: integer
+          description: Gets or sets the property. Identifies the Payer who is the recipient of the Smart Request. Only applicable for payment of bundle requests. Not applicable for requests from end user applications.
+          format: int32
+        billerParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. Unique identifier of the Biller.
+          format: int32
+        billerContactEmail:
+          maxLength: 320
+          minLength: 0
+          type: string
+          description: Gets or sets the property. Contact email of the Biller.
+        billerContactPhone:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: Gets or sets the property. Contact phone number of the Biller.
+        billerReference:
+          maxLength: 18
+          minLength: 1
+          pattern: ^[a-zA-Z0-9-/.#%*()}{:;+=!,?@&amp<>'"/\r ]*$
+          type: string
+          description: Gets or sets the property. Reference information provided by the Biller to the Payer.
+        billerAccountId:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Unique identifier for the Biller account.
+        payerParticipantId:
+          type: integer
+          description: Gets or sets the property. Refers to the payer within a Smart request transaction. Unique identifier of the Payer.
+          format: int32
+        payerAliasType:
+          enum:
+          - EMAIL
+          - PHONE
+          type: string
+          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
+        payerAliasValue:
+          maxLength: 320
+          minLength: 0
+          type: string
+          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
+          example: 'Email : example@mail.com
+
+            Phone : +countrycode 7712345678.'
+        payerReference:
+          maxLength: 128
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Reference information provided by the Payer to the Biller.
+        amountDue:
+          minLength: 1
+          type: number
+          description: Gets or sets the property. Total amount to be paid by the Payer to the Biller in the Smart Request.
+          format: double
+        amountCurrency:
+          minLength: 1
+          enum:
+          - GBP
+          type: string
+          description: 'Gets or sets the property. Currency of the payment in the Smart Request. For this release it should be set to GBP.
+
+            <para>
+
+            ''GBP'' - ''British Pound''.
+
+            </para>'
+        dueDate:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Refers to the date by which the complete payment needs to be made by the Payer to the Biller in a Smart Request.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        expiryDate:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Date on which the Smart Request expires.
+          format: date-time
+          example: '2017-07-21T17:32:28Z'
+        partialPaymentAllowed:
+          minLength: 1
+          type: boolean
+          description: 'Gets or sets the property. Indicates if payment of the Smart Request can be made in partial amounts.
+
+            This option can be chosen by the Biller when creating the Smart Request.'
+        dueDateExtensionsAllowed:
+          minLength: 1
+          type: boolean
+          description: Gets or sets the property. Indicates whether an extension to the original due date is allowed within a Smart Request.
+        partialPaymentsRemaining:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. Indicates the remaining number of partial payments allowed for the Smart Request, if partial payments are set to be allowed.
+          format: int32
+        attachmentBatchId:
+          type: string
+          description: Gets or sets the property. Unique identifier of the Batch containing documents attached to the Smart Request. A Batch can hold multiple documents.
+      description: class NewSmartRequest.
     SmartRequestDetails:
       type: object
       properties:
@@ -2728,121 +2702,147 @@ components:
           type: boolean
           description: Gets or sets the property. Indicates if the payment is in progress for a Smart Request.
       description: Class SmartRequestDetails.
-    NewSmartRequestResponse:
+    DeclineExtensionMessage:
+      required:
+      - senderParticipantId
+      - recipientParticipantId
+      - smartRequestId
+      - billerExtensionDate
       type: object
       properties:
+        senderParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
+          format: int32
+        recipientParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. The payerparticipant is identified as the recipient of this message type.
+          format: int32
         smartRequestId:
+          minLength: 1
           type: string
-          description: Gets or sets the property. System generated unique identifier for a Smart request.
-        creationDateTime:
+          description: Gets or sets the property. System generated unique identifier for a Smart request transaction.
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
           type: string
-          description: Gets or sets the property. Date and time of creation of Smart request.
+          description: 'Gets or sets the property. The message type needs to be EXTENSIONDECLINED.
+
+            <para>
+
+            EXTENSIONDECLINED - Indicates that the Biller declines the due date extension request from the payer.
+
+            </para>'
+        allowFurtherExtensionRequests:
+          enum:
+          - 'Yes'
+          - 'No'
+          type: string
+          description: Gets or sets the property. Indicates if the Biller allows further extension requests for the due date of the Smart Request.
+        billerExtensionDate:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. Alternative extension date provided by the Biller.
           format: date-time
           example: '2017-07-21T17:32:28Z'
+      description: Class DeclineDueDateRequest.
+    GrantExtensionMessage:
+      required:
+      - senderParticipantId
+      - recipientParticipantId
+      - smartRequestId
+      type: object
+      properties:
+        senderParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. The Billerparticipant is identified as the sender of this message type.
+          format: int32
+        recipientParticipantId:
+          minLength: 1
+          type: integer
+          description: Gets or sets the property. The payerparticipant is identified as the recipient of this message type.
+          format: int32
+        smartRequestId:
+          minLength: 1
+          type: string
+          description: Gets or sets the property. System generated unique identifier for a Smart request transaction.
+        messageType:
+          enum:
+          - REQUESTTOPAY
+          - WITHDRAW
+          - EXTENSIONDECLINED
+          - DECLINE
+          - DECLINEBLOCK
+          - EXTENSIONGRANTED
+          - PAYPARTIAL
+          - PAYALL
+          - REQPAYEXTENSION
+          - READ
+          - MATCHALIAS
+          - MATCHALIASPEND
+          - MATCHREGPEND
+          - MATCHREG
+          - PAYMENTFAILURE
+          - PAYMENTINPROGRESS
+          type: string
+          description: 'Gets or sets the property. The message type needs to be EXTENSIONGRANTED.
+
+            <para>
+
+            EXTENSIONGRANTED - Indicates that the Biller has granted an extension to the due date, based on the request from the Payer.
+
+            </para>'
+        allowFurtherExtensionRequests:
+          enum:
+          - 'Yes'
+          - 'No'
+          type: string
+          description: Gets or sets the property. Indicates if the Biller allows further extension requests for the due date of the Smart Request.
+      description: Class GrantDueDateRequest.
+    OrdoValidationProblemDetails:
+      type: object
+      properties:
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            uniqueItems: false
+            type: array
+            items:
+              type: string
+          readOnly: true
+        type:
+          type: string
+        title:
+          type: string
         status:
-          enum:
-          - BLOCKED
-          - CLOSED
-          - DECLINED
-          - OPEN
-          - PENDING
-          - WITHDRWN
-          - EXPIRED
-          type: string
-          description: 'Gets or sets the property. Refers to status of Smart request being created.
-
-            <para>
-
-            OPEN - Status is Open, if the recipient of the request is already available within Smart request.
-
-            PENDING - Status is Pending, if the recipient of the request does not exist within the system.
-
-            BLOCKED - Status could be Blocked, if the Biller is blocked.
-
-            </para>'
-        paymentStatus:
-          enum:
-          - FULLPAID
-          - PARTPAID
-          - UNPAID
-          type: string
-          description: "Gets or sets the property. Status of payment is set as below:\n<para>\n UNPAID - 'Unpaid' - when a Smart request is created, the status is Unpaid.\n</para>"
-        billerParticipantId:
           type: integer
-          description: Gets or sets the property. Unique identifier of the Biller.
           format: int32
-        billerContactEmail:
+        detail:
           type: string
-          description: Gets or sets the property. Contact email of the Biller.
-        billerContactPhone:
+        instance:
           type: string
-          description: Gets or sets the property. Contact phone number of the Biller.
-        billerReference:
-          type: string
-          description: Gets or sets the property. Reference information provided by the Biller to the Payer.
-        billerAccountId:
-          type: string
-          description: Gets or sets the property. Unique identifier for the Biller account.
-        payerParticipantId:
-          type: integer
-          description: Gets or sets the property. Refers to the payer within a Smart request transaction. Unique identifier of the Payer.
-          format: int32
-        payerAliasType:
-          enum:
-          - EMAIL
-          - PHONE
-          type: string
-          description: Gets or sets the property. Method by which the Payer is identified. This can be either Email or Phone.
-        payerAliasValue:
-          type: string
-          description: Gets or sets the property. Phone number or email address. Dependent upon the Payer Alias Type.
-          example: 'Email : example@mail.com
-
-            Phone : +countrycode 7712345678.'
-        payerReference:
-          type: string
-          description: Gets or sets the property. Reference information provided by the Payer to the Biller.
-        amountDue:
-          type: number
-          description: Gets or sets the property. Total amount to be paid by the Payer to the Biller in the Smart Request.
-          format: double
-        amountCurrency:
-          enum:
-          - GBP
-          type: string
-          description: 'Gets or sets the property. Currency of the payment in the Smart Request. For this release it should be set to GBP.
-
-            <para>
-
-            ''GBP'' - ''British Pound''.
-
-            </para>'
-        dueDate:
-          type: string
-          description: Gets or sets the property. Refers to the date by which the complete payment needs to be made by the Payer to the Biller in a Smart Request.
-          format: date-time
-          example: '2017-07-21T17:32:28Z'
-        expiryDate:
-          type: string
-          description: Gets or sets the property. Date on which the Smart Request expires.
-          format: date-time
-          example: '2017-07-21T17:32:28Z'
-        dueDateExtensionsAllowed:
-          type: boolean
-          description: Gets or sets the property. Indicates whether an extension to the original due date is allowed within a Smart Request.
-        partialPaymentAllowed:
-          type: boolean
-          description: 'Gets or sets the property. Indicates if payment of the Smart Request can be made in partial amounts.
-
-            This option can be chosen by the Biller when creating the Smart Request.'
-        partialPaymentsRemaining:
-          type: integer
-          description: Gets or sets the property. Indicates the remaining number of partial payments allowed for the Smart Request, if partial payments are set to be allowed.
-          format: int32
-        attachmentBatchId:
-          type: string
-          description: Gets or sets the property. Unique identifier of the Batch containing documents attached to the Smart Request. A Batch can hold multiple documents.
-      description: Class NewSmartRequestResponse.
+      additionalProperties:
+        type: object
   securitySchemes:
     apiKeyHeader:
       type: apiKey

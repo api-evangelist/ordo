@@ -671,198 +671,11 @@ paths:
                 instance: string
 components:
   schemas:
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
-    OrdoValidationProblemDetails:
-      type: object
-      properties:
-        title:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        detail:
-          type:
-          - string
-          - 'null'
-        code:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type: array
-            items:
-              type: string
-          readOnly: true
-        type:
-          type:
-          - string
-          - 'null'
-        instance:
-          type:
-          - string
-          - 'null'
-      additionalProperties: {}
-    VRPURLs:
-      type: object
-      properties:
-        redirectURL:
-          type:
-          - string
-          - 'null'
-        cancelURL:
-          type:
-          - string
-          - 'null'
-        errorURL:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     VRPType:
       enum:
       - SWEEPING
       - NONSWEEPING
       type: string
-    PayerAliasType:
-      enum:
-      - EMAIL
-      - PHONE
-      type: string
-    VRPMandatePostResponse:
-      type: object
-      properties:
-        vrpAuthUrl:
-          type:
-          - string
-          - 'null'
-        vrpMandate:
-          $ref: '#/components/schemas/VRPMandateResponse'
-        vrpURLs:
-          $ref: '#/components/schemas/VRPURLs'
-      additionalProperties: false
-    ControlParameter:
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        currency:
-          type:
-          - string
-          - 'null'
-        periodAlignment:
-          type:
-          - string
-          - 'null'
-        periodType:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    VRPControlParameters:
-      required:
-      - maximumIndividualAmount
-      - maximumIndividualAmountCurrency
-      type: object
-      properties:
-        maximumIndividualAmount:
-          type: number
-          format: double
-        maximumIndividualAmountCurrency:
-          minLength: 1
-          type: string
-        controlParameters:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ControlParameter'
-      additionalProperties: false
-    VRPMandateMessage:
-      required:
-      - billerAccountId
-      - billerParticipantId
-      - vrpControlParameters
-      - vrpMandateName
-      - vrpurLs
-      type: object
-      properties:
-        vrpMandateName:
-          minLength: 1
-          type: string
-        validFromDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        validToDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        billerParticipantId:
-          type: integer
-          format: int32
-        billerReference:
-          type:
-          - string
-          - 'null'
-        billerAccountId:
-          minLength: 1
-          type: string
-        payerAliasType:
-          $ref: '#/components/schemas/PayerAliasType'
-        payerAliasValue:
-          type:
-          - string
-          - 'null'
-        payerReference:
-          type:
-          - string
-          - 'null'
-        vrpControlParameters:
-          $ref: '#/components/schemas/VRPControlParameters'
-        attachmentBatchId:
-          type:
-          - string
-          - 'null'
-        vrpurLs:
-          $ref: '#/components/schemas/VRPURLs'
-        refundAccountRequired:
-          type: boolean
-      additionalProperties: false
     VRPMandateResponse:
       type: object
       properties:
@@ -937,6 +750,193 @@ components:
         refundAccountRequired:
           type: boolean
       additionalProperties: false
+    VRPMandateMessage:
+      required:
+      - billerAccountId
+      - billerParticipantId
+      - vrpControlParameters
+      - vrpMandateName
+      - vrpurLs
+      type: object
+      properties:
+        vrpMandateName:
+          minLength: 1
+          type: string
+        validFromDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        validToDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        billerParticipantId:
+          type: integer
+          format: int32
+        billerReference:
+          type:
+          - string
+          - 'null'
+        billerAccountId:
+          minLength: 1
+          type: string
+        payerAliasType:
+          $ref: '#/components/schemas/PayerAliasType'
+        payerAliasValue:
+          type:
+          - string
+          - 'null'
+        payerReference:
+          type:
+          - string
+          - 'null'
+        vrpControlParameters:
+          $ref: '#/components/schemas/VRPControlParameters'
+        attachmentBatchId:
+          type:
+          - string
+          - 'null'
+        vrpurLs:
+          $ref: '#/components/schemas/VRPURLs'
+        refundAccountRequired:
+          type: boolean
+      additionalProperties: false
+    VRPControlParameters:
+      required:
+      - maximumIndividualAmount
+      - maximumIndividualAmountCurrency
+      type: object
+      properties:
+        maximumIndividualAmount:
+          type: number
+          format: double
+        maximumIndividualAmountCurrency:
+          minLength: 1
+          type: string
+        controlParameters:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ControlParameter'
+      additionalProperties: false
+    ControlParameter:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currency:
+          type:
+          - string
+          - 'null'
+        periodAlignment:
+          type:
+          - string
+          - 'null'
+        periodType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    VRPMandatePostResponse:
+      type: object
+      properties:
+        vrpAuthUrl:
+          type:
+          - string
+          - 'null'
+        vrpMandate:
+          $ref: '#/components/schemas/VRPMandateResponse'
+        vrpURLs:
+          $ref: '#/components/schemas/VRPURLs'
+      additionalProperties: false
+    VRPURLs:
+      type: object
+      properties:
+        redirectURL:
+          type:
+          - string
+          - 'null'
+        cancelURL:
+          type:
+          - string
+          - 'null'
+        errorURL:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    OrdoValidationProblemDetails:
+      type: object
+      properties:
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        code:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          readOnly: true
+        type:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    PayerAliasType:
+      enum:
+      - EMAIL
+      - PHONE
+      type: string
   securitySchemes:
     apiKeyHeader:
       type: apiKey
