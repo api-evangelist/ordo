@@ -1,4 +1,4 @@
-# Ordo (ordo)
+# Ordo
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,96 +64,95 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Ordo (operated by The Smart Request Company Ltd) is a United Kingdom open-banking payments provider that lets businesses collect money directly from a customer's bank account over the UK Faster Payments rails, avoiding card fees and chargebacks. Built on PSD2 / Open Banking payment initiation, its fully hosted, white-labelled platform delivers Request to Pay, one-off payment requests, e-commerce, Point of Sale / QR code and contact centre payments, plus Variable Recurring Payments (VRP) and account information (AIS) and account verification services.
+> **No longer operating.** This company or product has shut down, been discontinued, or been deprecated. This profile is kept as a historical record and is not maintained or rated.
 
-Ordo has since ceased trading and been acquired by Neonomics. The marketing site at [ordopay.com](https://ordopay.com/) remains live; the ReadMe.io developer portal at `docs.myordo.com` is now offline. The six OpenAPI 3.0.1 definitions in `openapi/` were recovered verbatim from Internet Archive snapshots of the developer portal.
+Ordo (operated by The Smart Request Company Ltd, ordohq.com / ordopay.com) is a United Kingdom open-banking payments provider that lets businesses collect money directly from a customer's bank account over the UK Faster Payments rails, avoiding card fees and chargebacks. Built on PSD2 / Open Banking payment initiation, its fully hosted, white-labelled platform delivers Request to Pay, one-off payment requests, e-commerce, Point of Sale / QR code and contact centre payments, plus Variable Recurring Payments (VRP) for fixed, variable and sweeping collections, and account information (AIS) and account verification services. Ordo is FCA-authorised and an Open Banking regulated provider, with a developer surface historically published as a ReadMe.io portal at docs.myordo.com backed by an Azure API Management gateway (test.api.ordopay.com). Ordo has since ceased trading and been acquired by Neonomics; the marketing site at ordopay.com remains live while the developer portal is now offline. Its API posture is documented here honestly from six OpenAPI 3.0.1 definitions harvested verbatim from the archived developer portal.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/ordo/refs/heads/main/apis.yml)
+**Areas:** Payments · United Kingdom · Open Banking · Account-to-Account · Payment Initiation · Variable Recurring Payments · Request to Pay · Real-Time Payments · Faster Payments · PSD2 · Account Information · Defunct
 
-## Tags
+## Ordo on APIs.io (historical record)
 
-- Payments
-- United Kingdom
-- Open Banking
-- Account-to-Account
-- Payment Initiation
-- Variable Recurring Payments
-- Request to Pay
-- Real-Time Payments
-- Faster Payments
-- PSD2
-- Account Information
+Everything profiled for Ordo is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ordo/](https://apis.io/providers/ordo/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-07-24
-- **Modified:** 2026-07-24
+- [Ordo Account Data - Client Hosted API](https://apis.io/apis/ordo/ordo-account-data-client-hosted-api/) — The Account Data - Client Hosted API from Ordo — 9 operation(s) for account data - client hosted.
+- [Ordo Account Verification - Client Hosted API](https://apis.io/apis/ordo/ordo-account-verification-client-hosted-api/) — The Account Verification - Client Hosted API from Ordo — 6 operation(s) for account verification - client hosted.
+- [Ordo Bank accounts API](https://apis.io/apis/ordo/ordo-bank-accounts-api/) — The Bank accounts API from Ordo — 3 operation(s) for bank accounts.
+- [Ordo Client hosted API](https://apis.io/apis/ordo/ordo-client-hosted-api/) — The Client hosted API from Ordo — 4 operation(s) for client hosted.
+- [Ordo Create a mandate API](https://apis.io/apis/ordo/ordo-create-a-mandate-api/) — The Create a mandate API from Ordo — 2 operation(s) for create a mandate.
+- [Ordo Hosted API](https://apis.io/apis/ordo/ordo-ordo-hosted-api/) — The Ordo hosted API from Ordo — 8 operation(s) for ordo hosted.
+- [Ordo Retrieve mandate details API](https://apis.io/apis/ordo/ordo-retrieve-mandate-details-api/) — The Retrieve mandate details API from Ordo — 4 operation(s) for retrieve mandate details.
 
-## APIs
+### Published properties
 
-All APIs run behind an Azure API Management gateway (`test.api.ordopay.com`) and authenticate with a gateway subscription key (`Ocp-Apim-Subscription-Key` header or `subscription-key` query).
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Ordo Single Payments API
+#### MCP servers (1)
 
-Single, one-off open-banking payment initiation — list institutions, create, initiate and withdraw a payment. 4 operations.
+Model Context Protocol servers that expose the API to agents.
 
-- **Human URL:** [https://ordopay.com/products/payments](https://ordopay.com/products/payments)
-- **Base URL:** `https://test.api.ordopay.com/payments`
-- [OpenAPI](openapi/ordo-single-payments.yml)
+- [ordo](https://apis.io/servers/ordo/ordo/)
 
-### Ordo Smart Request Manager API
+#### Agentic access (1)
 
-Request to Pay / "Smart Request" management for one-off payment requests, Biller Delivery Request (BDR) links, extensions and withdrawals. 8 operations.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Human URL:** [https://ordopay.com/products/payments](https://ordopay.com/products/payments)
-- **Base URL:** `https://test.api.ordopay.com/smartrequestmanager/v1`
-- [OpenAPI](openapi/ordo-smart-request-manager.yml)
+- [Ordo Agentic Access](https://apis.io/agentic-access/ordo/ordo-agentic-access/)
 
-### Ordo Recurring Payment Mandates (VRP) API
+#### Collections (6)
 
-Variable Recurring Payments — sweeping and non-sweeping mandates, mandate payments and VRP transactions. 6 operations.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://ordopay.com/products/vrp](https://ordopay.com/products/vrp)
-- **Base URL:** `https://test.api.ordopay.com/vrp/v1`
-- [OpenAPI](openapi/ordo-recurring-payment-mandates.yml)
+- [ACCOUNT DATA - Client Hosted](https://apis.io/collections/ordo/open-ordo-account-data-client-hosted/)
+- [ACCOUNT DATA - Ordo Hosted](https://apis.io/collections/ordo/open-ordo-account-data-ordo-hosted/)
+- [Recurring Payment Mandates](https://apis.io/collections/ordo/open-ordo-recurring-payment-mandates/)
+- [Bank account configuration](https://apis.io/collections/ordo/open-ordo-registry-manager/)
+- [Single Payments](https://apis.io/collections/ordo/open-ordo-single-payments/)
+- [Single Payments](https://apis.io/collections/ordo/open-ordo-smart-request-manager/)
 
-### Ordo Account Data (Ordo Hosted) API
+#### Overlays (6)
 
-Account Information (AIS) and account verification with Ordo hosting the end-user authorisation UX. 13 operations.
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- **Human URL:** [https://ordopay.com/products/account/data](https://ordopay.com/products/account/data)
-- **Base URL:** `https://test.api.ordopay.com/hosted`
-- [OpenAPI](openapi/ordo-account-data-ordo-hosted.yml)
+- [Ordo Account Data Client Hosted Overlay](https://apis.io/overlays/ordo/ordo-account-data-client-hosted-overlay/)
+- [Ordo Account Data Hosted Overlay](https://apis.io/overlays/ordo/ordo-account-data-hosted-overlay/)
+- [Ordo Recurring Payment Mandates Overlay](https://apis.io/overlays/ordo/ordo-recurring-payment-mandates-overlay/)
+- [Ordo Registry Manager Overlay](https://apis.io/overlays/ordo/ordo-registry-manager-overlay/)
+- [Ordo Single Payments Overlay](https://apis.io/overlays/ordo/ordo-single-payments-overlay/)
+- [Ordo Smart Request Manager Overlay](https://apis.io/overlays/ordo/ordo-smart-request-manager-overlay/)
 
-### Ordo Account Data (Client Hosted) API
+#### Security (2)
 
-The same AIS + verification lifecycle with the integrating client hosting the authorisation UX. 15 operations.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://ordopay.com/products/account/verify](https://ordopay.com/products/account/verify)
-- **Base URL:** `https://test.api.ordopay.com/client`
-- [OpenAPI](openapi/ordo-account-data-client-hosted.yml)
+- [Ordo Authentication](https://apis.io/security/ordo/ordo-authentication/)
+- [Ordo Domain Security](https://apis.io/security/ordo/ordo-domain-security/)
 
-### Ordo Registry Manager API
+## Where to find this API
 
-Bank account configuration / registry management for the biller bank accounts into which payments settle. 3 operations.
-
-- **Human URL:** [https://ordopay.com/products/payments](https://ordopay.com/products/payments)
-- **Base URL:** `https://test.api.ordopay.com/registrymanager/v1`
-- [OpenAPI](openapi/ordo-registry-manager.yml)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://ordopay.com/)
-- [Developer Portal](https://docs.myordo.com/docs) (offline / archived)
-- [API Reference](https://docs.myordo.com/reference) (offline / archived)
-- [Getting Started](https://docs.myordo.com/docs/get-started) (offline / archived)
-- [GitHub Organization](https://github.com/ordohq)
-- [LinkedIn](https://www.linkedin.com/company/ordohq)
-- [Terms of Service](https://ordopay.com/legal/merchant-terms)
-- [Privacy Policy](https://ordopay.com/legal/privacy-policy)
+- [Getting started](https://docs.myordo.com/docs/get-started)
+- [API reference](https://docs.myordo.com/reference)
 - [Support](https://ordopay.com/contact)
+- [Terms of service](https://ordopay.com/legal/merchant-terms)
+- [Privacy policy](https://ordopay.com/legal/privacy-policy)
+- [GitHub](https://github.com/ordohq)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Not rated** — this company is recorded as no longer operating, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Ordo: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ordo/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
